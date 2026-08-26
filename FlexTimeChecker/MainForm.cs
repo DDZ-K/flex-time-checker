@@ -24,6 +24,7 @@ internal sealed class MainForm : Form
     private readonly VerdictCard _clearCard;
     private readonly Label _timeDetail;
     private readonly TextBox _log;
+    private readonly ReworkBoard _rework;
     private bool _busy;
 
     public MainForm()
@@ -52,22 +53,9 @@ internal sealed class MainForm : Form
         configButton.Location = new Point(18, 16);
         configButton.Click += (_, _) => OpenConfigDialog();
 
-        var titleX = 118;
         var logo = Branding.MakeHeaderLogo(118, 16);
         if (logo is not null)
-        {
             header.Controls.Add(logo);
-            titleX = 348;
-        }
-        var title = new Label
-        {
-            Text = "FLEX 点胶时间检查",
-            Location = new Point(titleX, 18),
-            AutoSize = true,
-            Font = new Font("Microsoft YaHei UI", 16f, FontStyle.Bold),
-            ForeColor = Ink,
-            BackColor = Color.Transparent
-        };
         _clock = new Label
         {
             Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
@@ -80,31 +68,30 @@ internal sealed class MainForm : Form
             Padding = new Padding(0, 4, 8, 0)
         };
         header.Controls.Add(configButton);
-        header.Controls.Add(title);
         header.Controls.Add(_clock);
 
         var accent = new Panel { Dock = DockStyle.Top, Height = 3, BackColor = Blue };
 
         var scanWrap = new AntdPanel
         {
-            Dock = DockStyle.Top,
-            Height = 86,
+            Dock = DockStyle.Fill,
             Back = Surface,
             Radius = 10,
             BorderWidth = 1,
             BorderColor = Line,
-            InnerPadding = new Padding(16, 16, 16, 16),
-            Margin = new Padding(18, 14, 18, 8)
+            InnerPadding = new Padding(12, 12, 12, 12)
         };
-        var scanHost = new Panel { Dock = DockStyle.Top, Height = 114, BackColor = Bg, Padding = new Padding(18, 14, 18, 0) };
+        var scanHost = new Panel { Dock = DockStyle.Top, Height = 88, BackColor = Bg, Padding = new Padding(18, 14, 18, 0) };
         _housing = new TextBox
         {
             Dock = DockStyle.Fill,
-            Font = new Font("Consolas", 20f, FontStyle.Bold),
+            AutoSize = false,
+            Font = new Font("Consolas", 18f, FontStyle.Bold),
             BackColor = Color.FromArgb(248, 250, 252),
             ForeColor = Ink,
             BorderStyle = BorderStyle.FixedSingle,
-            ImeMode = ImeMode.Disable
+            ImeMode = ImeMode.Disable,
+            Margin = new Padding(0, 0, 10, 0)
         };
         _housing.KeyDown += (_, e) =>
         {
@@ -115,39 +102,48 @@ internal sealed class MainForm : Form
             }
         };
         _queryBtn = MakeButton("查询", AntdUI.TTypeMini.Primary, 120);
-        _queryBtn.Dock = DockStyle.Right;
-        _queryBtn.Width = 120;
-        _queryBtn.Margin = new Padding(12, 0, 0, 0);
+        _queryBtn.Dock = DockStyle.Fill;
+        _queryBtn.Margin = new Padding(0, 0, 10, 0);
         _queryBtn.Click += (_, _) => Query();
         _status = new Label
         {
             Text = "准备就绪",
-            Dock = DockStyle.Right,
-            Width = 140,
+            Dock = DockStyle.Fill,
             TextAlign = ContentAlignment.MiddleCenter,
             Font = new Font("Microsoft YaHei UI", 11f, FontStyle.Bold),
             ForeColor = Muted,
-            BackColor = Color.Transparent
+            BackColor = Color.Transparent,
+            Margin = new Padding(0)
         };
-        var scanInner = new Panel { Dock = DockStyle.Fill, BackColor = Color.Transparent };
-        scanInner.Controls.Add(_housing);
-        scanInner.Controls.Add(_queryBtn);
-        scanInner.Controls.Add(_status);
+        var scanInner = new TableLayoutPanel
+        {
+            Dock = DockStyle.Fill,
+            ColumnCount = 3,
+            RowCount = 1,
+            BackColor = Color.Transparent,
+            Margin = new Padding(0),
+            Padding = new Padding(0)
+        };
+        scanInner.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+        scanInner.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120));
+        scanInner.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 132));
+        scanInner.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+        scanInner.Controls.Add(_housing, 0, 0);
+        scanInner.Controls.Add(_queryBtn, 1, 0);
+        scanInner.Controls.Add(_status, 2, 0);
         scanWrap.Controls.Add(scanInner);
         scanHost.Controls.Add(scanWrap);
 
         var logWrap = new AntdPanel
         {
-            Dock = DockStyle.Bottom,
-            Height = 150,
+            Dock = DockStyle.Fill,
             Back = Surface,
             Radius = 10,
             BorderWidth = 1,
             BorderColor = Line,
-            InnerPadding = new Padding(14, 10, 14, 10),
-            Margin = new Padding(18, 0, 18, 16)
+            InnerPadding = new Padding(14, 10, 14, 10)
         };
-        var logHost = new Panel { Dock = DockStyle.Bottom, Height = 176, BackColor = Bg, Padding = new Padding(18, 0, 18, 16) };
+        var logHost = new Panel { Dock = DockStyle.Bottom, Height = 196, BackColor = Bg, Padding = new Padding(18, 0, 18, 16) };
         var logTitle = new Label
         {
             Text = "最近记录",
@@ -210,8 +206,11 @@ internal sealed class MainForm : Form
         cards.Controls.Add(_demolishCard, 0, 0);
         cards.Controls.Add(_clearCard, 1, 0);
 
+        _rework = new ReworkBoard { Dock = DockStyle.Bottom };
+
         Controls.Add(cards);
         Controls.Add(detailHost);
+        Controls.Add(_rework);
         Controls.Add(logHost);
         Controls.Add(scanHost);
         Controls.Add(accent);
@@ -225,7 +224,12 @@ internal sealed class MainForm : Form
         {
             _housing.Focus();
             Log($"配置已加载  点胶站 {_cfg.GetDispenseProfiles().Count}  组装站 {_cfg.GetBindProfiles().Count}");
+            _rework.RefreshAsync(_cfg, this);
         };
+
+        var reworkTimer = new System.Windows.Forms.Timer { Interval = 60000 };
+        reworkTimer.Tick += (_, _) => _rework.RefreshAsync(_cfg, this);
+        reworkTimer.Start();
     }
 
     private void Query()
@@ -270,6 +274,7 @@ internal sealed class MainForm : Form
             _clearCard.SetUnknown();
             _timeDetail.Text = result.Error ?? "未找到";
             Log($"未找到 {code}  扫了 {result.FilesScanned} 个文件  {result.ElapsedMs}ms");
+            _rework.RefreshAsync(cfg, this);
             return;
         }
 
@@ -316,6 +321,10 @@ internal sealed class MainForm : Form
         _timeDetail.Text =
             $"{scannedKind}    点胶 {dispense:yyyy-MM-dd HH:mm:ss}    本机 {now:yyyy-MM-dd HH:mm:ss}    已过 {FormatSpan(elapsed)}    {demolishWait}    {clearWait}";
         Log($"命中 {scannedKind}  目录={profile.Name}  点胶={dispense:yyyy-MM-dd HH:mm:ss}  已过={FormatSpan(elapsed)}  拆除={(demolishOk ? "可以" : "不可以")}  清胶={(clearOk ? "可以" : "不可以")}  扫描={result.FilesScanned}个 Request XML  {result.ElapsedMs}ms");
+        var added = ReworkTracker.TryRecord(result, cfg);
+        if (added)
+            Log($"返工已计  Housing {housing}");
+        _rework.RefreshAsync(cfg, this);
     }
 
     private void OpenConfigDialog()
@@ -329,6 +338,7 @@ internal sealed class MainForm : Form
         _status.Text = "配置已保存";
         _status.ForeColor = Ok;
         Log($"已保存 点胶站 {_cfg.GetDispenseProfiles().Count}  组装站 {_cfg.GetBindProfiles().Count}");
+        _rework.RefreshAsync(_cfg, this);
     }
 
     private void Log(string message)
@@ -463,8 +473,9 @@ internal sealed class VerdictCard : Panel
 
     private void ScaleVerdict()
     {
-        var h = Math.Max(80, Height - 90);
-        var size = Math.Clamp(h / 2.4f, 42f, 120f);
+        var h = Math.Max(28, Height - 100);
+        var w = Math.Max(28, Width - 80);
+        var size = Math.Clamp(Math.Min(h / 3.2f, w / 5.2f), 18f, 120f);
         if (_verdict.Text == "不可以")
             size *= 0.82f;
         _verdict.Font = new Font("Microsoft YaHei UI", size, FontStyle.Bold);

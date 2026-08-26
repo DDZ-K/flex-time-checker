@@ -114,6 +114,77 @@ internal static class Program
             </root>
             """);
 
+        const string matIdPcba = "69165000175830012608258629503716";
+        const string matIdBottom = "066547286570101930033260001";
+        const string housingPcba = "071360586570101920033260004";
+        const string housingBottom = "059824686570101920033260004";
+
+        File.WriteAllText(Path.Combine(bindDir, "Request_matid_pcba.xml"),
+            """
+            <?xml version="1.0" encoding="utf-8"?>
+            <root>
+              <header timeStamp="2026-08-26T19:23:18.8833153+08:00" />
+              <event>
+                <partProcessed identifier="071360586570101920033260004" />
+              </event>
+              <body>
+                <structArrays>
+                  <array name="matDataBComponents">
+                    <values>
+                      <item matID="69165000175830012608258629503716" typeNo="7517402383" batch="NA" class="Main_PCBA" vendor="Bosch" qty="0" />
+                    </values>
+                  </array>
+                </structArrays>
+                <items>
+                  <item name="MainPcb_Identifier" value="69165000175830012608258629503716" dataType="8" />
+                </items>
+              </body>
+            </root>
+            """);
+
+        File.WriteAllText(Path.Combine(bindDir, "Request_matid_bottom.xml"),
+            """
+            <?xml version="1.0" encoding="utf-8"?>
+            <root>
+              <header timeStamp="2026-08-26T19:29:48.1062889+08:00" />
+              <event>
+                <partProcessed identifier="059824686570101920033260004" />
+              </event>
+              <body>
+                <structArrays>
+                  <array name="matDataBComponents">
+                    <values>
+                      <item matID="97120955S015400019726" typeNo="8657211015" batch="20260420" class="Antenna" vendor="Bosch" qty="1" />
+                      <item matID="066547286570101930033260001" typeNo="7517402383" batch="NA" class="Bottom" vendor="Bosch" qty="0" />
+                    </values>
+                  </array>
+                </structArrays>
+              </body>
+            </root>
+            """);
+
+        File.WriteAllText(Path.Combine(dispenseDir, "Request_housing_pcba.xml"),
+            """
+            <?xml version="1.0" encoding="UTF-8"?>
+            <root>
+              <header timeStamp="2026-08-26T18:01:00+08:00" />
+              <event>
+                <partProcessed identifier="071360586570101920033260004" />
+              </event>
+            </root>
+            """);
+
+        File.WriteAllText(Path.Combine(dispenseDir, "Request_housing_bottom.xml"),
+            """
+            <?xml version="1.0" encoding="UTF-8"?>
+            <root>
+              <header timeStamp="2026-08-26T18:02:00+08:00" />
+              <event>
+                <partProcessed identifier="059824686570101920033260004" />
+              </event>
+            </root>
+            """);
+
         var cfg = new AppConfig
         {
             Folders =
@@ -133,13 +204,40 @@ internal static class Program
                     Role = Roles.Bind,
                     DemolishMinutes = 15,
                     ClearGlueMinutes = 100
+                },
+                new FolderProfile
+                {
+                    Name = "点胶32",
+                    MessageFolder = Path.Combine(root, "dispense2"),
+                    Role = Roles.Dispense,
+                    DemolishMinutes = 30,
+                    ClearGlueMinutes = 240
                 }
             ]
         };
         cfg.Normalize();
 
+        var dispense2Dir = Path.Combine(root, "dispense2");
+        Directory.CreateDirectory(dispense2Dir);
+        const string housingA = "HOUSING-A-0001";
+        const string housingB = "HOUSING-B-0002";
+        static string HousingXml(string code, string stamp) => $"""
+            <?xml version="1.0" encoding="UTF-8"?>
+            <root>
+              <header timeStamp="{stamp}" />
+              <event>
+                <partProcessed identifier="{code}" />
+              </event>
+            </root>
+            """;
+        File.WriteAllText(Path.Combine(dispense2Dir, "Request_a.xml"), HousingXml(housingA, "2026-08-26T10:00:00+08:00"));
+        File.WriteAllText(Path.Combine(dispense2Dir, "Request_a_dup.xml"), HousingXml(housingA, "2026-08-26T10:01:00+08:00"));
+        File.WriteAllText(Path.Combine(dispense2Dir, "Request_b.xml"), HousingXml(housingB, "2026-08-26T10:02:00+08:00"));
+
         var byHousing = RequestXmlSearch.Find(housing, cfg);
         var byMaterial = RequestXmlSearch.Find(material, cfg);
+        var byMatId = RequestXmlSearch.Find(matIdPcba, cfg);
+        var byBottom = RequestXmlSearch.Find(matIdBottom, cfg);
         var unknown = RequestXmlSearch.Find("NO_SUCH_CODE", cfg);
         var other = RequestXmlSearch.Find(otherHousing, cfg);
 
@@ -172,12 +270,43 @@ internal static class Program
                  && byMaterial.Profile?.Name == "组装绑定"
                  && byMaterial.Profile?.DemolishMinutes == 15
                  && byMaterial.Profile?.ClearGlueMinutes == 100
+                 && byMatId.Found
+                 && byMatId.MaterialCode == matIdPcba
+                 && byMatId.HousingCode == housingPcba
+                 && byMatId.DispenseTime is DateTime t3
+                 && t3.Year == 2026 && t3.Month == 8 && t3.Day == 26 && t3.Hour == 18 && t3.Minute == 1
+                 && byBottom.Found
+                 && byBottom.MaterialCode == matIdBottom
+                 && byBottom.HousingCode == housingBottom
+                 && byBottom.DispenseTime is DateTime t4
+                 && t4.Minute == 2
                  && !unknown.Found
                  && other.Found
                  && other.HousingCode == otherHousing
                  && !materialNoDispense.Found
                  && (materialNoDispense.Error ?? "").Contains("点胶站未找到")
                  && waitOk;
+
+        var store = Path.Combine(root, "rework.json");
+        var first = ReworkTracker.TryRecord(byHousing, cfg, store);
+        var dupHouse = ReworkTracker.TryRecord(byHousing, cfg, store);
+        var viaMat = ReworkTracker.TryRecord(byMaterial, cfg, store);
+        var pcba = ReworkTracker.TryRecord(byMatId, cfg, store);
+        var miss = ReworkTracker.TryRecord(unknown, cfg, store);
+        var noDisp = ReworkTracker.TryRecord(materialNoDispense, cfg, store);
+        var hitA = RequestXmlSearch.Find(housingA, cfg);
+        var recA = ReworkTracker.TryRecord(hitA, cfg, store);
+        var recA2 = ReworkTracker.TryRecord(hitA, cfg, store);
+        var snap = ReworkTracker.Snapshot(cfg, store);
+        var s31 = snap.First(x => x.Name == "点胶31");
+        var s32 = snap.First(x => x.Name == "点胶32");
+        var reworkOk = first && !dupHouse && !viaMat && pcba && !miss && !noDisp
+                       && hitA.Found && recA && !recA2
+                       && s31.Produced == 4 && s31.Rework == 2
+                       && s32.Produced == 2 && s32.Rework == 1
+                       && Math.Abs(s31.Rate - 0.5) < 1e-9
+                       && Math.Abs(s32.Rate - 0.5) < 1e-9;
+        ok = ok && reworkOk;
 
         var sb = new StringBuilder();
         sb.AppendLine($"housingFound={byHousing.Found}");
@@ -186,6 +315,10 @@ internal static class Program
         sb.AppendLine($"materialFound={byMaterial.Found}");
         sb.AppendLine($"materialToHousing={byMaterial.HousingCode}");
         sb.AppendLine($"materialTime={byMaterial.DispenseTime:yyyy-MM-dd HH:mm:ss}");
+        sb.AppendLine($"matIdFound={byMatId.Found}");
+        sb.AppendLine($"matIdToHousing={byMatId.HousingCode}");
+        sb.AppendLine($"bottomFound={byBottom.Found}");
+        sb.AppendLine($"bottomToHousing={byBottom.HousingCode}");
         sb.AppendLine($"unknownFound={unknown.Found}");
         sb.AppendLine($"otherFound={other.Found}");
         sb.AppendLine($"materialNoDispenseFound={materialNoDispense.Found}");
@@ -194,6 +327,9 @@ internal static class Program
         sb.AppendLine($"materialProfile={byMaterial.Profile?.Name}");
         sb.AppendLine($"materialMinutes={byMaterial.Profile?.DemolishMinutes}/{byMaterial.Profile?.ClearGlueMinutes}");
         sb.AppendLine($"waitOk={waitOk}");
+        sb.AppendLine($"reworkOk={reworkOk}");
+        sb.AppendLine($"s31={s31.Produced}/{s31.Rework}");
+        sb.AppendLine($"s32={s32.Produced}/{s32.Rework}");
         sb.AppendLine($"ok={ok}");
 
         var outPath = Path.Combine(AppConfig.AppDir, "selftest-result.txt");

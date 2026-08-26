@@ -227,11 +227,17 @@ internal static class RequestXmlSearch
                 {
                     housing = reader.GetAttribute("identifier")?.Trim() ?? "";
                 }
-                else if (reader.Name == "item")
+                else if (reader.Name == "item" && reader.HasAttributes)
                 {
-                    var id = reader.GetAttribute("identifier")?.Trim();
-                    if (!string.IsNullOrWhiteSpace(id))
-                        itemIds.Add(id);
+                    while (reader.MoveToNextAttribute())
+                    {
+                        if (IsSchemaAttribute(reader.Name))
+                            continue;
+                        var value = reader.Value.Trim();
+                        if (value.Length > 0)
+                            itemIds.Add(value);
+                    }
+                    reader.MoveToElement();
                 }
             }
             return housing.Length > 0 && stamp != default;
@@ -241,6 +247,9 @@ internal static class RequestXmlSearch
             return false;
         }
     }
+
+    private static bool IsSchemaAttribute(string name) =>
+        name is "name" or "dataType" or "typeNo" or "typeVar" or "batch" or "class" or "vendor" or "qty";
 
     private static SearchResult NotFound(string error, int scanned, Stopwatch sw)
     {

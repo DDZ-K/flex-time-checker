@@ -2,7 +2,7 @@
 
 扫 Housing（或 PCB/Cover 物料码），在本地报文里查点胶时间，判断**能否拆除 / 能否清胶**。
 
-当前检查器 **v1.2.2**：点胶站和组装站都可以改拆除/清胶分钟。扫 Housing 用点胶站分钟；扫物料码用组装站分钟。已过时间 **小于拆除分钟 → 可以拆除**；**大于清胶分钟 → 可以清胶**。
+当前检查器 **v1.3.3**：主界面按点胶站显示返工圆环。产量 = 该站本地 `Request*.xml` 里不重复的 Housing；扫码命中哪个点胶站就给哪个站记 1 片返工。物料码先换成 Housing 再计。同一 Housing 当天只计一次。已过时间 **小于拆除分钟 → 可以拆除**；**大于清胶分钟 → 可以清胶**。
 
 **可运行程序在 [Releases](https://github.com/DDZ-K/flex-time-checker/releases) 下载，不要只 clone 源码。**
 
@@ -10,7 +10,7 @@
 
 | 工具 | 版本 | 干什么 |
 |------|------|--------|
-| `FlexTimeChecker.exe` | 1.2.2 | 工位扫码，显示能否拆除 / 能否清胶 |
+| `FlexTimeChecker.exe` | 1.3.3 | 工位扫码，显示能否拆除 / 能否清胶，以及各点胶站返工率 |
 | `FlexRequestExtractor.exe` | 1.3.2 | 从产线共享盘按站位把 `Request*.xml` 拷到本地 |
 | `FlexRequestExtractor.Service.exe` | 1.3.2 | 提取器的无界面 Windows 服务 |
 
@@ -18,7 +18,7 @@
 
 ## 检查器（清胶 / 拆除）
 
-1. 从 Release 下载 `FlexTimeChecker-v1.2.2.zip`，解压到固定目录（不要放桌面）。
+1. 从 Release 下载 `FlexTimeChecker-v1.3.3.zip`，解压到固定目录（不要放桌面）。
 2. 双击 `FlexTimeChecker.exe`。打开会最大化。
 3. 左上角 **配置**：分别加 **点胶站** 和 **组装站** 的本地报文目录，以及拆除/清胶等待分钟。
 4. 扫 Housing，或扫 PCB/Cover 物料码。中间两张大卡只显示「可以 / 不可以」。
@@ -26,10 +26,11 @@
 查询逻辑：
 
 - 点胶站：`partProcessed/@identifier` = Housing，`header/@timeStamp` = 点胶时间
-- 组装站：`item/@identifier` = 物料码，对应同一份报文里的 Housing
+- 组装站：物料码出现在 `item` 的 `identifier` / `matID` / `value` 任一字段即可；同一份报文的 `partProcessed/@identifier` 就是 Housing
 - 顺序：先当 Housing 查点胶站；找不到再当物料查组装站，拿到 Housing 后再回点胶站取时间
 - 拆除/清胶分钟：点胶站、组装站都可以改。扫 Housing 用点胶站的分钟；扫 PCB/Cover 物料码用组装站的分钟
 - 只递归枚举 `Request*.xml`
+- 返工率：每个点胶站一个小圆环（蓝=良品，橙=返工）。良品=产量−返工；图下写数量和返工率。同一 Housing 当天只计一次。
 
 界面约定：标题下没有小字，主界面不显示报文路径，BOSCH 是深色标。
 
