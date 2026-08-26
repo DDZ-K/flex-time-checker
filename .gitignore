@@ -1,0 +1,31 @@
+**/bin/
+**/obj/
+.vs/
+*.user
+*.suo
+*.log
+
+# Local publish binaries (attach to GitHub Release)
+publish/
+extractor-publish/
+_release_stage/
+*.zip
+
+# Machine-specific / production samples
+**/config.json
+!**/config.example.json
+报文文件夹/
+组装报文/
+time_check_log.txt
+**/selftest-result.txt
+**/logs/
+**/报文缓存/
+
+# Local notes with machine paths
+CONTEXT.md
+
+# Early Python prototypes
+flex_time_checker.py
+flex_time_gui.py
+assets/shot_*.py
+IDEA.md

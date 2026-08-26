@@ -1,0 +1,20 @@
+{
+  "Folders": [
+    {
+      "Name": "点胶站",
+      "Role": "Dispense",
+      "MessageFolder": "",
+      "DemolishMinutes": 30,
+      "ClearGlueMinutes": 240
+    },
+    {
+      "Name": "组装站",
+      "Role": "Bind",
+      "MessageFolder": "",
+      "DemolishMinutes": 120,
+      "ClearGlueMinutes": 240
+    }
+  ],
+  "MaxReadBytes": 262144,
+  "FileExtensions": [ ".xml" ]
+}

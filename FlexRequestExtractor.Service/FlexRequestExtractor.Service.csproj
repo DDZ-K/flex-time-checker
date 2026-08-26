@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>FlexRequestExtractor.Service</AssemblyName>
+    <RootNamespace>FlexRequestExtractor.Service</RootNamespace>
+    <Product>Flex报文提取服务</Product>
+    <Description>Flex Request XML extractor Windows Service</Description>
+    <Version>1.3.1</Version>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FlexRequestExtractor.Core\FlexRequestExtractor.Core.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="8.0.1" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,20 @@
+{
+  "WatchRoot": "",
+  "OutputRoot": "",
+  "DispenseItems": [
+    { "Station": "0031", "SaveFolder": "" },
+    { "Station": "0021", "SaveFolder": "" }
+  ],
+  "BindItems": [
+    { "Station": "0061", "SaveFolder": "" }
+  ],
+  "PollIntervalSec": 1,
+  "LookbackDays": 2,
+  "KeepDays": 1,
+  "OnlyNewAfterStart": false,
+  "NewFileGraceSec": 2,
+  "MinFileBytes": 16,
+  "SizeStableChecks": 1,
+  "SizeStableIntervalMs": 120,
+  "MaxLogLines": 500
+}
