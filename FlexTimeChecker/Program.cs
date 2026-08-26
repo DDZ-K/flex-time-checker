@@ -13,6 +13,35 @@ internal static class Program
             return;
         }
 
+        if (args.Any(a => string.Equals(a, "--demo-bind-editor", StringComparison.OrdinalIgnoreCase)))
+        {
+            Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new FolderProfileEditor(new FolderProfile
+            {
+                Name = "组装61",
+                Role = Roles.Bind,
+                MessageFolder = @"E:\example\bind",
+                DemolishMinutes = 30,
+                ClearGlueMinutes = 240
+            }));
+            return;
+        }
+
+        if (args.Any(a => string.Equals(a, "--demo-config", StringComparison.OrdinalIgnoreCase)))
+        {
+            Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new FolderProfilesDialog(
+            [
+                new FolderProfile { Name = "点胶31", Role = Roles.Dispense, MessageFolder = @"E:\example\dispense", DemolishMinutes = 30, ClearGlueMinutes = 240 },
+                new FolderProfile { Name = "组装61", Role = Roles.Bind, MessageFolder = @"E:\example\bind", DemolishMinutes = 30, ClearGlueMinutes = 240 }
+            ]));
+            return;
+        }
+
         Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
@@ -101,7 +130,9 @@ internal static class Program
                 {
                     Name = "组装绑定",
                     MessageFolder = bindDir,
-                    Role = Roles.Bind
+                    Role = Roles.Bind,
+                    DemolishMinutes = 15,
+                    ClearGlueMinutes = 100
                 }
             ]
         };
@@ -137,6 +168,10 @@ internal static class Program
                  && byMaterial.HousingCode == housing
                  && byMaterial.DispenseTime is DateTime t2
                  && t2 == t1
+                 && byHousing.Profile?.DemolishMinutes == 30
+                 && byMaterial.Profile?.Name == "组装绑定"
+                 && byMaterial.Profile?.DemolishMinutes == 15
+                 && byMaterial.Profile?.ClearGlueMinutes == 100
                  && !unknown.Found
                  && other.Found
                  && other.HousingCode == otherHousing
@@ -155,6 +190,9 @@ internal static class Program
         sb.AppendLine($"otherFound={other.Found}");
         sb.AppendLine($"materialNoDispenseFound={materialNoDispense.Found}");
         sb.AppendLine($"materialNoDispenseError={materialNoDispense.Error}");
+        sb.AppendLine($"housingMinutes={byHousing.Profile?.DemolishMinutes}/{byHousing.Profile?.ClearGlueMinutes}");
+        sb.AppendLine($"materialProfile={byMaterial.Profile?.Name}");
+        sb.AppendLine($"materialMinutes={byMaterial.Profile?.DemolishMinutes}/{byMaterial.Profile?.ClearGlueMinutes}");
         sb.AppendLine($"waitOk={waitOk}");
         sb.AppendLine($"ok={ok}");
 

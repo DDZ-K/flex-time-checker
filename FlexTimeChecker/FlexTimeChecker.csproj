@@ -10,7 +10,7 @@
     <RootNamespace>FlexTimeChecker</RootNamespace>
     <Product>Flex点胶时间检查</Product>
     <Description>扫 Housing 码查询报文点胶时间，比对拆除/清胶等待</Description>
-    <Version>1.2.1</Version>
+    <Version>1.2.2</Version>
     <LangVersion>latest</LangVersion>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>

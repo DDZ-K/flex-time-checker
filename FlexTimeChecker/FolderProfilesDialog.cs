@@ -97,21 +97,17 @@ internal sealed class FolderProfilesDialog : Form
 
     private void RefreshLists()
     {
-        Fill(_dispenseList, DispenseItems(), false);
-        Fill(_bindList, BindItems(), true);
+        Fill(_dispenseList, DispenseItems());
+        Fill(_bindList, BindItems());
         ShowSelectedPath();
     }
 
-    private static void Fill(ListBox list, IReadOnlyList<FolderProfile> items, bool bind)
+    private static void Fill(ListBox list, IReadOnlyList<FolderProfile> items)
     {
         var selected = list.SelectedIndex;
         list.Items.Clear();
         foreach (var item in items)
-        {
-            list.Items.Add(bind
-                ? item.Name
-                : $"{item.Name}    拆除 {item.DemolishMinutes} 分钟    清胶 {item.ClearGlueMinutes} 分钟");
-        }
+            list.Items.Add($"{item.Name}    拆除 {item.DemolishMinutes} 分钟    清胶 {item.ClearGlueMinutes} 分钟");
         if (items.Count > 0)
             list.SelectedIndex = Math.Clamp(selected < 0 ? 0 : selected, 0, items.Count - 1);
         else
@@ -278,7 +274,6 @@ internal sealed class FolderProfileEditor : Form
         _role.Items.Add("点胶站");
         _role.Items.Add("组装站");
         _role.SelectedIndex = source.IsBind ? 1 : 0;
-        _role.SelectedIndexChanged += (_, _) => ToggleThresholds();
         Controls.Add(_role);
 
         Controls.Add(MakeLabel("报文目录", 24, 136));
@@ -316,16 +311,6 @@ internal sealed class FolderProfileEditor : Form
 
         Controls.Add(cancel);
         Controls.Add(save);
-        ToggleThresholds();
-    }
-
-    private void ToggleThresholds()
-    {
-        var enable = _role.SelectedIndex != 1;
-        _demolish.Enabled = enable;
-        _clearGlue.Enabled = enable;
-        _demolishLabel.ForeColor = enable ? Ink : Muted;
-        _clearLabel.ForeColor = enable ? Ink : Muted;
     }
 
     private void BrowseFolder()

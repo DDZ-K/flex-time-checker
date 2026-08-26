@@ -62,7 +62,7 @@ internal static class RequestXmlSearch
             DispenseTime = dispenseHit.DispenseTime,
             HousingCode = bindHit.HousingCode,
             MaterialCode = scannedCode,
-            Profile = dispenseHit.Profile,
+            Profile = bindHit.Profile ?? dispenseHit.Profile,
             FilesScanned = scanned,
             ElapsedMs = sw.ElapsedMilliseconds
         };
@@ -186,7 +186,7 @@ internal static class RequestXmlSearch
             DispenseTime = best.time.LocalDateTime,
             HousingCode = best.housing,
             MaterialCode = matchMaterial ? code : null,
-            Profile = matchMaterial ? null : profile,
+            Profile = profile,
             FilesScanned = scannedHere
         };
     }
