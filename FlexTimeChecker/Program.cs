@@ -122,6 +122,11 @@ internal static class Program
         bindOnly.Normalize();
         var materialNoDispense = RequestXmlSearch.Find(material, bindOnly);
 
+        var waitOk = WaitRules.CanDemolish(TimeSpan.FromMinutes(29), 30)
+                     && !WaitRules.CanDemolish(TimeSpan.FromMinutes(30), 30)
+                     && !WaitRules.CanClearGlue(TimeSpan.FromMinutes(240), 240)
+                     && WaitRules.CanClearGlue(TimeSpan.FromMinutes(241), 240);
+
         var ok = byHousing.Found
                  && byHousing.MaterialCode is null
                  && byHousing.HousingCode == housing
@@ -136,7 +141,8 @@ internal static class Program
                  && other.Found
                  && other.HousingCode == otherHousing
                  && !materialNoDispense.Found
-                 && (materialNoDispense.Error ?? "").Contains("点胶站未找到");
+                 && (materialNoDispense.Error ?? "").Contains("点胶站未找到")
+                 && waitOk;
 
         var sb = new StringBuilder();
         sb.AppendLine($"housingFound={byHousing.Found}");
@@ -149,6 +155,7 @@ internal static class Program
         sb.AppendLine($"otherFound={other.Found}");
         sb.AppendLine($"materialNoDispenseFound={materialNoDispense.Found}");
         sb.AppendLine($"materialNoDispenseError={materialNoDispense.Error}");
+        sb.AppendLine($"waitOk={waitOk}");
         sb.AppendLine($"ok={ok}");
 
         var outPath = Path.Combine(AppConfig.AppDir, "selftest-result.txt");

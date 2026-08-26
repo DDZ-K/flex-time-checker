@@ -302,17 +302,16 @@ internal sealed class MainForm : Form
 
         var now = DateTime.Now;
         var elapsed = now - dispense;
-        var remainDemolish = TimeSpan.FromMinutes(profile.DemolishMinutes) - elapsed;
         var remainClear = TimeSpan.FromMinutes(profile.ClearGlueMinutes) - elapsed;
-        var demolishOk = elapsed.TotalMinutes >= profile.DemolishMinutes;
-        var clearOk = elapsed.TotalMinutes >= profile.ClearGlueMinutes;
+        var demolishOk = WaitRules.CanDemolish(elapsed, profile.DemolishMinutes);
+        var clearOk = WaitRules.CanClearGlue(elapsed, profile.ClearGlueMinutes);
 
         _demolishCard.SetVerdict(demolishOk);
         _clearCard.SetVerdict(clearOk);
 
         _status.Text = "已命中";
         _status.ForeColor = Ok;
-        var demolishWait = demolishOk ? "拆除可以" : $"拆除还需 {FormatSpan(remainDemolish)}";
+        var demolishWait = demolishOk ? "拆除可以" : "已过拆除窗口";
         var clearWait = clearOk ? "清胶可以" : $"清胶还需 {FormatSpan(remainClear)}";
         _timeDetail.Text =
             $"{scannedKind}    点胶 {dispense:yyyy-MM-dd HH:mm:ss}    本机 {now:yyyy-MM-dd HH:mm:ss}    已过 {FormatSpan(elapsed)}    {demolishWait}    {clearWait}";

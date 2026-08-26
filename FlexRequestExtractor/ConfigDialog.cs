@@ -157,7 +157,7 @@ internal sealed class ConfigDialog : Form
         var selected = list.SelectedIndex;
         list.Items.Clear();
         foreach (var item in items)
-            list.Items.Add(item.Station);
+            list.Items.Add(item.Station + "  " + item.SubFolderSummary);
         if (items.Count > 0)
             list.SelectedIndex = Math.Clamp(selected < 0 ? 0 : selected, 0, items.Count - 1);
         else
@@ -185,7 +185,7 @@ internal sealed class ConfigDialog : Form
             Station = bind ? "0061" : "0031",
             SaveFolder = Config.DefaultSaveFolder(bind)
         };
-        using var dialog = new StationTargetDialog(draft, bind);
+        using var dialog = new StationTargetDialog(draft, bind, _watch.Text, Config.LookbackDays);
         if (dialog.ShowDialog(this) != DialogResult.OK)
             return;
         (bind ? _bind : _dispense).Add(dialog.Target);
@@ -201,7 +201,7 @@ internal sealed class ConfigDialog : Form
         var index = bind ? _bindList.SelectedIndex : _dispenseList.SelectedIndex;
         if (index < 0 || index >= list.Count)
             return;
-        using var dialog = new StationTargetDialog(list[index], bind);
+        using var dialog = new StationTargetDialog(list[index], bind, _watch.Text, Config.LookbackDays);
         if (dialog.ShowDialog(this) != DialogResult.OK)
             return;
         list[index] = dialog.Target;
@@ -309,33 +309,55 @@ internal sealed class ConfigDialog : Form
 
 internal sealed class StationTargetDialog : Form
 {
+    private readonly string _watchRoot;
+    private readonly int _lookbackDays;
     private readonly TextBox _station;
     private readonly TextBox _folder;
+    private readonly CheckedListBox _subs;
 
     public StationTarget Target { get; private set; }
 
-    public StationTargetDialog(StationTarget source, bool bind)
+    public StationTargetDialog(StationTarget source, bool bind, string watchRoot, int lookbackDays)
     {
         Target = source.Clone();
+        _watchRoot = watchRoot ?? "";
+        _lookbackDays = Math.Max(1, lookbackDays);
         Text = bind ? "组装站" : "点胶站";
         StartPosition = FormStartPosition.CenterParent;
         FormBorderStyle = FormBorderStyle.FixedDialog;
         MaximizeBox = false;
         MinimizeBox = false;
-        ClientSize = new Size(860, 250);
+        ClientSize = new Size(860, 470);
         Branding.Apply(this);
         BackColor = Color.FromArgb(18, 26, 43);
         ForeColor = Color.FromArgb(232, 238, 247);
         Font = new Font("Microsoft YaHei UI", 10f);
 
         Controls.Add(MakeLabel("站位", 24, 28));
-        _station = MakeTextBox(140, 24, 690, Target.Station);
+        _station = MakeTextBox(140, 24, 560, Target.Station);
         _station.PlaceholderText = bind ? "61 或 0061" : "31 或 0031";
         Controls.Add(_station);
+        var refresh = MakeButton("刷新", 716, 22, 114);
+        refresh.Click += (_, _) => RefreshSubFolders();
+        Controls.Add(refresh);
 
-        Controls.Add(MakeLabel("保存路径", 24, 88));
-        _folder = MakeTextBox(140, 84, 560, Target.SaveFolder);
-        var browse = MakeButton("选择目录", 716, 82, 114);
+        Controls.Add(MakeLabel("子目录", 24, 88));
+        _subs = new CheckedListBox
+        {
+            Location = new Point(140, 84),
+            Size = new Size(690, 180),
+            BackColor = Color.FromArgb(10, 14, 24),
+            ForeColor = Color.White,
+            BorderStyle = BorderStyle.FixedSingle,
+            CheckOnClick = true,
+            Font = new Font("Consolas", 11f)
+        };
+        Controls.Add(_subs);
+        FillSubFolders(Target.SubFolders, Target.SubFolders);
+
+        Controls.Add(MakeLabel("保存路径", 24, 286));
+        _folder = MakeTextBox(140, 282, 560, Target.SaveFolder);
+        var browse = MakeButton("选择目录", 716, 280, 114);
         browse.Click += (_, _) =>
         {
             using var dialog = new FolderBrowserDialog
@@ -349,19 +371,26 @@ internal sealed class StationTargetDialog : Form
         Controls.Add(_folder);
         Controls.Add(browse);
 
-        var cancel = MakeButton("取消", 624, 180, 96);
+        var cancel = MakeButton("取消", 624, 400, 96);
         cancel.BackColor = Color.FromArgb(42, 55, 78);
         cancel.DialogResult = DialogResult.Cancel;
-        var save = MakeButton("保存", 734, 180, 96);
+        var save = MakeButton("保存", 734, 400, 96);
         save.BackColor = Color.FromArgb(61, 220, 255);
         save.ForeColor = Color.FromArgb(8, 16, 24);
         save.Click += (_, _) =>
         {
             Target.Station = _station.Text.Trim();
             Target.SaveFolder = _folder.Text.Trim();
+            Target.SubFolders = SelectedSubFolders();
             if (Target.Station.Length == 0)
             {
                 MessageBox.Show(this, "请填写站位。", "配置", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                DialogResult = DialogResult.None;
+                return;
+            }
+            if (_subs.Items.Count > 0 && Target.SubFolders.Count == 0)
+            {
+                MessageBox.Show(this, "请勾选要提取的子目录。", "配置", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 DialogResult = DialogResult.None;
                 return;
             }
@@ -378,6 +407,67 @@ internal sealed class StationTargetDialog : Form
         Controls.Add(save);
         AcceptButton = save;
         CancelButton = cancel;
+    }
+
+    private void RefreshSubFolders()
+    {
+        var station = _station.Text.Trim();
+        if (station.Length == 0)
+        {
+            MessageBox.Show(this, "请先填写站位号。", "配置", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+        if (string.IsNullOrWhiteSpace(_watchRoot))
+        {
+            MessageBox.Show(this, "请先在配置里填写报文目录。", "配置", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+
+        Cursor = Cursors.WaitCursor;
+        List<string> found;
+        try
+        {
+            found = StationSubFolders.Discover(_watchRoot, station, _lookbackDays);
+        }
+        catch (Exception ex)
+        {
+            Cursor = Cursors.Default;
+            MessageBox.Show(this, "刷新失败：" + ex.Message, "配置", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+        Cursor = Cursors.Default;
+
+        var keep = SelectedSubFolders();
+        if (keep.Count == 0)
+            keep = Target.SubFolders;
+        FillSubFolders(found, keep);
+        if (found.Count == 0)
+            MessageBox.Show(this, "未找到该站位的子目录。", "配置", MessageBoxButtons.OK, MessageBoxIcon.Information);
+    }
+
+    private void FillSubFolders(IReadOnlyList<string> items, IReadOnlyList<string> checkedItems)
+    {
+        var wanted = new HashSet<string>(StationSubFolders.NormalizeList(checkedItems), StringComparer.OrdinalIgnoreCase);
+        _subs.Items.Clear();
+        foreach (var item in items)
+        {
+            var key = StationSubFolders.NormalizeKey(item);
+            if (key.Length == 0)
+                continue;
+            _subs.Items.Add(key, wanted.Contains(key));
+        }
+    }
+
+    private List<string> SelectedSubFolders()
+    {
+        var list = new List<string>();
+        for (var i = 0; i < _subs.Items.Count; i++)
+        {
+            if (!_subs.GetItemChecked(i))
+                continue;
+            list.Add(_subs.Items[i]?.ToString() ?? "");
+        }
+        return StationSubFolders.NormalizeList(list);
     }
 
     private static Label MakeLabel(string text, int x, int y)

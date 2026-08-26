@@ -2,11 +2,11 @@
   "WatchRoot": "",
   "OutputRoot": "",
   "DispenseItems": [
-    { "Station": "0031", "SaveFolder": "" },
-    { "Station": "0021", "SaveFolder": "" }
+    { "Station": "0031", "SaveFolder": "", "SubFolders": [] },
+    { "Station": "0021", "SaveFolder": "", "SubFolders": [] }
   ],
   "BindItems": [
-    { "Station": "0061", "SaveFolder": "" }
+    { "Station": "0061", "SaveFolder": "", "SubFolders": [] }
   ],
   "PollIntervalSec": 1,
   "LookbackDays": 2,

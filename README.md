@@ -2,7 +2,7 @@
 
 扫 Housing（或 PCB/Cover 物料码），在本地报文里查点胶时间，判断**能否拆除 / 能否清胶**。
 
-当前检查器 **v1.2.0**（2026-08-25）：AntdUI 浅色工位壳，最大化后两张大卡占主视觉。工位电脑不需要安装 .NET。
+当前检查器 **v1.2.1**：已过时间 **小于拆除分钟 → 可以拆除**；**大于清胶分钟 → 可以清胶**。工位电脑不需要安装 .NET。
 
 **可运行程序在 [Releases](https://github.com/DDZ-K/flex-time-checker/releases) 下载，不要只 clone 源码。**
 
@@ -10,15 +10,15 @@
 
 | 工具 | 版本 | 干什么 |
 |------|------|--------|
-| `FlexTimeChecker.exe` | 1.2.0 | 工位扫码，显示能否拆除 / 能否清胶 |
-| `FlexRequestExtractor.exe` | 1.3.1 | 从产线共享盘按站位把 `Request*.xml` 拷到本地 |
-| `FlexRequestExtractor.Service.exe` | 1.3.1 | 提取器的无界面 Windows 服务 |
+| `FlexTimeChecker.exe` | 1.2.1 | 工位扫码，显示能否拆除 / 能否清胶 |
+| `FlexRequestExtractor.exe` | 1.3.2 | 从产线共享盘按站位把 `Request*.xml` 拷到本地 |
+| `FlexRequestExtractor.Service.exe` | 1.3.2 | 提取器的无界面 Windows 服务 |
 
 检查器只查本地目录。共享盘按日期刷新，直接搜会慢，所以先用提取器拷到本地。
 
 ## 检查器（清胶 / 拆除）
 
-1. 从 Release 下载 `FlexTimeChecker-v1.2.0.zip`，解压到固定目录（不要放桌面）。
+1. 从 Release 下载 `FlexTimeChecker-v1.2.1.zip`，解压到固定目录（不要放桌面）。
 2. 双击 `FlexTimeChecker.exe`。打开会最大化。
 3. 左上角 **配置**：分别加 **点胶站** 和 **组装站** 的本地报文目录，以及拆除/清胶等待分钟。
 4. 扫 Housing，或扫 PCB/Cover 物料码。中间两张大卡只显示「可以 / 不可以」。
@@ -49,6 +49,7 @@
 配置要点：
 
 - 点胶站 / 组装站分开，**每条站位自己选保存路径**
+- 站位编辑里点 **刷新**，勾选 `partProcessed`、`ES 2` 等不同层级子目录；勾选父目录会包含其下所有层。未勾选则仍拷该站位全部 `Request*.xml`
 - 本地不再按年/月/日或站位自动分子目录
 - 只拷 `Request*.xml`，不改源文件
 - **保留天**（默认 1）：超时自动删本地过期报文

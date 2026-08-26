@@ -101,6 +101,40 @@ public static class SelfTest
         var retention = engine.ScanOnce();
         var destStaleSource = Path.Combine(dispenseA, "Request_stale_source.xml");
 
+        var filterDir = Path.Combine(root, "save-filter");
+        Directory.CreateDirectory(filterDir);
+        var es2 = Path.Combine(day, "0031_1_1_1_1", "partProcessed", "ES 2");
+        Directory.CreateDirectory(es2);
+        File.WriteAllText(Path.Combine(es2, "Request_es2.xml"), "<header timeStamp=\"2026-08-24T19:06:46+08:00\"/><partProcessed identifier=\"ES2\"/>");
+        File.WriteAllText(Path.Combine(st31, "Request_recv.xml"), "<header timeStamp=\"2026-08-24T19:06:46+08:00\"/><partProcessed identifier=\"RECV\"/>");
+        var filterCfg = new AppConfig
+        {
+            WatchRoot = watch,
+            DispenseItems =
+            [
+                new StationTarget
+                {
+                    Station = "31",
+                    SaveFolder = filterDir,
+                    SubFolders = ["partProcessed"]
+                }
+            ],
+            PollIntervalSec = 1,
+            LookbackDays = 2,
+            KeepDays = 1,
+            OnlyNewAfterStart = false,
+            MinFileBytes = 8,
+            SizeStableChecks = 0,
+            SizeStableIntervalMs = 0
+        };
+        filterCfg.Normalize();
+        using var filterEngine = new ExtractEngine(filterCfg);
+        filterEngine.PrepareSession();
+        filterEngine.ScanOnce();
+        var hasEs2 = File.Exists(Path.Combine(filterDir, "Request_es2.xml"));
+        var hasRecv = File.Exists(Path.Combine(filterDir, "Request_recv.xml"));
+        var discovered = StationSubFolders.Discover(watch, "31", 2);
+
         var sb = new StringBuilder();
         sb.AppendLine($"copied={first.Copied}");
         sb.AppendLine($"skipped={first.Skipped}");
@@ -122,6 +156,9 @@ public static class SelfTest
         sb.AppendLine($"keptFreshLocal={File.Exists(freshLocal)}");
         sb.AppendLine($"skippedStaleSource={!File.Exists(destStaleSource)}");
         sb.AppendLine($"deletedNames={string.Join(",", retention.DeletedNames)}");
+        sb.AppendLine($"hasEs2={hasEs2}");
+        sb.AppendLine($"hasRecv={hasRecv}");
+        sb.AppendLine($"discovered={string.Join("|", discovered)}");
 
         var ok = first.Error is null
                  && first.Copied == 3
@@ -143,10 +180,16 @@ public static class SelfTest
                  && !File.Exists(staleLocal)
                  && File.Exists(freshLocal)
                  && !File.Exists(destStaleSource)
-                 && retention.DeletedNames.Contains("Request_stale_local.xml");
+                 && retention.DeletedNames.Contains("Request_stale_local.xml")
+                 && hasEs2
+                 && !hasRecv
+                 && discovered.Contains("partProcessed")
+                 && discovered.Contains("partProcessed/ES 2")
+                 && discovered.Contains("partReceived");
 
         sb.AppendLine($"ok={ok}");
         engine.Dispose();
+        filterEngine.Dispose();
 
         var outPath = Path.Combine(AppConfig.AppDir, "selftest-result.txt");
         try

@@ -183,9 +183,17 @@ public sealed class ExtractEngine : IDisposable
                 foreach (var file in files)
                 {
                     foreach (var item in dispenseHits)
+                    {
+                        if (!StationSubFolders.FileMatches(stationDir, file, item.SubFolders))
+                            continue;
                         TryCopy(file, stationName, AppConfig.DispenseFolderName, item.SaveFolder, copiedNames);
+                    }
                     foreach (var item in bindHits)
+                    {
+                        if (!StationSubFolders.FileMatches(stationDir, file, item.SubFolders))
+                            continue;
                         TryCopy(file, stationName, AppConfig.BindFolderName, item.SaveFolder, copiedNames);
+                    }
                 }
             }
         }
