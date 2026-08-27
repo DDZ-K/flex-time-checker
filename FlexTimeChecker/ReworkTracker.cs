@@ -33,20 +33,43 @@ internal static class ReworkTracker
     {
         var state = Load(storePath);
         var list = new List<StationRate>();
+        var dirty = false;
         foreach (var profile in cfg.GetDispenseProfiles())
         {
             var folder = (profile.MessageFolder ?? "").Trim();
-            var produced = CountProduced(folder);
-            state.HousingsByFolder.TryGetValue(FolderKey(folder), out var housings);
-            var rework = housings?.Count ?? 0;
+            var live = CollectHousings(folder);
+            var key = FolderKey(folder);
+            state.HousingsByFolder.TryGetValue(key, out var recorded);
+            var kept = new List<string>();
+            if (recorded != null)
+            {
+                foreach (var housing in recorded)
+                {
+                    if (housing.Length == 0)
+                        continue;
+                    if (!live.Contains(housing))
+                        continue;
+                    if (kept.Any(x => x.Equals(housing, StringComparison.OrdinalIgnoreCase)))
+                        continue;
+                    kept.Add(housing);
+                }
+                if (kept.Count != recorded.Count)
+                {
+                    state.HousingsByFolder[key] = kept;
+                    dirty = true;
+                }
+            }
+
             list.Add(new StationRate
             {
                 Name = profile.Name,
                 Folder = folder,
-                Produced = produced,
-                Rework = rework
+                Produced = live.Count,
+                Rework = kept.Count
             });
         }
+        if (dirty)
+            Save(state, storePath);
         return list;
     }
 
@@ -88,10 +111,13 @@ internal static class ReworkTracker
         return true;
     }
 
-    public static int CountProduced(string folder)
+    public static int CountProduced(string folder) => CollectHousings(folder).Count;
+
+    public static HashSet<string> CollectHousings(string folder)
     {
+        var housings = new ConcurrentDictionary<string, byte>(StringComparer.OrdinalIgnoreCase);
         if (string.IsNullOrWhiteSpace(folder) || !Directory.Exists(folder))
-            return 0;
+            return new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         IEnumerable<string> files;
         try
         {
@@ -99,10 +125,9 @@ internal static class ReworkTracker
         }
         catch
         {
-            return 0;
+            return new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         }
 
-        var housings = new ConcurrentDictionary<string, byte>(StringComparer.OrdinalIgnoreCase);
         Parallel.ForEach(files, path =>
         {
             if (!RequestXmlSearch.TryReadRequest(path, out var housing, out _, out _))
@@ -110,7 +135,7 @@ internal static class ReworkTracker
             if (housing.Length > 0)
                 housings.TryAdd(housing, 0);
         });
-        return housings.Count;
+        return housings.Keys.ToHashSet(StringComparer.OrdinalIgnoreCase);
     }
 
     public static bool FileBelongsTo(string filePath, string folder)
@@ -132,7 +157,6 @@ internal static class ReworkTracker
 
     internal static ReworkState Load(string? storePath = null)
     {
-        var today = DateTime.Now.ToString("yyyy-MM-dd");
         var path = storePath ?? DefaultPath;
         try
         {
@@ -149,16 +173,15 @@ internal static class ReworkTracker
                         bags[kv.Key] = kv.Value?.Distinct(StringComparer.OrdinalIgnoreCase).ToList() ?? [];
                     }
                     state.HousingsByFolder = bags;
-                    if (string.Equals(state.Date, today, StringComparison.Ordinal))
-                        return state;
+                    return state;
                 }
             }
         }
         catch
         {
-            // new day / broken file → empty
+            // broken file → empty
         }
-        return new ReworkState { Date = today };
+        return new ReworkState { Date = DateTime.Now.ToString("yyyy-MM-dd") };
     }
 
     internal static void Save(ReworkState state, string? storePath = null)

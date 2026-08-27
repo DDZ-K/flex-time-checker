@@ -12,12 +12,12 @@ internal sealed class ReworkBoard : Panel
 
     private readonly FlowLayoutPanel _flow;
     private IReadOnlyList<StationRate> _last = [];
-    private bool _relayout;
     private int _seq;
 
     public ReworkBoard()
     {
         DoubleBuffered = true;
+        SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
         BackColor = Bg;
         Padding = new Padding(18, 0, 18, 10);
         Height = 380;
@@ -31,49 +31,104 @@ internal sealed class ReworkBoard : Panel
             BorderColor = Line,
             InnerPadding = new Padding(10, 8, 10, 8)
         };
-        _flow = new FlowLayoutPanel
+        _flow = new SilentFlow
         {
             Dock = DockStyle.Fill,
-            BackColor = Color.Transparent,
+            BackColor = Surface,
             WrapContents = false,
             AutoScroll = true,
             Padding = new Padding(0)
         };
         wrap.Controls.Add(_flow);
         Controls.Add(wrap);
-        Resize += (_, _) =>
+    }
+
+    protected override CreateParams CreateParams
+    {
+        get
         {
-            if (_relayout || _last.Count == 0)
-                return;
-            _relayout = true;
-            try { ShowRates(_last); }
-            finally { _relayout = false; }
-        };
+            var cp = base.CreateParams;
+            cp.ExStyle |= 0x02000000;
+            return cp;
+        }
     }
 
     public void ShowRates(IReadOnlyList<StationRate> rates)
     {
+        if (Same(_last, rates) && HasDonuts())
+            return;
         _last = rates;
-        _flow.SuspendLayout();
-        _flow.Controls.Clear();
+
         if (rates.Count == 0)
         {
-            _flow.Controls.Add(new Label
-            {
-                Text = "先在配置里加点胶站",
-                AutoSize = true,
-                ForeColor = Muted,
-                BackColor = Color.Transparent,
-                Font = new Font("Microsoft YaHei UI", 11f),
-                Margin = new Padding(8, 16, 8, 8)
-            });
+            ShowEmpty();
+            return;
         }
-        else
+
+        var cards = new List<StationDonutCard>();
+        foreach (Control c in _flow.Controls)
         {
-            foreach (var rate in rates)
-                _flow.Controls.Add(new StationDonutCard(rate));
+            if (c is StationDonutCard card)
+                cards.Add(card);
         }
+
+        if (cards.Count == _flow.Controls.Count && cards.Count > 0)
+        {
+            var keep = Math.Min(cards.Count, rates.Count);
+            for (var i = 0; i < keep; i++)
+                cards[i].Apply(rates[i]);
+            for (var i = cards.Count; i < rates.Count; i++)
+                _flow.Controls.Add(new StationDonutCard(rates[i]));
+            for (var i = _flow.Controls.Count - 1; i >= rates.Count; i--)
+                _flow.Controls.RemoveAt(i);
+            return;
+        }
+
+        Rebuild(rates);
+    }
+
+    private bool HasDonuts()
+        => _flow.Controls.Count > 0 && _flow.Controls[0] is StationDonutCard;
+
+    private void ShowEmpty()
+    {
+        if (_flow.Controls.Count == 1 && _flow.Controls[0] is Label)
+            return;
+        _flow.SuspendLayout();
+        _flow.Controls.Clear();
+        _flow.Controls.Add(new Label
+        {
+            Text = "先在配置里加点胶站",
+            AutoSize = true,
+            ForeColor = Muted,
+            BackColor = Surface,
+            Font = new Font("Microsoft YaHei UI", 11f),
+            Margin = new Padding(8, 16, 8, 8)
+        });
         _flow.ResumeLayout();
+    }
+
+    private void Rebuild(IReadOnlyList<StationRate> rates)
+    {
+        _flow.SuspendLayout();
+        _flow.Controls.Clear();
+        foreach (var rate in rates)
+            _flow.Controls.Add(new StationDonutCard(rate));
+        _flow.ResumeLayout();
+    }
+
+    private static bool Same(IReadOnlyList<StationRate> a, IReadOnlyList<StationRate> b)
+    {
+        if (a.Count != b.Count)
+            return false;
+        for (var i = 0; i < a.Count; i++)
+        {
+            if (!string.Equals(a[i].Name, b[i].Name, StringComparison.Ordinal)
+                || a[i].Produced != b[i].Produced
+                || a[i].Rework != b[i].Rework)
+                return false;
+        }
+        return true;
     }
 
     public void RefreshAsync(AppConfig cfg, Control marshal)
@@ -100,6 +155,25 @@ internal sealed class ReworkBoard : Panel
     }
 }
 
+internal sealed class SilentFlow : FlowLayoutPanel
+{
+    public SilentFlow()
+    {
+        DoubleBuffered = true;
+        SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint, true);
+    }
+
+    protected override CreateParams CreateParams
+    {
+        get
+        {
+            var cp = base.CreateParams;
+            cp.ExStyle |= 0x02000000;
+            return cp;
+        }
+    }
+}
+
 internal sealed class StationDonutCard : Panel
 {
     private static readonly Color Ink = Color.FromArgb(15, 23, 42);
@@ -110,13 +184,19 @@ internal sealed class StationDonutCard : Panel
     private static readonly Color Empty = Color.FromArgb(226, 232, 240);
     private static readonly Color Card = Color.FromArgb(248, 250, 252);
 
+    private readonly Label _name;
+    private readonly DonutView _donut;
+    private readonly Label _counts;
+    private readonly Label _pct;
+
     public StationDonutCard(StationRate rate)
     {
         DoubleBuffered = true;
+        SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
         Width = 320;
         Height = 352;
         Margin = new Padding(10, 4, 10, 4);
-        BackColor = Color.Transparent;
+        BackColor = Card;
         Padding = new Padding(12, 10, 12, 10);
 
         Paint += (_, e) =>
@@ -130,49 +210,70 @@ internal sealed class StationDonutCard : Panel
             e.Graphics.DrawPath(pen, path);
         };
 
-        var good = Math.Max(0, rate.Produced - rate.Rework);
-        var rework = Math.Max(0, rate.Rework);
-        var rateText = rate.Produced <= 0 ? "—" : (rate.Rate <= 0 ? "0%" : $"{rate.Rate * 100:0.0}%");
-
-        var name = new Label
+        _name = new Label
         {
-            Text = rate.Name,
             Dock = DockStyle.Top,
             Height = 28,
             Font = new Font("Microsoft YaHei UI", 13f, FontStyle.Bold),
             ForeColor = Ink,
-            BackColor = Color.Transparent,
+            BackColor = Card,
             TextAlign = ContentAlignment.MiddleCenter
         };
-        var donut = new DonutView(good, rework)
+        _donut = new DonutView
         {
             Dock = DockStyle.Top,
             Height = 196,
-            BackColor = Color.Transparent
+            BackColor = Card
         };
-        var counts = new Label
+        _counts = new Label
         {
-            Text = $"良品 {good}    返工 {rework}",
             Dock = DockStyle.Top,
             Height = 28,
             Font = new Font("Microsoft YaHei UI", 12f),
             ForeColor = Muted,
-            BackColor = Color.Transparent,
+            BackColor = Card,
             TextAlign = ContentAlignment.MiddleCenter
         };
-        var pct = new Label
+        _pct = new Label
         {
-            Text = $"返工率 {rateText}",
             Dock = DockStyle.Fill,
             Font = new Font("Microsoft YaHei UI", 16f, FontStyle.Bold),
             ForeColor = Ink,
-            BackColor = Color.Transparent,
+            BackColor = Card,
             TextAlign = ContentAlignment.MiddleCenter
         };
-        Controls.Add(pct);
-        Controls.Add(counts);
-        Controls.Add(donut);
-        Controls.Add(name);
+        Controls.Add(_pct);
+        Controls.Add(_counts);
+        Controls.Add(_donut);
+        Controls.Add(_name);
+        Apply(rate);
+    }
+
+    protected override CreateParams CreateParams
+    {
+        get
+        {
+            var cp = base.CreateParams;
+            cp.ExStyle |= 0x02000000;
+            return cp;
+        }
+    }
+
+    public void Apply(StationRate rate)
+    {
+        var good = Math.Max(0, rate.Produced - rate.Rework);
+        var rework = Math.Max(0, rate.Rework);
+        var rateText = rate.Produced <= 0 ? "—" : (rate.Rate <= 0 ? "0%" : $"{rate.Rate * 100:0.0}%");
+        SetText(_name, rate.Name);
+        SetText(_counts, $"良品 {good}    返工 {rework}");
+        SetText(_pct, $"返工率 {rateText}");
+        _donut.SetValues(good, rework);
+    }
+
+    private static void SetText(Label label, string text)
+    {
+        if (label.Text != text)
+            label.Text = text;
     }
 
     internal static Color SliceGood => GoodBlue;
@@ -194,16 +295,25 @@ internal sealed class StationDonutCard : Panel
 
 internal sealed class DonutView : Panel
 {
-    private readonly int _good;
-    private readonly int _rework;
+    private int _good;
+    private int _rework;
 
-    public DonutView(int good, int rework)
+    public DonutView()
     {
-        _good = Math.Max(0, good);
-        _rework = Math.Max(0, rework);
         DoubleBuffered = true;
         SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
-        BackColor = Color.Transparent;
+        BackColor = Color.FromArgb(248, 250, 252);
+    }
+
+    public void SetValues(int good, int rework)
+    {
+        good = Math.Max(0, good);
+        rework = Math.Max(0, rework);
+        if (_good == good && _rework == rework)
+            return;
+        _good = good;
+        _rework = rework;
+        Invalidate();
     }
 
     protected override void OnPaint(PaintEventArgs e)

@@ -300,12 +300,19 @@ internal static class Program
         var snap = ReworkTracker.Snapshot(cfg, store);
         var s31 = snap.First(x => x.Name == "点胶31");
         var s32 = snap.First(x => x.Name == "点胶32");
+        File.Delete(Path.Combine(dispense2Dir, "Request_a.xml"));
+        File.Delete(Path.Combine(dispense2Dir, "Request_a_dup.xml"));
+        var snapGone = ReworkTracker.Snapshot(cfg, store);
+        var s32Gone = snapGone.First(x => x.Name == "点胶32");
+        var s31Gone = snapGone.First(x => x.Name == "点胶31");
         var reworkOk = first && !dupHouse && !viaMat && pcba && !miss && !noDisp
                        && hitA.Found && recA && !recA2
                        && s31.Produced == 4 && s31.Rework == 2
                        && s32.Produced == 2 && s32.Rework == 1
                        && Math.Abs(s31.Rate - 0.5) < 1e-9
-                       && Math.Abs(s32.Rate - 0.5) < 1e-9;
+                       && Math.Abs(s32.Rate - 0.5) < 1e-9
+                       && s32Gone.Produced == 1 && s32Gone.Rework == 0
+                       && s31Gone.Produced == 4 && s31Gone.Rework == 2;
         ok = ok && reworkOk;
 
         var sb = new StringBuilder();
@@ -330,6 +337,7 @@ internal static class Program
         sb.AppendLine($"reworkOk={reworkOk}");
         sb.AppendLine($"s31={s31.Produced}/{s31.Rework}");
         sb.AppendLine($"s32={s32.Produced}/{s32.Rework}");
+        sb.AppendLine($"s32gone={s32Gone.Produced}/{s32Gone.Rework}");
         sb.AppendLine($"ok={ok}");
 
         var outPath = Path.Combine(AppConfig.AppDir, "selftest-result.txt");
