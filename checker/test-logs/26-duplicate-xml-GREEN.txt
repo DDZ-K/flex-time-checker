@@ -1,0 +1,2 @@
+PASS XML duplicate business headers or housings fail closed
+RESULT total=1 failed=0

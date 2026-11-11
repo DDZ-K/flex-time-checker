@@ -1,0 +1,391 @@
+{
+  "exe": {
+    "path": "publish-reviewed/FlexTimeChecker.exe",
+    "bytes": 72991939,
+    "sha256": "392e7bb90214c4db84b9175da4a6a83cd295e56e71dd2f6c92d7710ac37067ef"
+  },
+  "testResults": [
+    {
+      "test": "self-test",
+      "exit": 0,
+      "wallSeconds": 7.883
+    },
+    {
+      "test": "ui-test",
+      "exit": 0,
+      "wallSeconds": 25.563
+    },
+    {
+      "test": "soak-seconds",
+      "exit": 0,
+      "wallSeconds": 121.142
+    },
+    {
+      "test": "verify_startup",
+      "exit": 0,
+      "wallSeconds": 3.407
+    },
+    {
+      "test": "verify_missing_config",
+      "exit": 0,
+      "wallSeconds": 3.399
+    },
+    {
+      "test": "verify_instance_lock",
+      "exit": 0,
+      "wallSeconds": 5.87
+    }
+  ],
+  "selfTestCount": 29,
+  "uiPassGroups": 4,
+  "tddPairs": [
+    {
+      "red": "01-waits-RED.txt",
+      "green": "01-waits-GREEN.txt"
+    },
+    {
+      "red": "02-config-RED.txt",
+      "green": "02-config-GREEN.txt"
+    },
+    {
+      "red": "03-xml-RED.txt",
+      "green": "03-xml-GREEN.txt"
+    },
+    {
+      "red": "04-xml-safety-RED.txt",
+      "green": "04-xml-safety-GREEN.txt"
+    },
+    {
+      "red": "05-search-RED.txt",
+      "green": "05-search-GREEN.txt"
+    },
+    {
+      "red": "06-material-RED.txt",
+      "green": "06-material-GREEN.txt"
+    },
+    {
+      "red": "07-fault-RED.txt",
+      "green": "07-fault-GREEN.txt"
+    },
+    {
+      "red": "08-rework-RED.txt",
+      "green": "08-rework-GREEN.txt"
+    },
+    {
+      "red": "09-worker-RED.txt",
+      "green": "09-worker-GREEN.txt"
+    },
+    {
+      "red": "10-worker-protocol-RED.txt",
+      "green": "10-worker-protocol-GREEN.txt"
+    },
+    {
+      "red": "11-ui-RED.txt",
+      "green": "11-ui-GREEN.txt"
+    },
+    {
+      "red": "12-ui-paint-RED.txt",
+      "green": "12-ui-paint-GREEN.txt"
+    },
+    {
+      "red": "13-ui-query-RED.txt",
+      "green": "13-ui-query-GREEN.txt"
+    },
+    {
+      "red": "14-config-ui-RED.txt",
+      "green": "14-config-ui-GREEN.txt"
+    },
+    {
+      "red": "15-startup-RED.txt",
+      "green": "15-startup-GREEN.txt"
+    },
+    {
+      "red": "16-namespaced-RED.txt",
+      "green": "16-namespaced-GREEN.txt"
+    },
+    {
+      "red": "17-config-duplicate-RED.txt",
+      "green": "17-config-duplicate-GREEN.txt"
+    },
+    {
+      "red": "18-worker-diagnostic-RED.txt",
+      "green": "18-worker-diagnostic-GREEN.txt"
+    },
+    {
+      "red": "20-empty-config-RED.txt",
+      "green": "20-empty-config-GREEN.txt"
+    },
+    {
+      "red": "21-job-cap-RED.txt",
+      "green": "21-job-cap-GREEN.txt"
+    },
+    {
+      "red": "23-config-null-RED.txt",
+      "green": "23-config-null-GREEN.txt"
+    },
+    {
+      "red": "24-recovery-preserve-RED.txt",
+      "green": "24-recovery-preserve-GREEN.txt"
+    },
+    {
+      "red": "25-qualified-name-RED.txt",
+      "green": "25-qualified-name-GREEN.txt"
+    },
+    {
+      "red": "26-duplicate-xml-RED.txt",
+      "green": "26-duplicate-xml-GREEN.txt"
+    },
+    {
+      "red": "27-unscanned-rework-RED.txt",
+      "green": "27-unscanned-rework-GREEN.txt"
+    },
+    {
+      "red": "28-missing-config-RED.txt",
+      "green": "28-missing-config-GREEN.txt"
+    },
+    {
+      "red": "29-legacy-types-RED.txt",
+      "green": "29-legacy-types-GREEN.txt"
+    },
+    {
+      "red": "30-legacy-json-RED.txt",
+      "green": "30-legacy-json-GREEN.txt"
+    },
+    {
+      "red": "31-legacy-fallback-RED.txt",
+      "green": "31-legacy-fallback-GREEN.txt"
+    },
+    {
+      "red": "32-role-trim-RED.txt",
+      "green": "32-role-trim-GREEN.txt"
+    },
+    {
+      "red": "33-save-close-RED.txt",
+      "green": "33-save-close-GREEN.txt"
+    },
+    {
+      "red": "34-instance-lock-RED.txt",
+      "green": "34-instance-lock-GREEN.txt"
+    },
+    {
+      "red": "35-retained-quota-RED.txt",
+      "green": "35-retained-quota-GREEN.txt"
+    }
+  ],
+  "sources": [
+    {
+      "path": "FlexTimeChecker.Core/ConfigStore.cs",
+      "bytes": 7408,
+      "sha256": "77ec2aef1cb29223b111dce73a2dfff061d119d4723606a1e51bab959aaef0a9"
+    },
+    {
+      "path": "FlexTimeChecker.Core/FlexTimeChecker.Core.csproj",
+      "bytes": 232,
+      "sha256": "d0a8877c657cd40a971f03860d5b672cac969651882dff4604d5d8ac4b5915cd"
+    },
+    {
+      "path": "FlexTimeChecker.Core/RequestReader.cs",
+      "bytes": 2698,
+      "sha256": "5afccaf2ca6ae80b4442714b9506c778ee49f1bce9edbcd862df040ac8525af2"
+    },
+    {
+      "path": "FlexTimeChecker.Core/ReworkStore.cs",
+      "bytes": 2990,
+      "sha256": "498451f0da789c84acdea95124d3892bd040e60e17c3dc9c0dca59270d4a44d0"
+    },
+    {
+      "path": "FlexTimeChecker.Core/SearchEngine.cs",
+      "bytes": 6514,
+      "sha256": "962149664f946e03ca40084982fb845b5466475eef69f24abd52b3e91ef8f1ce"
+    },
+    {
+      "path": "FlexTimeChecker.Core/WaitRules.cs",
+      "bytes": 471,
+      "sha256": "239907dbdd3c0285dee095dab1cdeff3afa5ab3bdb97bbc3d4d286e8c5af9e9e"
+    },
+    {
+      "path": "FlexTimeChecker.Core/WorkerHost.cs",
+      "bytes": 1958,
+      "sha256": "ea2d53cd8dd3c9ecb3a68dee857f53c1e64a29291aad032b26460d152b6a941b"
+    },
+    {
+      "path": "FlexTimeChecker.Core/WorkerRunner.cs",
+      "bytes": 5186,
+      "sha256": "752b1d9575cd821181f665254df7f72b0af85dba52e6b030b64c7bf6d0c41c58"
+    },
+    {
+      "path": "FlexTimeChecker/Assets/bosch-logo.png",
+      "bytes": 92453,
+      "sha256": "bc67a785a69747271a463d4ba5691e49e3d0659f46498c8112fc363762bfd4f1"
+    },
+    {
+      "path": "FlexTimeChecker/Assets/bosch.ico",
+      "bytes": 25083,
+      "sha256": "7413dd35fb6ac5dfe826565a6ebf899294bfcfd97088d1e96cba81565f96c03e"
+    },
+    {
+      "path": "FlexTimeChecker/ConfigDialog.cs",
+      "bytes": 6094,
+      "sha256": "4cdd1f7fb863d433c77f4169144769f5acd7389da463a14dec814f8a98e69204"
+    },
+    {
+      "path": "FlexTimeChecker/FlexTimeChecker.csproj",
+      "bytes": 827,
+      "sha256": "d2205295a77d68e48e47a35b03ad31882b925cb80f924edfeb0ba4ec270d10da"
+    },
+    {
+      "path": "FlexTimeChecker/MainForm.cs",
+      "bytes": 10513,
+      "sha256": "6599df8562158b8b191fb5a4043ed7f09c3f75fc031aa2fd196e1c146fcfdf7a"
+    },
+    {
+      "path": "FlexTimeChecker/MainForm.Operations.cs",
+      "bytes": 8573,
+      "sha256": "cdf2562b2a5da42890a40127e1c111a432cac7a9e998ea7a628ebbdad666134e"
+    },
+    {
+      "path": "FlexTimeChecker/Program.cs",
+      "bytes": 5075,
+      "sha256": "89928e66f4a0f6f87b99523a63df5914d6570c59368667529a3df94c07ecd74f"
+    },
+    {
+      "path": "FlexTimeChecker/UiSelfTests.cs",
+      "bytes": 9078,
+      "sha256": "68112be9d517c87070b17c25680212a1eda682635f8481087d5467846d803cae"
+    },
+    {
+      "path": "FlexTimeChecker/UiSoak.cs",
+      "bytes": 4955,
+      "sha256": "6735e90fb863d5e98f2f9e6dacc720eef14bec7d061d3bed903bd757cbc29fb6"
+    },
+    {
+      "path": "FlexTimeChecker.Tests/FlexTimeChecker.Tests.csproj",
+      "bytes": 365,
+      "sha256": "4b8be86438e419153c471a3d1196fcc4634d123d3306077533ea67851ac9bfed"
+    },
+    {
+      "path": "FlexTimeChecker.Tests/Program.cs",
+      "bytes": 1040,
+      "sha256": "723499d3759089896a50760ac8b56635c3eb3ff909fc0206a22c40b36cbbc72f"
+    },
+    {
+      "path": "FlexTimeChecker.Tests/ReworkTests.cs",
+      "bytes": 3702,
+      "sha256": "9df33bf324e1d8b1ca395a9bf0f0551d3c23177901af95ff6ce3141ec2d379bc"
+    },
+    {
+      "path": "FlexTimeChecker.Tests/SearchTests.cs",
+      "bytes": 5334,
+      "sha256": "a38632b42efa272be4cafd9f1d31df464fb495faeb1e364e51a60c4045255176"
+    },
+    {
+      "path": "FlexTimeChecker.Tests/SelfTests.cs",
+      "bytes": 5576,
+      "sha256": "ffc284dfc67963bcccd995351b9de2569351d5214af8161bdab05c2674ea40e5"
+    },
+    {
+      "path": "FlexTimeChecker.Tests/WorkerTests.cs",
+      "bytes": 3638,
+      "sha256": "dedced877d37a8971624321d0b325c6d39cb499833608dae777f02d82bc9e4a6"
+    },
+    {
+      "path": "FlexTimeChecker.Tests/XmlTests.cs",
+      "bytes": 5115,
+      "sha256": "1be5ee917f9fe98a01e837effd1290764b48cd80bdbaee15ed05ad425be277ab"
+    },
+    {
+      "path": "scripts/make_report.py",
+      "bytes": 11546,
+      "sha256": "753533b22d0071e03dc206d84e37a6eb84f262c726ec53bb3dc7014f3c33ab63"
+    },
+    {
+      "path": "scripts/verify_instance_lock.py",
+      "bytes": 2048,
+      "sha256": "aa0c4f30641a3511de7bd8a95a3a38ad6a2dd1d5f3a6072c2a88d2b6877c9d86"
+    },
+    {
+      "path": "scripts/verify_missing_config.py",
+      "bytes": 1130,
+      "sha256": "e5984cc4364f6c957b93da100c15721bf14d7c5bd6b1ccf9183cfb8e0d936d9b"
+    },
+    {
+      "path": "scripts/verify_reviewed.py",
+      "bytes": 1656,
+      "sha256": "bfb5e51d9778d0c9233bff47ef697e028b1f9f540066ba29afc5f5a7d04006fc"
+    },
+    {
+      "path": "scripts/verify_startup.py",
+      "bytes": 1160,
+      "sha256": "7400d37f3c643df4ff2d11bd119677c8201f037fc7bff7dc2e550f378b46eec4"
+    }
+  ],
+  "originalPublishSha256": "c64e3fecc82b9c66420ba8d6099bd0c3a58eda7b3a2df5e704852501805900f8",
+  "reviewTddPairs": [
+    {
+      "red": "25-qualified-name-RED.txt",
+      "green": "25-qualified-name-GREEN.txt"
+    },
+    {
+      "red": "26-duplicate-xml-RED.txt",
+      "green": "26-duplicate-xml-GREEN.txt"
+    },
+    {
+      "red": "27-unscanned-rework-RED.txt",
+      "green": "27-unscanned-rework-GREEN.txt"
+    },
+    {
+      "red": "28-missing-config-RED.txt",
+      "green": "28-missing-config-GREEN.txt"
+    },
+    {
+      "red": "29-legacy-types-RED.txt",
+      "green": "29-legacy-types-GREEN.txt"
+    },
+    {
+      "red": "30-legacy-json-RED.txt",
+      "green": "30-legacy-json-GREEN.txt"
+    },
+    {
+      "red": "31-legacy-fallback-RED.txt",
+      "green": "31-legacy-fallback-GREEN.txt"
+    },
+    {
+      "red": "32-role-trim-RED.txt",
+      "green": "32-role-trim-GREEN.txt"
+    },
+    {
+      "red": "33-save-close-RED.txt",
+      "green": "33-save-close-GREEN.txt"
+    },
+    {
+      "red": "34-instance-lock-RED.txt",
+      "green": "34-instance-lock-GREEN.txt"
+    },
+    {
+      "red": "35-retained-quota-RED.txt",
+      "green": "35-retained-quota-GREEN.txt"
+    }
+  ],
+  "finalProcessCheck": {
+    "count": 0,
+    "processes": []
+  },
+  "runtimeOptions": {
+    "tfm": "net8.0",
+    "includedFrameworks": [
+      {
+        "name": "Microsoft.NETCore.App",
+        "version": "8.0.22"
+      },
+      {
+        "name": "Microsoft.WindowsDesktop.App",
+        "version": "8.0.22"
+      }
+    ],
+    "configProperties": {
+      "System.Reflection.Metadata.MetadataUpdater.IsSupported": false,
+      "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": true,
+      "CSWINRT_USE_WINDOWS_UI_XAML_PROJECTIONS": false
+    }
+  }
+}

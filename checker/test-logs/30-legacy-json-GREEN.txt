@@ -1,0 +1,2 @@
+PASS legacy comments and trailing commas accepted only by explicit legacy entry
+RESULT total=1 failed=0

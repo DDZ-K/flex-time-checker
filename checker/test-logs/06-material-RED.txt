@@ -1,0 +1,7 @@
+PASS XML safety size DTD malformed and identifier limits
+PASS XML exact material all non-schema attributes and housing
+FAIL material latest binding uses bind thresholds separate dispense ownership: latest material binding
+PASS recursive Request XML latest station and exact Housing priority
+PASS strict wait boundaries and future
+PASS config explicit legacy import and invalid preservation
+RESULT total=6 failed=1

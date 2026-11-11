@@ -1,0 +1,2 @@
+PASS rework retained station quota rejects overflow without corrupting prior state
+RESULT total=1 failed=0

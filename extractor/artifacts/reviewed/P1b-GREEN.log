@@ -1,0 +1,4 @@
+PASS TestReviewTraversalSkipsUnselectedDeniedBranch
+PASS TestReviewTraversalAllSelectionIsolatesDeniedBranch
+PASS TestReviewTraversalSelectedDeniedBranchDoesNotBlockSibling
+RESULT total=3 passed=3 failed=0

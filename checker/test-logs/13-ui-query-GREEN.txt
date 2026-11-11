@@ -1,0 +1,6 @@
+[DEBUG-ui] worker reply, context=WindowsFormsSynchronizationContext
+[DEBUG-ui] rework reply, context=WindowsFormsSynchronizationContext
+[DEBUG-ui] worker reply, context=WindowsFormsSynchronizationContext
+[DEBUG-ui] rework reply, context=WindowsFormsSynchronizationContext
+PASS UI real isolated query, future fail-closed, bounded log
+PASS UI scan geometry, 196 log, two cards, persistent station handles, screenshot

@@ -1,0 +1,5 @@
+PASS XML safety size DTD malformed and identifier limits
+PASS XML exact material all non-schema attributes and housing
+PASS strict wait boundaries and future
+PASS config explicit legacy import and invalid preservation
+RESULT total=4 failed=0

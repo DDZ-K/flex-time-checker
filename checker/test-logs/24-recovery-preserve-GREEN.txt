@@ -1,0 +1,3 @@
+PASS UI real isolated query, future fail-closed, bounded log, cancel and close during query
+PASS config editor edit, validation, explicit import and recovery preserves rework
+PASS UI scan geometry, 196 log, two cards, persistent station handles, screenshot

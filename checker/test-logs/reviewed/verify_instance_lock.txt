@@ -1,0 +1,1 @@
+PASS independent kernel file lock rejects startup before state write; canonical alias contention; release/reacquire after graceful exit

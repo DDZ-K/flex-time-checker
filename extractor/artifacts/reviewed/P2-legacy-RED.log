@@ -1,0 +1,3 @@
+FAIL TestReviewLegacyNullItemsNormalizeAndFallback: Object reference not set to an instance of an object.
+FAIL TestReviewLegacyNullItemsKeepExplicitOtherRole: Object reference not set to an instance of an object.
+RESULT total=2 passed=0 failed=2

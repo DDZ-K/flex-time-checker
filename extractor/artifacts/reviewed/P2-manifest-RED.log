@@ -1,0 +1,3 @@
+FAIL TestReviewManifestMissingFilesFailsClosed: unsafe input accepted
+PASS TestReviewManifestExplicitEmptyIsValid
+RESULT total=2 passed=1 failed=1

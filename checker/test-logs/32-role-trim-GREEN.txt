@@ -1,0 +1,2 @@
+PASS legacy role whitespace is trimmed before alias normalization
+RESULT total=1 failed=0

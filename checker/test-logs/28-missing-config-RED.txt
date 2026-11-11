@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "E:\Download\AI\projects\flex-time-checker-sol\checker\scripts\verify_missing_config.py", line 13, in <module>
+    assert not (data/'jobs').exists(), 'missing configuration with rework must pause worker statistics in recovery mode'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: missing configuration with rework must pause worker statistics in recovery mode

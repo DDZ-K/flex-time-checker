@@ -1,0 +1,6 @@
+PASS XML safety size DTD malformed and identifier limits
+PASS XML exact material all non-schema attributes and housing
+FAIL recursive Request XML latest station and exact Housing priority: SearchEngine behavior missing
+PASS strict wait boundaries and future
+PASS config explicit legacy import and invalid preservation
+RESULT total=5 failed=1

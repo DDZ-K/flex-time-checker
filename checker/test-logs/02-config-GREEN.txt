@@ -1,0 +1,3 @@
+PASS strict wait boundaries and future
+PASS config explicit legacy import and invalid preservation
+RESULT total=2 failed=0

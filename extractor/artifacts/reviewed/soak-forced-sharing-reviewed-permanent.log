@@ -1,0 +1,21 @@
+SOAK START root=E:\Download\AI\projects\flex-time-checker-sol\extractor\release-reviewed\selftest-data\soak-7a5210d3dd2949bcb829745027d90ac7
+{"sec":1.048,"privateBytes":11776000,"workingSet":39145472,"handles":272,"threads":15,"copied":30,"failed":0,"logLines":2,"offline":false,"cycles":0,"recovered":0}
+{"sec":2.061,"privateBytes":11804672,"workingSet":40108032,"handles":277,"threads":15,"copied":30,"failed":0,"logLines":2,"offline":false,"cycles":0,"recovered":0}
+{"sec":3.128,"privateBytes":12435456,"workingSet":41357312,"handles":275,"threads":15,"copied":31,"failed":0,"logLines":3,"offline":false,"cycles":0,"recovered":0}
+{"sec":4.148,"privateBytes":12726272,"workingSet":41824256,"handles":278,"threads":15,"copied":32,"failed":0,"logLines":4,"offline":false,"cycles":0,"recovered":0}
+{"sec":5.17,"privateBytes":13590528,"workingSet":43028480,"handles":282,"threads":15,"copied":32,"failed":0,"logLines":4,"offline":false,"cycles":0,"recovered":0}
+{"sec":6.19,"privateBytes":13594624,"workingSet":43155456,"handles":280,"threads":15,"copied":32,"failed":1,"logLines":5,"offline":false,"cycles":0,"recovered":0}
+{"sec":7.196,"privateBytes":13856768,"workingSet":43479040,"handles":284,"threads":15,"copied":32,"failed":1,"logLines":5,"offline":false,"cycles":0,"recovered":0}
+{"sec":8.202,"privateBytes":13856768,"workingSet":43503616,"handles":282,"threads":15,"copied":33,"failed":1,"logLines":6,"offline":false,"cycles":0,"recovered":0}
+{"sec":9.21,"privateBytes":14118912,"workingSet":43888640,"handles":284,"threads":15,"copied":34,"failed":1,"logLines":7,"offline":false,"cycles":0,"recovered":0}
+{"sec":10.22,"privateBytes":14983168,"workingSet":44466176,"handles":288,"threads":15,"copied":34,"failed":1,"logLines":7,"offline":false,"cycles":0,"recovered":0}
+{"sec":11.238,"privateBytes":14409728,"workingSet":44429312,"handles":286,"threads":15,"copied":35,"failed":1,"logLines":8,"offline":false,"cycles":0,"recovered":0}
+{"sec":12.25,"privateBytes":14671872,"workingSet":44707840,"handles":290,"threads":15,"copied":35,"failed":1,"logLines":8,"offline":false,"cycles":0,"recovered":0}
+{"sec":13.259,"privateBytes":14671872,"workingSet":44765184,"handles":288,"threads":15,"copied":36,"failed":1,"logLines":9,"offline":false,"cycles":0,"recovered":0}
+{"sec":14.278,"privateBytes":15560704,"workingSet":45350912,"handles":290,"threads":15,"copied":37,"failed":1,"logLines":10,"offline":false,"cycles":0,"recovered":0}
+{"sec":15.297,"privateBytes":15818752,"workingSet":45854720,"handles":294,"threads":15,"copied":37,"failed":1,"logLines":10,"offline":false,"cycles":0,"recovered":0}
+SOAK FAIL System.IO.IOException: The process cannot access the file because it is being used by another process.
+   at System.IO.FileSystem.MoveDirectory(String sourceFullPath, String destFullPath, Boolean _)
+   at System.IO.FileSystem.MoveDirectory(String sourceFullPath, String destFullPath)
+   at Harness.FixtureIo(Action action)
+   at Harness.Soak(Int32 seconds)

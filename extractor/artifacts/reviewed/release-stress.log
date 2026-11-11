@@ -1,0 +1,21 @@
+STRESS phase=fault pass=0 copied=100 failed=0 messages=0
+STRESS phase=fault pass=1 copied=100 failed=0 messages=0
+STRESS phase=fault pass=2 copied=100 failed=0 messages=0
+STRESS phase=fault pass=3 copied=100 failed=0 messages=0
+STRESS phase=fault pass=4 copied=100 failed=0 messages=0
+STRESS phase=fault pass=5 copied=100 failed=0 messages=0
+STRESS phase=fault pass=6 copied=0 failed=60 messages=32
+STRESS phase=fault pass=7 copied=0 failed=0 messages=0
+STRESS phase=fault pass=8 copied=0 failed=0 messages=0
+STRESS phase=fault pass=9 copied=0 failed=0 messages=0
+STRESS phase=recover pass=0 copied=0 failed=0
+STRESS phase=recover pass=1 copied=0 failed=0
+STRESS phase=recover pass=2 copied=0 failed=0
+STRESS phase=recover pass=3 copied=30 failed=0
+STRESS phase=recover pass=4 copied=0 failed=0
+STRESS phase=recover pass=5 copied=0 failed=0
+STRESS phase=recover pass=6 copied=0 failed=0
+STRESS phase=recover pass=7 copied=0 failed=0
+STRESS phase=recover pass=8 copied=0 failed=0
+STRESS phase=recover pass=9 copied=0 failed=0
+STRESS RESULT files=630 copied=630 faultCount=60 recovered=630 purged=630 foreignPreserved=true sourcePreserved=true elapsedSec=44.910 root=E:\Download\AI\projects\flex-time-checker-sol\extractor\release-reviewed\selftest-data\stress-6f88efd056ab4e4595c599f3258e9378

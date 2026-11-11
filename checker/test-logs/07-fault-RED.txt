@@ -1,0 +1,9 @@
+PASS XML safety size DTD malformed and identifier limits
+PASS XML exact material all non-schema attributes and housing
+FAIL unreadable oversized report fails closed without destroying inventory: 缺失/超长 Housing 或时间
+PASS equal timestamp winner deterministic across config reorder
+PASS material latest binding uses bind thresholds separate dispense ownership
+PASS recursive Request XML latest station and exact Housing priority
+PASS strict wait boundaries and future
+PASS config explicit legacy import and invalid preservation
+RESULT total=8 failed=1

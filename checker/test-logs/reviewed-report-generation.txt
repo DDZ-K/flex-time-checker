@@ -1,0 +1,13 @@
+{
+  "manifest": "MANIFEST.json",
+  "report": "TEST-REPORT.md",
+  "tddPairs": 33,
+  "sourceEntries": 29,
+  "selfTests": 29,
+  "uiGroups": 4,
+  "exe": {
+    "path": "publish-reviewed/FlexTimeChecker.exe",
+    "bytes": 72991939,
+    "sha256": "392e7bb90214c4db84b9175da4a6a83cd295e56e71dd2f6c92d7710ac37067ef"
+  }
+}

@@ -1,0 +1,29 @@
+SOAK START root=E:\Download\AI\projects\flex-time-checker-sol\extractor\release-reviewed\selftest-data\soak-282e95151f4047c09435c2e358989775
+{"sec":1.036,"privateBytes":11452416,"workingSet":38965248,"handles":272,"threads":15,"copied":30,"failed":0,"logLines":2,"offline":false,"cycles":0,"recovered":0}
+{"sec":2.061,"privateBytes":11501568,"workingSet":40407040,"handles":276,"threads":15,"copied":30,"failed":0,"logLines":2,"offline":false,"cycles":0,"recovered":0}
+{"sec":3.129,"privateBytes":12107776,"workingSet":41074688,"handles":274,"threads":15,"copied":31,"failed":0,"logLines":3,"offline":false,"cycles":0,"recovered":0}
+{"sec":4.148,"privateBytes":12394496,"workingSet":41578496,"handles":278,"threads":15,"copied":32,"failed":0,"logLines":4,"offline":false,"cycles":0,"recovered":0}
+{"sec":5.166,"privateBytes":13254656,"workingSet":42795008,"handles":282,"threads":15,"copied":32,"failed":0,"logLines":4,"offline":false,"cycles":0,"recovered":0}
+{"sec":6.184,"privateBytes":13254656,"workingSet":42913792,"handles":280,"threads":15,"copied":32,"failed":1,"logLines":5,"offline":false,"cycles":0,"recovered":0}
+{"sec":7.203,"privateBytes":13516800,"workingSet":43257856,"handles":284,"threads":15,"copied":32,"failed":1,"logLines":5,"offline":false,"cycles":0,"recovered":0}
+{"sec":8.217,"privateBytes":13647872,"workingSet":43466752,"handles":285,"threads":15,"copied":33,"failed":1,"logLines":6,"offline":false,"cycles":0,"recovered":0}
+{"sec":9.236,"privateBytes":13778944,"workingSet":43679744,"handles":284,"threads":15,"copied":34,"failed":1,"logLines":7,"offline":false,"cycles":0,"recovered":0}
+{"sec":10.254,"privateBytes":14045184,"workingSet":44183552,"handles":288,"threads":15,"copied":34,"failed":1,"logLines":7,"offline":false,"cycles":0,"recovered":0}
+{"sec":11.261,"privateBytes":14036992,"workingSet":44142592,"handles":286,"threads":15,"copied":35,"failed":1,"logLines":8,"offline":false,"cycles":0,"recovered":0}
+{"sec":12.266,"privateBytes":14307328,"workingSet":44498944,"handles":288,"threads":15,"copied":36,"failed":1,"logLines":9,"offline":false,"cycles":0,"recovered":0}
+{"sec":13.28,"privateBytes":15179776,"workingSet":45182976,"handles":292,"threads":15,"copied":36,"failed":1,"logLines":9,"offline":false,"cycles":0,"recovered":0}
+{"sec":14.3,"privateBytes":15179776,"workingSet":45191168,"handles":290,"threads":15,"copied":37,"failed":1,"logLines":10,"offline":false,"cycles":0,"recovered":0}
+{"sec":15.307,"privateBytes":15441920,"workingSet":45584384,"handles":292,"threads":15,"copied":38,"failed":1,"logLines":11,"offline":false,"cycles":0,"recovered":0}
+SOAK OFFLINE cycle=1 sec=17.508
+{"sec":18.517,"privateBytes":17727488,"workingSet":48500736,"handles":296,"threads":15,"copied":39,"failed":2,"logLines":13,"offline":true,"cycles":1,"recovered":0}
+{"sec":19.527,"privateBytes":17989632,"workingSet":48803840,"handles":298,"threads":15,"copied":39,"failed":3,"logLines":13,"offline":true,"cycles":1,"recovered":0}
+{"sec":20.549,"privateBytes":18251776,"workingSet":49065984,"handles":300,"threads":15,"copied":39,"failed":4,"logLines":13,"offline":true,"cycles":1,"recovered":0}
+{"sec":21.558,"privateBytes":18382848,"workingSet":49197056,"handles":303,"threads":15,"copied":39,"failed":4,"logLines":13,"offline":true,"cycles":1,"recovered":0}
+{"sec":22.578,"privateBytes":19120128,"workingSet":49340416,"handles":302,"threads":15,"copied":39,"failed":5,"logLines":13,"offline":true,"cycles":1,"recovered":0}
+SOAK RESTORED cycle=1 sec=22.582
+{"sec":23.598,"privateBytes":17530880,"workingSet":48816128,"handles":304,"threads":15,"copied":40,"failed":5,"logLines":14,"offline":false,"cycles":1,"recovered":0}
+SOAK RECOVERED cycle=1 sec=23.598 marker=Request_001__1FE806BCAAA90945_D24861BAAA65F6F9.xml copied=40 failed=5
+{"sec":24.607,"privateBytes":17702912,"workingSet":48988160,"handles":307,"threads":15,"copied":40,"failed":5,"logLines":14,"offline":false,"cycles":1,"recovered":1}
+{"sec":25.624,"privateBytes":18440192,"workingSet":49135616,"handles":306,"threads":15,"copied":41,"failed":5,"logLines":15,"offline":false,"cycles":1,"recovered":1}
+{"sec":26.64,"privateBytes":18034688,"workingSet":49381376,"handles":310,"threads":15,"copied":41,"failed":5,"logLines":15,"offline":false,"cycles":1,"recovered":1}
+SOAK RESULT requestedSec=26 actualSec=26.669 samples=24 baselinePrivate=13254656 peakPrivate=19120128 baselineHandles=280 peakHandles=310 copied=41 failed=6 outageCycles=1 verifiedRecoveries=1 sourcePreserved=true logFiles=1 logBytes=1432 root=E:\Download\AI\projects\flex-time-checker-sol\extractor\release-reviewed\selftest-data\soak-282e95151f4047c09435c2e358989775

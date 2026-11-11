@@ -1,0 +1,70 @@
+PASS XML duplicate business headers or housings fail closed
+PASS XML exact qualified element names prevent metadata overriding business fields
+PASS XML namespaced custom item attributes remain material identifiers
+PASS XML safety size DTD malformed and identifier limits
+PASS XML exact material all non-schema attributes and housing
+PASS no configured folders returns actionable configuration error
+PASS junction recursion skipped and flagged incomplete
+PASS unreadable oversized report fails closed without destroying inventory
+PASS equal timestamp winner deterministic across config reorder
+PASS material latest binding uses bind thresholds separate dispense ownership
+PASS recursive Request XML latest station and exact Housing priority
+PASS rework retained station quota rejects overflow without corrupting prior state
+PASS rework retains unscanned stations through empty config removal and restoration
+PASS persistent rework housing dedup dispense ownership and deletion
+PASS worker abandoned job directories have a hard cap
+PASS worker failure preserves bounded diagnostic before job cleanup
+PASS worker real query uses immutable request generation and rejects forged reply
+PASS worker cancellation kills child and rejects concurrent task queue
+PASS isolated worker timeout kills real hung child without leftovers
+PASS legacy malformed top-level string minutes produces handled validation rejection
+PASS legacy malformed top-level overflow minutes produces handled validation rejection
+PASS legacy malformed top-level numeric path produces handled validation rejection
+PASS legacy comments and trailing commas accepted only by explicit legacy entry
+PASS legacy null or empty folders fall back to explicit top-level folder
+PASS legacy role whitespace is trimmed before alias normalization
+PASS legacy null role and null station are rejected as invalid configuration
+PASS config duplicate nested fields cannot silently override minutes
+PASS strict wait boundaries and future
+PASS config explicit legacy import and invalid preservation
+RESULT total=29 failed=0
+
+PASS UI close awaits pending configuration save; real atomic file read-back and no temp files
+PASS UI real isolated query, future fail-closed, bounded log, cancel and close during query
+PASS config editor edit, validation, explicit import and recovery preserves rework
+PASS UI scan geometry, 196 log, two cards, persistent station handles, screenshot
+
+PASS UI SOAK elapsedSeconds=120.843 cycles=218 writes=2582 changes=2582 deletes=1083 handlesMin=289 handlesMax=336 privateGrowthBytes=14974976 finalLogLines=200 finalLogChars=10960 remainingJobs=0
+
+[
+  {
+    "test": "self-test",
+    "exit": 0,
+    "wallSeconds": 7.883
+  },
+  {
+    "test": "ui-test",
+    "exit": 0,
+    "wallSeconds": 25.563
+  },
+  {
+    "test": "soak-seconds",
+    "exit": 0,
+    "wallSeconds": 121.142
+  },
+  {
+    "test": "verify_startup",
+    "exit": 0,
+    "wallSeconds": 3.407
+  },
+  {
+    "test": "verify_missing_config",
+    "exit": 0,
+    "wallSeconds": 3.399
+  },
+  {
+    "test": "verify_instance_lock",
+    "exit": 0,
+    "wallSeconds": 5.87
+  }
+]

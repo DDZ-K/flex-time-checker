@@ -1,0 +1,14 @@
+FAIL XML namespaced custom item attributes remain material identifiers: non-schema namespaced attributes preserved
+PASS XML safety size DTD malformed and identifier limits
+PASS XML exact material all non-schema attributes and housing
+PASS unreadable oversized report fails closed without destroying inventory
+PASS equal timestamp winner deterministic across config reorder
+PASS material latest binding uses bind thresholds separate dispense ownership
+PASS recursive Request XML latest station and exact Housing priority
+PASS persistent rework housing dedup dispense ownership and deletion
+PASS worker real query uses immutable request generation and rejects forged reply
+PASS worker cancellation kills child and rejects concurrent task queue
+PASS isolated worker timeout kills real hung child without leftovers
+PASS strict wait boundaries and future
+PASS config explicit legacy import and invalid preservation
+RESULT total=13 failed=1

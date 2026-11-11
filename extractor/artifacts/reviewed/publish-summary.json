@@ -1,0 +1,18 @@
+[
+  {
+    "project": "UI",
+    "exit": 0
+  },
+  {
+    "project": "Service",
+    "exit": 0
+  },
+  {
+    "project": "Worker",
+    "exit": 0
+  },
+  {
+    "project": "Tests",
+    "exit": 0
+  }
+]

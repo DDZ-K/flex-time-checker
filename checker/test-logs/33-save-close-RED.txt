@@ -1,0 +1,4 @@
+FAIL UI System.Exception: close must await pending configuration save
+   at FlexTimeChecker.UiSelfTests.Check(Boolean value, String message) in E:\Download\AI\projects\flex-time-checker-sol\checker\FlexTimeChecker\UiSelfTests.cs:line 5
+   at FlexTimeChecker.UiSelfTests.RunSaveCloseTest(String reportDirectory) in E:\Download\AI\projects\flex-time-checker-sol\checker\FlexTimeChecker\UiSelfTests.cs:line 73
+   at FlexTimeChecker.UiSelfTests.Run(String reportDirectory) in E:\Download\AI\projects\flex-time-checker-sol\checker\FlexTimeChecker\UiSelfTests.cs:line 103

@@ -1,0 +1,4 @@
+PASS legacy malformed top-level string minutes produces handled validation rejection
+PASS legacy malformed top-level overflow minutes produces handled validation rejection
+PASS legacy malformed top-level numeric path produces handled validation rejection
+RESULT total=3 failed=0

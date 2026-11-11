@@ -1,0 +1,34 @@
+  正在确定要还原的项目…
+  已还原 E:\Download\AI\projects\flex-time-checker-sol\artifacts\delivery-stage\source\checker\FlexTimeChecker\FlexTimeChecker.csproj (用时 149 毫秒)。
+  已还原 E:\Download\AI\projects\flex-time-checker-sol\artifacts\delivery-stage\source\checker\FlexTimeChecker.Core\FlexTimeChecker.Core.csproj (用时 639 毫秒)。
+  FlexTimeChecker.Core -> E:\Download\AI\projects\flex-time-checker-sol\artifacts\delivery-stage\source\checker\FlexTimeChecker.Core\bin\Release\net8.0\FlexTimeChecker.Core.dll
+  FlexTimeChecker -> E:\Download\AI\projects\flex-time-checker-sol\artifacts\delivery-stage\source\checker\FlexTimeChecker\bin\Release\net8.0-windows\win-x64\FlexTimeChecker.dll
+  FlexTimeChecker -> E:\Download\AI\projects\flex-time-checker-sol\artifacts\source-built\Checker\
+  正在确定要还原的项目…
+  已还原 E:\Download\AI\projects\flex-time-checker-sol\artifacts\delivery-stage\source\extractor\Core\Core.csproj (用时 151 毫秒)。
+  已还原 E:\Download\AI\projects\flex-time-checker-sol\artifacts\delivery-stage\source\extractor\UI\UI.csproj (用时 174 毫秒)。
+  Core -> E:\Download\AI\projects\flex-time-checker-sol\artifacts\delivery-stage\source\extractor\Core\bin\Release\net8.0-windows\FlexExtractor.Core.dll
+  UI -> E:\Download\AI\projects\flex-time-checker-sol\artifacts\delivery-stage\source\extractor\UI\bin\Release\net8.0-windows\win-x64\FlexRequestExtractor.dll
+  UI -> E:\Download\AI\projects\flex-time-checker-sol\artifacts\source-built\Extractor\
+  正在确定要还原的项目…
+  已还原 E:\Download\AI\projects\flex-time-checker-sol\artifacts\delivery-stage\source\extractor\Service\Service.csproj (用时 260 毫秒)。
+  1 个项目(共 2 个)是最新的，无法还原。
+  Core -> E:\Download\AI\projects\flex-time-checker-sol\artifacts\delivery-stage\source\extractor\Core\bin\Release\net8.0-windows\FlexExtractor.Core.dll
+  Service -> E:\Download\AI\projects\flex-time-checker-sol\artifacts\delivery-stage\source\extractor\Service\bin\Release\net8.0-windows\win-x64\FlexRequestExtractor.Service.dll
+  Service -> E:\Download\AI\projects\flex-time-checker-sol\artifacts\source-built\Extractor\
+  正在确定要还原的项目…
+  已还原 E:\Download\AI\projects\flex-time-checker-sol\artifacts\delivery-stage\source\extractor\Worker\Worker.csproj (用时 158 毫秒)。
+  1 个项目(共 2 个)是最新的，无法还原。
+  Core -> E:\Download\AI\projects\flex-time-checker-sol\artifacts\delivery-stage\source\extractor\Core\bin\Release\net8.0-windows\FlexExtractor.Core.dll
+  Worker -> E:\Download\AI\projects\flex-time-checker-sol\artifacts\delivery-stage\source\extractor\Worker\bin\Release\net8.0-windows\win-x64\FlexExtractor.Worker.dll
+  Worker -> E:\Download\AI\projects\flex-time-checker-sol\artifacts\source-built\Extractor\
+  正在确定要还原的项目…
+  已还原 E:\Download\AI\projects\flex-time-checker-sol\artifacts\delivery-stage\source\extractor\Tests\Tests.csproj (用时 283 毫秒)。
+  4 个项目(共 5 个)是最新的，无法还原。
+  Core -> E:\Download\AI\projects\flex-time-checker-sol\artifacts\delivery-stage\source\extractor\Core\bin\Release\net8.0-windows\FlexExtractor.Core.dll
+  UI -> E:\Download\AI\projects\flex-time-checker-sol\artifacts\delivery-stage\source\extractor\UI\bin\Release\net8.0-windows\win-x64\FlexRequestExtractor.dll
+  Service -> E:\Download\AI\projects\flex-time-checker-sol\artifacts\delivery-stage\source\extractor\Service\bin\Release\net8.0-windows\win-x64\FlexRequestExtractor.Service.dll
+  Worker -> E:\Download\AI\projects\flex-time-checker-sol\artifacts\delivery-stage\source\extractor\Worker\bin\Release\net8.0-windows\win-x64\FlexExtractor.Worker.dll
+  Tests -> E:\Download\AI\projects\flex-time-checker-sol\artifacts\delivery-stage\source\extractor\Tests\bin\Release\net8.0-windows\win-x64\FlexExtractor.Tests.dll
+  Tests -> E:\Download\AI\projects\flex-time-checker-sol\artifacts\source-built\Extractor\
+BUILD_OK. No service or autostart installed. Runtime pinned to the tested 8.0.22; see security-patch caveat in README.

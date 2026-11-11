@@ -1,0 +1,4 @@
+FAIL UI System.Exception: UI async query behavior missing
+   at FlexTimeChecker.UiSelfTests.Check(Boolean value, String message) in E:\Download\AI\projects\flex-time-checker-sol\checker\FlexTimeChecker\UiSelfTests.cs:line 5
+   at FlexTimeChecker.UiSelfTests.RunQueryTest(String reportDirectory) in E:\Download\AI\projects\flex-time-checker-sol\checker\FlexTimeChecker\UiSelfTests.cs:line 15
+   at FlexTimeChecker.UiSelfTests.Run(String reportDirectory) in E:\Download\AI\projects\flex-time-checker-sol\checker\FlexTimeChecker\UiSelfTests.cs:line 55

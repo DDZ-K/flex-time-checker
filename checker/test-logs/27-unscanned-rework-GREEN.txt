@@ -1,0 +1,2 @@
+PASS rework retains unscanned stations through empty config removal and restoration
+RESULT total=1 failed=0

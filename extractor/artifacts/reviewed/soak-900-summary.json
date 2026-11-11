@@ -1,0 +1,25 @@
+{
+  "exit": 0,
+  "result": "SOAK RESULT requestedSec=900 actualSec=900.274 samples=887 baselinePrivate=13340672 peakPrivate=25239552 baselineHandles=290 peakHandles=360 copied=479 failed=118 outageCycles=22 verifiedRecoveries=22 sourcePreserved=true logFiles=1 logBytes=38430 root=E:\\Download\\AI\\projects\\flex-time-checker-sol\\extractor\\release-reviewed\\selftest-data\\soak-fa9d5e56464d4f0c826410b24f7eaaf9",
+  "sampleCount": 887,
+  "lastSample": {
+    "sec": 900.249,
+    "privateBytes": 23539712,
+    "workingSet": 57556992,
+    "handles": 282,
+    "threads": 11,
+    "copied": 479,
+    "failed": 117,
+    "logLines": 50,
+    "offline": false,
+    "cycles": 22,
+    "recovered": 22
+  },
+  "outageCycles": 22,
+  "verifiedRecoveries": 22,
+  "maxLogLines": 50,
+  "privateDeltaBytes": 11898880,
+  "handleDelta": 70,
+  "coreSha256": "c40c4fcfbcdb9ba2a1dc5828f17064e0408ff132be1f7057d365ec846901567a",
+  "testsSha256": "825ff606689562c5bc2d0c0069b11e4fe0ea6c70198730b888a3b59cfafcb4f7"
+}

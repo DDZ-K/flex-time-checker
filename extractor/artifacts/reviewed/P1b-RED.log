@@ -1,0 +1,4 @@
+FAIL TestReviewTraversalSkipsUnselectedDeniedBranch: unselected inaccessible branch was visited: UnauthorizedAccessException: Access to the path 'E:\Download\AI\projects\flex-time-checker-sol\extractor\Tests\bin\Release\net8.0-windows\selftest-data\2664c153423441fabf3ddee6b5bc2de9\watch\2026\11\11\0031_1_1\blocked' is denied.
+FAIL TestReviewTraversalAllSelectionIsolatesDeniedBranch: Access to the path 'E:\Download\AI\projects\flex-time-checker-sol\extractor\Tests\bin\Release\net8.0-windows\selftest-data\5ef328cdc0c240f4b19e8b6ccca0e0e5\watch\2026\11\11\0031_1_1\blocked' is denied.
+FAIL TestReviewTraversalSelectedDeniedBranchDoesNotBlockSibling: Access to the path 'E:\Download\AI\projects\flex-time-checker-sol\extractor\Tests\bin\Release\net8.0-windows\selftest-data\05e4159278d04b4cbf854e69ac57c1aa\watch\2026\11\11\0031_1_1\blocked' is denied.
+RESULT total=3 passed=0 failed=3

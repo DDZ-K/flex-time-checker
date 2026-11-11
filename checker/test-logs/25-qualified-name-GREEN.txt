@@ -1,0 +1,2 @@
+PASS XML exact qualified element names prevent metadata overriding business fields
+RESULT total=1 failed=0

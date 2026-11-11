@@ -1,0 +1,2 @@
+FAIL legacy role whitespace is trimmed before alias normalization: 未知站位类型
+RESULT total=1 failed=1

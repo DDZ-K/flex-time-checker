@@ -1,0 +1,2 @@
+FAIL rework retains unscanned stations through empty config removal and restoration: empty scan must preserve unscanned station rework
+RESULT total=1 failed=1

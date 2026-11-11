@@ -1,0 +1,239 @@
+--- baseline/Core/Config.cs
+
++++ reviewed/Core/Config.cs
+
+@@ -45,6 +45,7 @@
+
+    var d=Tokens("DispenseStations");var b=Tokens("BindStations");var old=Tokens("Stations");
+    foreach(var key in node.Select(p=>p.Key).Where(k=>legacyKeys.Contains(k,StringComparer.OrdinalIgnoreCase)).ToArray())node.Remove(key);
+    var cfg=JsonSerializer.Deserialize<Config>(node.ToJsonString(),Json)??throw new JsonException("空配置");
++   cfg.DispenseItems??=[];cfg.BindItems??=[];
+    if(cfg.DispenseItems.Count==0&&cfg.BindItems.Count==0) {if(d.Count==0&&b.Count==0)d=old;cfg.DispenseItems=d.Select(t=>new Station{Token=t,StationName=t,SaveFolder=Path.Combine(output,"点胶")}).ToList();cfg.BindItems=b.Select(t=>new Station{Token=t,StationName=t,SaveFolder=Path.Combine(output,"组装")}).ToList();}
+    string LegacyPath(string? raw){if(string.IsNullOrWhiteSpace(raw))return "";var p=raw.Trim().Replace('/','\\');if(p.StartsWith('\\')&&!p.StartsWith(@"\\"))p="\\"+p;if(p.StartsWith(@"\\")){var body=p[2..];while(body.Contains(@"\\"))body=body.Replace(@"\\",@"\");return @"\\"+body.TrimEnd('\\');}return Path.GetFullPath(p,baseDir??AppContext.BaseDirectory).TrimEnd('\\');}
+    cfg.WatchRoot=LegacyPath(cfg.WatchRoot);output=LegacyPath(output);
+@@ -58,7 +59,7 @@
+
+   void Range(long n,long a,long b,string key){if(n<a||n>b)throw new InvalidDataException(key+" 超出范围");}
+   if(SchemaVersion!=2)throw new InvalidDataException("未知配置版本；旧版请显式导入");
+   Range(PollIntervalSec,1,60,nameof(PollIntervalSec));Range(KeepDays,1,14,nameof(KeepDays));Range(LookbackDays,1,14,nameof(LookbackDays));Range(NewFileGraceSec,0,30,nameof(NewFileGraceSec));Range(MinFileBytes,1,16777216,nameof(MinFileBytes));Range(SizeStableChecks,0,8,nameof(SizeStableChecks));Range(SizeStableIntervalMs,0,2000,nameof(SizeStableIntervalMs));Range(MaxLogLines,50,2000,nameof(MaxLogLines));Range(WorkerTimeoutSec,2,600,nameof(WorkerTimeoutSec));Range(MaxFileBytes,MinFileBytes,134217728,nameof(MaxFileBytes));Range(MaxFilesPerPass,1,10000,nameof(MaxFilesPerPass));
+-  Paths.Full(WatchRoot); if(DispenseItems==null||BindItems==null||!AllItems.Any()||AllItems.Count()>128)throw new InvalidDataException("请配置1到128个站位");
++  Paths.Full(WatchRoot);Paths.ValidateLocalSource(WatchRoot); if(DispenseItems==null||BindItems==null||!AllItems.Any()||AllItems.Count()>128)throw new InvalidDataException("请配置1到128个站位");
+   foreach(var s in AllItems){if(s==null||string.IsNullOrWhiteSpace(s.Token)||s.Token.Length>128||string.IsNullOrWhiteSpace(s.StationName)||s.StationName.Length>128||s.SubFolders==null||s.SubFolders.Count>256)throw new InvalidDataException("站位名称/规则/子目录无效");Paths.Full(s.SaveFolder);if(s.SaveFolder.StartsWith(@"\\")||new DriveInfo(Path.GetPathRoot(s.SaveFolder)!).DriveType==DriveType.Network)throw new InvalidDataException("保存目录必须为本机磁盘");if(Paths.Overlaps(WatchRoot,s.SaveFolder))throw new InvalidDataException("源与保存目录不能相等或互为父子目录");foreach(var sub in s.SubFolders){if(sub==null||sub.Length>512||Path.IsPathRooted(sub)||sub.Replace('\\','/').Split('/').Any(p=>p==".."||p==""))throw new InvalidDataException("子目录必须为安全的相对路径");}}
+  }
+  static void ValidateKeys(JsonElement node) {
+--- baseline/Core/Engine.cs
+
++++ reviewed/Core/Engine.cs
+
+@@ -7,7 +7,7 @@
+
+   var fresh=new SessionState{Fingerprint=hash,BaselineUtc=DateTime.UtcNow};Durable.Write(path,JsonSerializer.Serialize(fresh,Config.Json),4096);Durable.Write(Path.Combine(MachineState.Root,"cursor.txt"),"",32768);return fresh;
+  }
+ }
+-public sealed record EngineSnapshot(bool Running,long Copied,long Skipped,long Failed,long Deleted,string Status);
++public sealed record EngineSnapshot(bool Running,long Copied,long Skipped,long Failed,long Deleted,string Status){public string RecentFile {get;init;}="";public string RecentStation {get;init;}="";}
+ public sealed class Engine: IAsyncDisposable {
+  readonly object gate=new();readonly Config config;OwnerLease? owner;CancellationTokenSource? stop;Task? loop;BoundedLog? log;EngineSnapshot snapshot=new(false,0,0,0,0,"已停止");bool fatal;
+  public DateTime BaselineUtc {get;private set;}
+@@ -17,7 +17,7 @@
+
+  public void Start(){lock(gate){if(loop!=null)throw new InvalidOperationException("此引擎已启动，不可重复使用");owner=new OwnerLease();try{var session=SessionState.Open(config);BaselineUtc=session.BaselineUtc;log=new BoundedLog(MachineState.Root,config.MaxLogLines);log.Write("开始监控；OnlyNew基准="+BaselineUtc.ToString("O"));stop=new();snapshot=snapshot with{Running=true,Status="监控中"};loop=RunAsync(stop.Token);}catch{owner.Dispose();owner=null;throw;}}}
+  async Task RunAsync(CancellationToken token){
+   await Task.Yield();string previousError="";DateTime lastErrorLog=DateTime.MinValue;
+-  try{while(!token.IsCancellationRequested){foreach(var operation in new[]{"purge","scan"}){if(token.IsCancellationRequested)break;var result=await WorkerRunner.RunAsync(owner!,config,operation,BaselineUtc,token).ConfigureAwait(false);var error=string.Join(" | ",result.Messages);lock(gate){snapshot=snapshot with{Copied=snapshot.Copied+result.Copied,Skipped=snapshot.Skipped+result.Skipped,Failed=snapshot.Failed+result.Failed,Deleted=snapshot.Deleted+result.Deleted,Status=result.Failed>0?"故障/等待重试："+error:"监控中"};}
++  try{while(!token.IsCancellationRequested){foreach(var operation in new[]{"purge","scan"}){if(token.IsCancellationRequested)break;var result=await WorkerRunner.RunAsync(owner!,config,operation,BaselineUtc,token).ConfigureAwait(false);var error=string.Join(" | ",result.Messages);lock(gate){snapshot=snapshot with{Copied=snapshot.Copied+result.Copied,Skipped=snapshot.Skipped+result.Skipped,Failed=snapshot.Failed+result.Failed,Deleted=snapshot.Deleted+result.Deleted,RecentFile=result.RecentFile.Length>0?result.RecentFile:snapshot.RecentFile,RecentStation=result.RecentFile.Length>0?result.RecentStation:snapshot.RecentStation,Status=result.Failed>0?"故障/等待重试："+error:"监控中"};}
+     if(error.Length>0&&(error!=previousError||DateTime.UtcNow-lastErrorLog>TimeSpan.FromMinutes(1))){log!.Write(error);previousError=error;lastErrorLog=DateTime.UtcNow;}
+     if(result.Copied>0||result.Deleted>0)log!.Write($"复制 {result.Copied}，删除过期 {result.Deleted}，失败 {result.Failed}");
+    }await Task.Delay(TimeSpan.FromSeconds(config.PollIntervalSec),token).ConfigureAwait(false);}
+--- baseline/Core/Ownership.cs
+
++++ reviewed/Core/Ownership.cs
+
+@@ -10,16 +10,17 @@
+
+ }
+ public sealed class Ownership {
+  public const string Manifest=".flex-ownership-v2.json";
+- public List<OwnedFile> Files {get;set;}=[];
+- public static Ownership Load(string folder){Paths.NoReparse(folder);var path=Path.Combine(folder,Manifest);if(!File.Exists(path))return new();var m=JsonSerializer.Deserialize<Ownership>(Durable.Read(path,8388608),Config.Json)??throw new InvalidDataException("所有权清单为空");if(m.Files==null||m.Files.Count>20000)throw new InvalidDataException("所有权清单超过20000条");var names=new HashSet<string>(StringComparer.OrdinalIgnoreCase);foreach(var f in m.Files){if(f==null||f.Name!=Path.GetFileName(f.Name)||!f.Name.StartsWith("Request",StringComparison.OrdinalIgnoreCase)||!f.Name.EndsWith(".xml",StringComparison.OrdinalIgnoreCase)||!names.Add(f.Name)||f.Hash.Length!=64)throw new InvalidDataException("所有权清单无效");}return m;}
++ [System.Text.Json.Serialization.JsonRequired] public List<OwnedFile> Files {get;set;}=[];
++ public static Ownership Load(string folder){Paths.NoReparse(folder);var path=Path.Combine(folder,Manifest);if(!File.Exists(path))return new();var m=JsonSerializer.Deserialize<Ownership>(Durable.Read(path,8388608),Config.Json)??throw new InvalidDataException("所有权清单为空");if(m.Files==null||m.Files.Count>20000)throw new InvalidDataException("所有权清单超过20000条");var names=new HashSet<string>(StringComparer.OrdinalIgnoreCase);foreach(var f in m.Files){if(f==null||string.IsNullOrEmpty(f.Name)||f.Hash==null||f.Name!=Path.GetFileName(f.Name)||!f.Name.StartsWith("Request",StringComparison.OrdinalIgnoreCase)||!f.Name.EndsWith(".xml",StringComparison.OrdinalIgnoreCase)||!names.Add(f.Name)||f.Hash.Length!=64)throw new InvalidDataException("所有权清单无效");}return m;}
+  public void Save(string folder){if(Files.Count>20000)throw new InvalidDataException("所有权上限20000，停止复制，增加保留空间前请先清理");Durable.Write(Path.Combine(folder,Manifest),JsonSerializer.Serialize(this,Config.Json),8388608);}
+- public static void Purge(string folder,int keepDays,DateTime nowUtc,ScanResult result){
++ public static void Purge(string folder,int keepDays,DateTime nowUtc,ScanResult result)=>PurgeChecked(folder,keepDays,nowUtc,result,()=>{});
++ internal static void PurgeChecked(string folder,int keepDays,DateTime nowUtc,ScanResult result,Action validateDelete){
+   Paths.NoReparse(folder);if(!Directory.Exists(folder))return;var m=Load(folder);bool changed=false;
+   foreach(var item in m.Files.ToArray()){
+    var path=Path.Combine(folder,item.Name);if(!File.Exists(path)){m.Files.Remove(item);changed=true;continue;}
+    if(!item.Committed){Paths.NoReparse(path);var pending=new FileInfo(path);if(pending.CreationTimeUtc!=item.CreationUtc||pending.LastWriteTimeUtc!=item.WriteUtc||Durable.HashFile(path)!=item.Hash){result.Error(new IOException("未提交目标指纹不同，保留文件等待人工核对 "+item.Name));continue;}item.Committed=true;changed=true;}
+    if(item.RetainUtc>=nowUtc.AddDays(-keepDays))continue;
+-   try{Paths.NoReparse(path);var info=new FileInfo(path);if(info.CreationTimeUtc!=item.CreationUtc||info.LastWriteTimeUtc!=item.WriteUtc||Durable.HashFile(path)!=item.Hash)throw new IOException("所有权指纹已改变；拒绝删除 "+item.Name);File.Delete(path);m.Files.Remove(item);changed=true;result.Deleted++;}
++   try{Paths.NoReparse(path);var info=new FileInfo(path);if(info.CreationTimeUtc!=item.CreationUtc||info.LastWriteTimeUtc!=item.WriteUtc||Durable.HashFile(path)!=item.Hash)throw new IOException("所有权指纹已改变；拒绝删除 "+item.Name);validateDelete();Paths.NoReparse(path);File.Delete(path);m.Files.Remove(item);changed=true;result.Deleted++;}
+    catch(Exception e) when(e is IOException or UnauthorizedAccessException or InvalidDataException){result.Error(e);}
+   }
+   if(changed)m.Save(folder);
+--- baseline/Core/Paths.cs
+
++++ reviewed/Core/Paths.cs
+
+@@ -1,5 +1,7 @@
+
+ namespace FlexExtractor;
+ public static class Paths {
++ // Never touch a UNC/mapped network source during GUI validation or local purge.
++ public static void ValidateLocalSource(string source){if(!source.StartsWith(@"\\")&&new DriveInfo(Path.GetPathRoot(source)!).DriveType!=DriveType.Network)NoReparse(source);}
+  public static string Full(string p){if(string.IsNullOrWhiteSpace(p)||!Path.IsPathFullyQualified(p)||p.IndexOf(':',2)>=0||p.StartsWith(@"\\?\")||p.StartsWith(@"\\.\"))throw new InvalidDataException("路径必须为普通绝对路径");return Path.GetFullPath(p).TrimEnd('\\','/');}
+  public static bool Overlaps(string a,string b){a=Full(a);b=Full(b);return a.Equals(b,StringComparison.OrdinalIgnoreCase)||a.StartsWith(b+Path.DirectorySeparatorChar,StringComparison.OrdinalIgnoreCase)||b.StartsWith(a+Path.DirectorySeparatorChar,StringComparison.OrdinalIgnoreCase);}
+  public static void NoReparse(string p) {p=Path.GetFullPath(p); for(string? n=p;n!=null;n=Path.GetDirectoryName(n)){try{if((File.GetAttributes(n)&FileAttributes.ReparsePoint)!=0)throw new InvalidDataException("拒绝重解析点 "+n);}catch(FileNotFoundException){}catch(DirectoryNotFoundException){}}}
+--- baseline/Core/Scanner.cs
+
++++ reviewed/Core/Scanner.cs
+
+@@ -5,25 +5,28 @@
+
+  public int Deleted {get;set;}
+  public int Skipped {get;set;}
+  public int Failed {get;set;}
++ public string RecentFile {get;set;}="";
++ public string RecentStation {get;set;}="";
+  public List<string> Messages {get;set;}=[];
+  public List<string> Folders {get;set;}=[];
+  public void Error(Exception ex){Failed++;if(Messages.Count<32)Messages.Add(ex.GetType().Name+": "+ex.Message[..Math.Min(512,ex.Message.Length)]);}
+ }
+ public static class Scanner {
+  public static ScanResult Run(Config c,string operation,DateTime baselineUtc,string cursorPath) {
+-  c.Validate();var r=new ScanResult();foreach(var folder in c.AllItems.Select(x=>x.SaveFolder).Distinct(StringComparer.OrdinalIgnoreCase))Paths.NoReparse(folder);
+-  if(operation=="purge"){foreach(var folder in c.AllItems.Select(x=>x.SaveFolder).Distinct(StringComparer.OrdinalIgnoreCase))Ownership.Purge(folder,c.KeepDays,DateTime.UtcNow,r);return r;}
++  c.Validate();var r=new ScanResult();
++  if(operation=="purge"){foreach(var folder in c.AllItems.Select(x=>x.SaveFolder).Distinct(StringComparer.OrdinalIgnoreCase)){try{Ownership.PurgeChecked(folder,c.KeepDays,DateTime.UtcNow,r,c.Validate);}catch(Exception ex)when(ex is IOException or UnauthorizedAccessException or InvalidDataException or System.Text.Json.JsonException){r.Error(new IOException("清理目标 "+folder+": "+ex.Message,ex));}}return r;}
++  foreach(var folder in c.AllItems.Select(x=>x.SaveFolder).Distinct(StringComparer.OrdinalIgnoreCase))Paths.NoReparse(folder);
+   Paths.NoReparse(c.WatchRoot);
+   if(operation=="discover"){var found=new SortedSet<string>(StringComparer.OrdinalIgnoreCase);foreach(var date in Dates(c))foreach(var station in Directory.EnumerateDirectories(date)){if(!c.AllItems.Any(x=>Matches(Path.GetFileName(station),x.Token)))continue;foreach(var sub in WalkDirectories(station,0)){var rel=Path.GetRelativePath(station,sub).Replace('\\','/');if(rel.Length>256)throw new InvalidDataException("发现子目录长度超过256");found.Add(rel);if(found.Count>128)throw new InvalidDataException("发现子目录超过128，请缩小报文范围");}}r.Folders=found.ToList();return r;}
+   if(operation!="scan")throw new InvalidDataException("未知工作操作");
+   var cursor=File.Exists(cursorPath)?Durable.Read(cursorPath,32768):"";bool seeking=cursor.Length>0;int examined=0;
+-  foreach(var date in Dates(c))foreach(var station in Directory.EnumerateDirectories(date)){
++  foreach(var date in Dates(c))foreach(var station in Entries(date,false,r)){
+    var hits=c.AllItems.Where(x=>Matches(Path.GetFileName(station),x.Token)).ToArray();
+    if(hits.Length==0)continue;
+-   foreach(var file in WalkFiles(station,0)){
++   foreach(var file in WalkFiles(station,0,station,hits,r)){
+     if(seeking){if(file.Equals(cursor,StringComparison.OrdinalIgnoreCase))seeking=false;continue;}
+     Durable.Write(cursorPath,file,32768);
+-    foreach(var hit in hits){var relative=Path.GetRelativePath(station,Path.GetDirectoryName(file)!).Replace('\\','/');if(hit.SubFolders.Count>0&&!hit.SubFolders.Any(s=>relative.Equals(s.Replace('\\','/'),StringComparison.OrdinalIgnoreCase)||relative.StartsWith(s.Replace('\\','/')+"/",StringComparison.OrdinalIgnoreCase)))continue;try {var info=new FileInfo(file);var newest=info.CreationTimeUtc>info.LastWriteTimeUtc?info.CreationTimeUtc:info.LastWriteTimeUtc;if(newest<DateTime.UtcNow.AddDays(-c.KeepDays)||(c.OnlyNewAfterStart&&newest<baselineUtc.AddSeconds(-c.NewFileGraceSec))){r.Skipped++;continue;}if(Copy(c,file,hit.SaveFolder))r.Copied++;else r.Skipped++;}catch(Exception ex) when(ex is IOException or UnauthorizedAccessException or System.Xml.XmlException or InvalidDataException){r.Error(ex);}}
++    foreach(var hit in hits){var relative=Path.GetRelativePath(station,Path.GetDirectoryName(file)!).Replace('\\','/');if(hit.SubFolders.Count>0&&!hit.SubFolders.Any(s=>relative.Equals(s.Replace('\\','/'),StringComparison.OrdinalIgnoreCase)||relative.StartsWith(s.Replace('\\','/')+"/",StringComparison.OrdinalIgnoreCase)))continue;try {var info=new FileInfo(file);var newest=info.CreationTimeUtc>info.LastWriteTimeUtc?info.CreationTimeUtc:info.LastWriteTimeUtc;if(newest<DateTime.UtcNow.AddDays(-c.KeepDays)||(c.OnlyNewAfterStart&&newest<baselineUtc.AddSeconds(-c.NewFileGraceSec))){r.Skipped++;continue;}if(Copy(c,file,hit.SaveFolder)){r.Copied++;r.RecentFile=file[..Math.Min(1024,file.Length)];r.RecentStation=hit.StationName;}else r.Skipped++;}catch(Exception ex) when(ex is IOException or UnauthorizedAccessException or System.Xml.XmlException or InvalidDataException){r.Error(ex);}}
+     if(++examined>=c.MaxFilesPerPass)return r;
+    }
+   }
+@@ -54,10 +57,21 @@
+
+     var record=new OwnedFile{Name=Path.GetFileName(dest),Hash=dataHash,CreationUtc=File.GetCreationTimeUtc(temp),WriteUtc=File.GetLastWriteTimeUtc(temp),RetainUtc=sourceInfo.CreationTimeUtc>sourceInfo.LastWriteTimeUtc?sourceInfo.CreationTimeUtc:sourceInfo.LastWriteTimeUtc};
+     manifest.Files.Add(record);manifest.Save(folder);File.Move(temp,dest,false);record.Committed=true;manifest.Save(folder);return true;
+    }
+-  } finally {if(File.Exists(temp))File.Delete(temp);}
++  } finally {if(File.Exists(temp)){c.Validate();Paths.NoReparse(temp);File.Delete(temp);}}
+  }
+  static IEnumerable<string> WalkDirectories(string root,int depth){if(depth>64)throw new InvalidDataException("目录深度超过64");Paths.NoReparse(root);foreach(var d in Directory.EnumerateDirectories(root)){Paths.NoReparse(d);yield return d;foreach(var sub in WalkDirectories(d,depth+1))yield return sub;}}
+- static IEnumerable<string> WalkFiles(string root,int depth){if(depth>64)throw new InvalidDataException("目录深度超过64");Paths.NoReparse(root);foreach(var f in Directory.EnumerateFiles(root,"Request*.xml")){Paths.NoReparse(f);yield return f;}foreach(var d in Directory.EnumerateDirectories(root))foreach(var f in WalkFiles(d,depth+1))yield return f;}
++ static bool Selected(string relative,Station[] hits)=>hits.Any(h=>h.SubFolders.Count==0||h.SubFolders.Any(s=>relative.Equals(s.Replace('\\','/'),StringComparison.OrdinalIgnoreCase)||relative.StartsWith(s.Replace('\\','/')+"/",StringComparison.OrdinalIgnoreCase)));
++ static bool Relevant(string relative,Station[] hits)=>relative=="."||Selected(relative,hits)||hits.Any(h=>h.SubFolders.Any(s=>s.Replace('\\','/').StartsWith(relative+"/",StringComparison.OrdinalIgnoreCase)));
++ // Catch both enumerator creation and lazy MoveNext failures, only for this directory.
++ // Never materialize a whole directory or advance the file cursor to hide directory faults.
++ static IEnumerator<string>? OpenEntries(string root,bool files,ScanResult r){try{Paths.NoReparse(root);return (files?Directory.EnumerateFiles(root,"Request*.xml"):Directory.EnumerateDirectories(root)).GetEnumerator();}catch(Exception ex)when(ex is IOException or UnauthorizedAccessException or InvalidDataException){r.Error(ex);return null;}}
++ static IEnumerable<string> Entries(string root,bool files,ScanResult r){using var e=OpenEntries(root,files,r);if(e==null)yield break;while(true){string? entry=null;try{if(e.MoveNext())entry=e.Current;}catch(Exception ex)when(ex is IOException or UnauthorizedAccessException or InvalidDataException){r.Error(ex);}if(entry==null)yield break;yield return entry;}}
++ static IEnumerable<string> WalkFiles(string root,int depth,string station,Station[] hits,ScanResult r){
++  var relative=Path.GetRelativePath(station,root).Replace('\\','/');if(!Relevant(relative,hits))yield break;
++  if(depth>64){r.Error(new InvalidDataException("目录深度超过64 "+root));yield break;}
++  if(Selected(relative,hits))foreach(var f in Entries(root,true,r))yield return f;
++  foreach(var d in Entries(root,false,r))foreach(var f in WalkFiles(d,depth+1,station,hits,r))yield return f;
++ }
+  public static IEnumerable<string> Dates(Config c){var found=false;for(int i=0;i<Math.Min(14,Math.Max(c.LookbackDays,c.KeepDays+1));i++){var p=Path.Combine(c.WatchRoot,DateTime.Now.AddDays(-i).ToString("yyyy/MM/dd"));if(Directory.Exists(p)){found=true;yield return p;}}if(!found)yield return c.WatchRoot;}
+  public static bool Matches(string folder,string token)=>token is "*"||token.Equals("all",StringComparison.OrdinalIgnoreCase)||folder.Equals(token,StringComparison.OrdinalIgnoreCase)||folder.StartsWith(token+"_",StringComparison.OrdinalIgnoreCase)||(int.TryParse(token,out var n)&&(folder.Equals(n.ToString("D4"),StringComparison.OrdinalIgnoreCase)||folder.StartsWith(n.ToString("D4")+"_",StringComparison.OrdinalIgnoreCase)));
+ }
+--- baseline/Core/WorkerRunner.cs
+
++++ reviewed/Core/WorkerRunner.cs
+
+@@ -21,7 +21,7 @@
+
+    var data=await output;await process.WaitForExitAsync(deadline.Token);exited=true;
+    if(process.ExitCode!=0)throw new IOException("工作进程退出码 "+process.ExitCode+" "+data[..Math.Min(1024,data.Length)]);
+    var parsed=JsonSerializer.Deserialize<ScanResult>(data,Config.Json)??throw new InvalidDataException("工作结果为空");
+-   if(parsed.Generation!=generation||parsed.Messages==null||parsed.Messages.Count>32||parsed.Folders==null||parsed.Folders.Count>128||parsed.Messages.Any(s=>s.Length>1024)||parsed.Folders.Any(s=>s.Length>256))throw new InvalidDataException("工作结果无效或generation不符");return parsed;
++   if(parsed.Generation!=generation||parsed.RecentFile==null||parsed.RecentFile.Length>1024||parsed.RecentStation==null||parsed.RecentStation.Length>128||parsed.Messages==null||parsed.Messages.Count>32||parsed.Folders==null||parsed.Folders.Count>128||parsed.Messages.Any(s=>s.Length>1024)||parsed.Folders.Any(s=>s.Length>256))throw new InvalidDataException("工作结果无效或generation不符");return parsed;
+   }catch(Exception ex) when(ex is IOException or InvalidDataException or OperationCanceledException or JsonException or System.ComponentModel.Win32Exception){result.Error(ex);return result;}
+   finally {if(!exited){if(!Native.TerminateJobObject(job,74)) {if(!process.HasExited)process.Kill(true);}if(!process.WaitForExit(5000)){lease.Poison();throw new IOException("无法确认工作进程已停止；引擎必须保留独占锁，不可再次启动");}}}
+  }
+--- baseline/UI/MainForm.cs
+
++++ reviewed/UI/MainForm.cs
+
+@@ -2,19 +2,23 @@
+
+ using System.Reflection;
+ namespace FlexExtractor.UI;
+ public sealed class MainForm:Form {
++ readonly Label recentFile=new(){Name="RecentFile",Dock=DockStyle.Fill,Text="最近文件：—",AutoEllipsis=true,TextAlign=ContentAlignment.MiddleLeft};
++ readonly Label recentStation=new(){Name="RecentStation",Dock=DockStyle.Fill,Text="最近站位：—",AutoEllipsis=true,TextAlign=ContentAlignment.MiddleLeft};
+  readonly string configPath=Path.Combine(AppContext.BaseDirectory,"config.json");Config config=new();Engine? engine;bool busy,closing,dark;readonly AntdUI.Button start,settings,theme;readonly Label status=new(){Name="Status",Dock=DockStyle.Fill,Text="请先配置目录与站位",TextAlign=ContentAlignment.MiddleLeft,AutoEllipsis=true};readonly TextBox log=new(){Name="Log",Dock=DockStyle.Fill,Multiline=true,ReadOnly=true,ScrollBars=ScrollBars.Vertical,BorderStyle=BorderStyle.None};readonly Dictionary<string,Label> values=new();readonly System.Windows.Forms.Timer timer=new(){Interval=500};readonly Label clock=new(){AutoSize=true};string lastLog="";
+  public MainForm():this(null){}
+- public MainForm(Config? initial){Ui.Shell(this,"Flex 报文提取 2.0",new Size(1160,760));MinimumSize=new Size(980,650);var root=new TableLayoutPanel{Dock=DockStyle.Fill,ColumnCount=1,RowCount=5,Padding=new Padding(20),BackColor=Ui.Bg};root.RowStyles.Add(new(SizeType.Absolute,70));root.RowStyles.Add(new(SizeType.Absolute,86));root.RowStyles.Add(new(SizeType.Absolute,184));root.RowStyles.Add(new(SizeType.Absolute,54));root.RowStyles.Add(new(SizeType.Percent,100));
++ public MainForm(Config? initial){Ui.Shell(this,"Flex 报文提取 2.0",new Size(1160,760));MinimumSize=new Size(980,650);var root=new TableLayoutPanel{Dock=DockStyle.Fill,ColumnCount=1,RowCount=6,Padding=new Padding(20),BackColor=Ui.Bg};root.RowStyles.Add(new(SizeType.Absolute,70));root.RowStyles.Add(new(SizeType.Absolute,86));root.RowStyles.Add(new(SizeType.Absolute,184));root.RowStyles.Add(new(SizeType.Absolute,56));root.RowStyles.Add(new(SizeType.Absolute,54));root.RowStyles.Add(new(SizeType.Percent,100));
+   var header=new FlowLayoutPanel{Dock=DockStyle.Fill,WrapContents=false,Padding=new Padding(0,8,0,0)};settings=Ui.Action("配置","OpenConfig",(_,_)=>Configure());header.Controls.Add(settings);var resource=Assembly.GetExecutingAssembly().GetManifestResourceNames().Single(x=>x.EndsWith("bosch-logo.png"));using(var stream=Assembly.GetExecutingAssembly().GetManifestResourceStream(resource)!){using var image=Image.FromStream(stream);header.Controls.Add(new PictureBox{Name="Brand",Image=new Bitmap(image),Size=new Size(200,42),SizeMode=PictureBoxSizeMode.Zoom,BackColor=Color.White,Margin=new Padding(18,0,18,0)});}
+   header.Controls.Add(new Label{Text="FLEX 报文提取",AutoSize=true,Font=new Font(Font.FontFamily,18,FontStyle.Bold),Margin=new Padding(8,6,28,0)});theme=Ui.Action("深色模式","Theme",(_,_)=>{dark=!dark;ApplyTheme();});header.Controls.Add(theme);root.Controls.Add(header,0,0);
+   var bar=new TableLayoutPanel{Dock=DockStyle.Fill,ColumnCount=2,Padding=new Padding(0,16,0,16)};bar.ColumnStyles.Add(new(SizeType.Absolute,180));bar.ColumnStyles.Add(new(SizeType.Percent,100));start=Ui.Action("开始提取","StartStop",async(_,_)=>await Toggle(),true);start.Dock=DockStyle.Fill;bar.Controls.Add(start,0,0);status.Padding=new Padding(24,0,0,0);bar.Controls.Add(status,1,0);root.Controls.Add(bar,0,1);
+-  var cards=new TableLayoutPanel{Dock=DockStyle.Fill,ColumnCount=4};foreach(var (key,label) in new[]{("Copied","已复制"),("Failed","失败 / 重试"),("Deleted","过期删除"),("Skipped","已存在 / 范围外")}){cards.ColumnStyles.Add(new(SizeType.Percent,25));var panel=new Panel{Dock=DockStyle.Fill,BackColor=Color.White,Margin=new Padding(0,0,14,0),Padding=new Padding(20)};panel.Controls.Add(new Label{Text=label,Dock=DockStyle.Top,Height=30});var value=new Label{Name=key,Text="0",Dock=DockStyle.Bottom,Height=96,Font=new Font("Segoe UI",36,FontStyle.Bold)};panel.Controls.Add(value);cards.Controls.Add(panel);values.Add(key,value);}root.Controls.Add(cards,0,2);var logTitle=new FlowLayoutPanel{Dock=DockStyle.Fill,Padding=new Padding(0,18,0,0)};logTitle.Controls.Add(Ui.Label("运行日志"));clock.Margin=new Padding(30,10,0,0);logTitle.Controls.Add(clock);root.Controls.Add(logTitle,0,3);var logPanel=new Panel{Dock=DockStyle.Fill,Padding=new Padding(18),BackColor=Color.White};logPanel.Controls.Add(log);root.Controls.Add(logPanel,0,4);Controls.Add(root);
++  var cards=new TableLayoutPanel{Dock=DockStyle.Fill,ColumnCount=4};foreach(var (key,label) in new[]{("Copied","已复制"),("Failed","失败 / 重试"),("Deleted","过期删除"),("Skipped","已存在 / 范围外")}){cards.ColumnStyles.Add(new(SizeType.Percent,25));var panel=new Panel{Dock=DockStyle.Fill,BackColor=Color.White,Margin=new Padding(0,0,14,0),Padding=new Padding(20)};panel.Controls.Add(new Label{Text=label,Dock=DockStyle.Top,Height=30});var value=new Label{Name=key,Text="0",Dock=DockStyle.Bottom,Height=96,Font=new Font("Segoe UI",36,FontStyle.Bold)};panel.Controls.Add(value);cards.Controls.Add(panel);values.Add(key,value);}root.Controls.Add(cards,0,2);
++  var recent=new TableLayoutPanel{Dock=DockStyle.Fill,ColumnCount=1,RowCount=2};recent.RowStyles.Add(new(SizeType.Percent,50));recent.RowStyles.Add(new(SizeType.Percent,50));recent.Controls.Add(recentStation,0,0);recent.Controls.Add(recentFile,0,1);root.Controls.Add(recent,0,3);
++  var logTitle=new FlowLayoutPanel{Dock=DockStyle.Fill,Padding=new Padding(0,18,0,0)};logTitle.Controls.Add(Ui.Label("运行日志"));clock.Margin=new Padding(30,10,0,0);logTitle.Controls.Add(clock);root.Controls.Add(logTitle,0,4);var logPanel=new Panel{Dock=DockStyle.Fill,Padding=new Padding(18),BackColor=Color.White};logPanel.Controls.Add(log);root.Controls.Add(logPanel,0,5);Controls.Add(root);
+   try{if(initial!=null){config=initial;status.Text="测试配置（未启动）";}else if(File.Exists(configPath)){config=Durable.LoadConfig(configPath);status.Text=$"已停止 · 点胶 {config.DispenseItems.Count} / 组装 {config.BindItems.Count}";}}catch(Exception ex)when(ex is IOException or InvalidDataException or System.Text.Json.JsonException or ArgumentException){status.Text="配置错误，禁止启动："+ex.Message;}
+   timer.Tick+=(_,_)=>RefreshView();timer.Start();FormClosing+=async(_,e)=>{if(closing)return;e.Cancel=true;if(busy)return;busy=true;start.Enabled=settings.Enabled=false;try{if(engine!=null)await engine.DisposeAsync();closing=true;timer.Stop();Close();}catch(Exception ex){status.Text="无法确认停止，保留锁："+ex.Message;Ui.Error(this,ex);busy=false;}};
+  }
+  async Task Toggle(){if(busy)return;busy=true;start.Enabled=settings.Enabled=false;try{if(engine!=null){await engine.DisposeAsync();engine=null;start.Text="开始提取";status.Text="已停止";}else{config=Durable.LoadConfig(configPath);var fresh=new Engine(config);fresh.Start();engine=fresh;start.Text="停止提取";status.Text="监控中";}}catch(Exception ex)when(ex is IOException or InvalidDataException or System.Text.Json.JsonException or ArgumentException or InvalidOperationException or UnauthorizedAccessException){Ui.Error(this,ex);status.Text="操作失败："+ex.Message;}finally{busy=false;start.Enabled=true;settings.Enabled=engine==null;}}
+  void Configure(){if(engine!=null||busy)return;using var editor=new ConfigEditor(config);if(editor.ShowDialog(this)!=DialogResult.OK)return;try{using var lease=new OwnerLease();Durable.SaveConfig(configPath,editor.Edited);config=editor.Edited;status.Text="配置已保存；请点开始提取";}catch(Exception ex)when(ex is IOException or InvalidDataException or UnauthorizedAccessException){Ui.Error(this,ex);}}
+- void RefreshView(){clock.Text=DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");if(engine==null)return;var s=engine.Snapshot;values["Copied"].Text=s.Copied.ToString();values["Failed"].Text=s.Failed.ToString();values["Deleted"].Text=s.Deleted.ToString();values["Skipped"].Text=s.Skipped.ToString();status.Text=s.Status;var text=string.Join(Environment.NewLine,engine.Lines);if(text!=lastLog){lastLog=text;log.Text=text;log.SelectionStart=log.TextLength;log.ScrollToCaret();}}
++ void RefreshView(){clock.Text=DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");if(engine==null)return;var s=engine.Snapshot;values["Copied"].Text=s.Copied.ToString();values["Failed"].Text=s.Failed.ToString();values["Deleted"].Text=s.Deleted.ToString();values["Skipped"].Text=s.Skipped.ToString();recentFile.Text="最近文件："+(s.RecentFile.Length>0?s.RecentFile:"—");recentStation.Text="最近站位："+(s.RecentStation.Length>0?s.RecentStation:"—");status.Text=s.Status;var text=string.Join(Environment.NewLine,engine.Lines);if(text!=lastLog){lastLog=text;log.Text=text;log.SelectionStart=log.TextLength;log.ScrollToCaret();}}
+  void ApplyTheme(){AntdUI.Config.Mode=dark?AntdUI.TMode.Dark:AntdUI.TMode.Light;theme.Text=dark?"浅色模式":"深色模式";void Paint(Control c){if(c.Name=="Brand")return;c.BackColor=dark?Color.FromArgb(23,31,45):c is Panel||c==log?Color.White:Ui.Bg;c.ForeColor=dark?Color.FromArgb(230,235,244):Ui.Ink;foreach(Control child in c.Controls)Paint(child);}Paint(this);Invalidate(true);}
+  protected override void Dispose(bool disposing){if(disposing){timer.Dispose();foreach(var image in Controls.Cast<Control>().SelectMany(Walk).OfType<PictureBox>().Select(x=>x.Image))image?.Dispose();}base.Dispose(disposing);}
+  static IEnumerable<Control> Walk(Control root){yield return root;foreach(Control c in root.Controls)foreach(var x in Walk(c))yield return x;}
+--- baseline/Tests/LongHarness.cs
+
++++ reviewed/Tests/LongHarness.cs
+
+@@ -8,9 +8,32 @@
+
+  public static int Stress(){try{var root=Setup("stress");var c=Configure(root);c.BindItems=[new(){Token="31",StationName="共享目标组装31",SaveFolder=c.DispenseItems[0].SaveFolder}];var locks=new List<FileStream>();var watch=Stopwatch.StartNew();for(int i=0;i<630;i++){var f=FileName(c,i);File.WriteAllText(f,i>=600&&i<620?"<root>unfinished":"<root><id>"+i+"</id></root>");if(i>=620)locks.Add(new FileStream(f,FileMode.Open,FileAccess.ReadWrite,FileShare.None));}long copied=0,failed=0;using(var owner=new OwnerLease()){for(int pass=0;pass<10;pass++){var r=WorkerRunner.RunAsync(owner,c,"scan",DateTime.UtcNow,CancellationToken.None).GetAwaiter().GetResult();copied+=r.Copied;failed+=r.Failed;Console.WriteLine($"STRESS phase=fault pass={pass} copied={r.Copied} failed={r.Failed} messages={r.Messages.Count}");Program.Check(r.Messages.Count<=32,"messages unbounded");}foreach(var s in locks)s.Dispose();for(int i=600;i<620;i++)File.WriteAllText(FileName(c,i),"<root><id>"+i+"</id></root>");for(int pass=0;pass<10;pass++){var r=WorkerRunner.RunAsync(owner,c,"scan",DateTime.UtcNow,CancellationToken.None).GetAwaiter().GetResult();copied+=r.Copied;failed+=r.Failed;Console.WriteLine($"STRESS phase=recover pass={pass} copied={r.Copied} failed={r.Failed}");}}
+   var folder=c.DispenseItems[0].SaveFolder;Program.Check(Directory.GetFiles(folder,"Request*.xml").Length==630,"stress did not recover all630");Program.Check(copied==630,"stress idempotence mismatch");var foreign=Path.Combine(folder,"Request_foreign.xml");File.WriteAllText(foreign,"<foreign/>");var purge=new ScanResult();Ownership.Purge(folder,1,DateTime.UtcNow.AddDays(2),purge);Program.Check(purge.Deleted==630&&File.Exists(foreign),"safe purge mismatch");Program.Check(Directory.GetFiles(c.WatchRoot,"Request*.xml",SearchOption.AllDirectories).Length==630,"source changed");Console.WriteLine($"STRESS RESULT files=630 copied={copied} faultCount={failed} recovered=630 purged={purge.Deleted} foreignPreserved=true sourcePreserved=true elapsedSec={watch.Elapsed.TotalSeconds:F3} root={root}");return 0;
+  }catch(Exception ex){Console.WriteLine("STRESS FAIL "+ex);return 1;}}
+- public static int Soak(int seconds){try{if(seconds<15||seconds>3600)throw new ArgumentException("soak seconds must be15..3600");var root=Setup("soak");var c=Configure(root);c.MaxLogLines=50;for(int i=0;i<30;i++)File.WriteAllText(FileName(c,i),"<root><id>"+i+"</id></root>");var engine=new Engine(c);var timer=Stopwatch.StartNew();var samples=new List<object>();long initialMemory=0,peakMemory=0;int initialHandles=0,peakHandles=0;bool offline=false;
+- engine.Start();try{for(int i=0;timer.Elapsed.TotalSeconds<seconds;i++){if(!offline)File.WriteAllText(FileName(c,0),i%20==5?"<root>unfinished":"<root><version>"+(i%6)+"</version></root>");if(i%40==15&&!offline){Directory.Move(c.WatchRoot,c.WatchRoot+".offline");offline=true;}if(i%40==20&&offline){Directory.Move(c.WatchRoot+".offline",c.WatchRoot);offline=false;}Thread.Sleep(1000);using var process=Process.GetCurrentProcess();process.Refresh();if(i==5){initialMemory=process.PrivateMemorySize64;initialHandles=process.HandleCount;}peakMemory=Math.Max(peakMemory,process.PrivateMemorySize64);peakHandles=Math.Max(peakHandles,process.HandleCount);var s=engine.Snapshot;var sample=new{sec=Math.Round(timer.Elapsed.TotalSeconds,3),privateBytes=process.PrivateMemorySize64,workingSet=process.WorkingSet64,handles=process.HandleCount,threads=process.Threads.Count,copied=s.Copied,failed=s.Failed,logLines=engine.Lines.Length};samples.Add(sample);Console.WriteLine(JsonSerializer.Serialize(sample));Program.Check(engine.Lines.Length<=50,"soak log unbounded");Program.Check(s.Running,"engine stopped during soak");}}
+- finally{engine.StopAsync().GetAwaiter().GetResult();}
+- var logs=Directory.GetFiles(MachineState.Root,"engine*.log");Program.Check(logs.Length<=3&&logs.All(x=>new FileInfo(x).Length<=1048576),"disk logs exceed limits");Program.Check(peakMemory-initialMemory<67108864&&peakHandles-initialHandles<100,"soak resource drift exceeded64MiB/100handles");Program.Check(engine.Snapshot.Failed>0&&engine.Snapshot.Copied>30,"fault/recovery not exercised");using(var after=new OwnerLease()){}Durable.Write(Path.Combine(root,"samples.json"),JsonSerializer.Serialize(samples,new JsonSerializerOptions{WriteIndented=true}),1048576);Console.WriteLine($"SOAK RESULT requestedSec={seconds} actualSec={timer.Elapsed.TotalSeconds:F3} samples={samples.Count} baselinePrivate={initialMemory} peakPrivate={peakMemory} baselineHandles={initialHandles} peakHandles={peakHandles} copied={engine.Snapshot.Copied} failed={engine.Snapshot.Failed} logFiles={logs.Length} logBytes={logs.Sum(x=>new FileInfo(x).Length)} root={root}");return 0;
++ // Windows reports ERROR_ACCESS_DENIED for MoveDirectory while an enumerator holds
++ // a non-delete-shared directory handle. Retry only known transient IO codes, bounded;
++ // a permanent ACL/sharing failure must still fail the harness, never fake recovery.
++ static void FixtureIo(Action action){var clock=Stopwatch.StartNew();for(;;){try{action();return;}catch(IOException ex)when((ex.HResult&0xffff) is 5 or 32 or 33 && clock.Elapsed.TotalSeconds<5){Thread.Sleep(50);}}}
++ static string ExpectedExport(Config c,string source,string text){var pathHash=Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(Path.GetFullPath(source).ToUpperInvariant())));var dataHash=Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(text)));return Path.Combine(c.DispenseItems[0].SaveFolder,Path.GetFileNameWithoutExtension(source)+"__"+pathHash[..16]+"_"+dataHash[..16]+".xml");}
++ public static int Soak(int seconds){try{
++  if(seconds<15||seconds>3600)throw new ArgumentException("soak seconds must be15..3600");
++  var root=Setup("soak");var c=Configure(root);c.MaxLogLines=50;
++  for(int i=0;i<30;i++)File.WriteAllText(FileName(c,i),"<root><id>"+i+"</id></root>");
++  var engine=new Engine(c);var timer=Stopwatch.StartNew();var samples=new List<object>();
++  long initialMemory=0,peakMemory=0,failedBeforeOutage=0;int initialHandles=0,peakHandles=0,cycles=0,recovered=0;bool offline=false;string? recoveryPath=null;string recoveryText="";double recoveryDeadline=0;
++  void VerifyRecovery(){if(recoveryPath==null)return;if(File.Exists(recoveryPath)){Program.Check(File.ReadAllText(recoveryPath)==recoveryText,"post-outage marker bytes differ");recovered++;Console.WriteLine($"SOAK RECOVERED cycle={recovered} sec={timer.Elapsed.TotalSeconds:F3} marker={Path.GetFileName(recoveryPath)} copied={engine.Snapshot.Copied} failed={engine.Snapshot.Failed}");recoveryPath=null;}else Program.Check(timer.Elapsed.TotalSeconds<recoveryDeadline,"post-outage new marker was not copied within10seconds");}
++  void Restore(){FixtureIo(()=>Directory.Move(c.WatchRoot+".offline",c.WatchRoot));offline=false;Program.Check(engine.Snapshot.Failed>failedBeforeOutage,"source outage was not observed by engine");var marker=FileName(c,1000+cycles);recoveryText="<root><recoveryCycle>"+cycles+"</recoveryCycle></root>";FixtureIo(()=>File.WriteAllText(marker,recoveryText));recoveryPath=ExpectedExport(c,marker,recoveryText);recoveryDeadline=timer.Elapsed.TotalSeconds+10;Console.WriteLine($"SOAK RESTORED cycle={cycles} sec={timer.Elapsed.TotalSeconds:F3}");}
++  engine.Start();Console.WriteLine("SOAK START root="+root);
++  try{for(int i=0;timer.Elapsed.TotalSeconds<seconds;i++){
++   VerifyRecovery();
++   if(!offline)FixtureIo(()=>File.WriteAllText(FileName(c,0),i%20==5?"<root>unfinished":"<root><version>"+i+"</version></root>"));
++   if(i%40==15&&!offline){Program.Check(recoveryPath==null,"previous recovery not verified");failedBeforeOutage=engine.Snapshot.Failed;FixtureIo(()=>Directory.Move(c.WatchRoot,c.WatchRoot+".offline"));offline=true;cycles++;Console.WriteLine($"SOAK OFFLINE cycle={cycles} sec={timer.Elapsed.TotalSeconds:F3}");}
++   if(i%40==20&&offline)Restore();
++   Thread.Sleep(1000);using var process=Process.GetCurrentProcess();process.Refresh();if(i==5){initialMemory=process.PrivateMemorySize64;initialHandles=process.HandleCount;}peakMemory=Math.Max(peakMemory,process.PrivateMemorySize64);peakHandles=Math.Max(peakHandles,process.HandleCount);var s=engine.Snapshot;
++   var sample=new{sec=Math.Round(timer.Elapsed.TotalSeconds,3),privateBytes=process.PrivateMemorySize64,workingSet=process.WorkingSet64,handles=process.HandleCount,threads=process.Threads.Count,copied=s.Copied,failed=s.Failed,logLines=engine.Lines.Length,offline,cycles,recovered};samples.Add(sample);Console.WriteLine(JsonSerializer.Serialize(sample));Program.Check(engine.Lines.Length<=50,"soak log unbounded");Program.Check(s.Running,"engine stopped during soak");
++  }
++  if(offline)Restore();while(recoveryPath!=null){VerifyRecovery();if(recoveryPath!=null)Thread.Sleep(100);}
++  }finally{engine.StopAsync().GetAwaiter().GetResult();}
++  var logs=Directory.GetFiles(MachineState.Root,"engine*.log");Program.Check(logs.Length<=3&&logs.All(x=>new FileInfo(x).Length<=1048576),"disk logs exceed limits");Program.Check(peakMemory-initialMemory<67108864&&peakHandles-initialHandles<100,"soak resource drift exceeded64MiB/100handles");Program.Check(engine.Snapshot.Failed>0&&engine.Snapshot.Copied>30&&recovered==cycles,"fault/recovery not exercised");
++  Program.Check(Directory.GetFiles(c.WatchRoot,"Request*.xml",SearchOption.AllDirectories).Length==30+cycles,"soak source files lost");using(var after=new OwnerLease()){}
++  Durable.Write(Path.Combine(root,"samples.json"),JsonSerializer.Serialize(samples,new JsonSerializerOptions{WriteIndented=true}),1048576);Console.WriteLine($"SOAK RESULT requestedSec={seconds} actualSec={timer.Elapsed.TotalSeconds:F3} samples={samples.Count} baselinePrivate={initialMemory} peakPrivate={peakMemory} baselineHandles={initialHandles} peakHandles={peakHandles} copied={engine.Snapshot.Copied} failed={engine.Snapshot.Failed} outageCycles={cycles} verifiedRecoveries={recovered} sourcePreserved=true logFiles={logs.Length} logBytes={logs.Sum(x=>new FileInfo(x).Length)} root={root}");return 0;
+  }catch(Exception ex){Console.WriteLine("SOAK FAIL "+ex);return 1;}}
+ }

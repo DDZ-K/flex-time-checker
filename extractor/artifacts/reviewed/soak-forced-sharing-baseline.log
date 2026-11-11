@@ -1,0 +1,19 @@
+{"sec":1.037,"privateBytes":11309056,"workingSet":38682624,"handles":272,"threads":15,"copied":30,"failed":0,"logLines":2}
+{"sec":2.055,"privateBytes":11325440,"workingSet":39604224,"handles":277,"threads":15,"copied":30,"failed":0,"logLines":2}
+{"sec":3.062,"privateBytes":11960320,"workingSet":40448000,"handles":275,"threads":15,"copied":31,"failed":0,"logLines":3}
+{"sec":4.069,"privateBytes":12070912,"workingSet":41328640,"handles":278,"threads":15,"copied":32,"failed":0,"logLines":4}
+{"sec":5.089,"privateBytes":12201984,"workingSet":41598976,"handles":281,"threads":15,"copied":32,"failed":0,"logLines":4}
+{"sec":6.109,"privateBytes":12333056,"workingSet":41836544,"handles":280,"threads":15,"copied":32,"failed":1,"logLines":5}
+{"sec":7.129,"privateBytes":13275136,"workingSet":42979328,"handles":284,"threads":15,"copied":32,"failed":1,"logLines":5}
+{"sec":8.137,"privateBytes":13238272,"workingSet":42938368,"handles":282,"threads":15,"copied":32,"failed":1,"logLines":5}
+{"sec":9.145,"privateBytes":14135296,"workingSet":43442176,"handles":284,"threads":15,"copied":32,"failed":1,"logLines":5}
+{"sec":10.164,"privateBytes":13774848,"workingSet":43675648,"handles":288,"threads":15,"copied":32,"failed":1,"logLines":5}
+{"sec":11.172,"privateBytes":13774848,"workingSet":43700224,"handles":286,"threads":15,"copied":32,"failed":1,"logLines":5}
+{"sec":12.192,"privateBytes":14635008,"workingSet":44089344,"handles":288,"threads":15,"copied":33,"failed":1,"logLines":6}
+{"sec":13.198,"privateBytes":14557184,"workingSet":44744704,"handles":292,"threads":15,"copied":33,"failed":1,"logLines":6}
+{"sec":14.218,"privateBytes":14569472,"workingSet":44777472,"handles":290,"threads":15,"copied":33,"failed":1,"logLines":6}
+{"sec":15.24,"privateBytes":14835712,"workingSet":45031424,"handles":292,"threads":15,"copied":33,"failed":1,"logLines":6}
+SOAK FAIL System.IO.IOException: The process cannot access the file because it is being used by another process.
+   at System.IO.FileSystem.MoveDirectory(String sourceFullPath, String destFullPath, Boolean _)
+   at System.IO.FileSystem.MoveDirectory(String sourceFullPath, String destFullPath)
+   at Harness.Soak(Int32 seconds)

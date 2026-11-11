@@ -1,0 +1,2552 @@
+[
+  {
+    "name": "Accessibility.dll",
+    "bytes": 21304,
+    "sha256": "767765b28e4066615b602e11e3d690371a5cf18879f77b56505cca1817561493"
+  },
+  {
+    "name": "AntdUI.dll",
+    "bytes": 3196416,
+    "sha256": "a5a5952f96d32c385210a722d27b7d2e80f9408f6cf16a687115cf0cefa608a6"
+  },
+  {
+    "name": "clretwrc.dll",
+    "bytes": 311048,
+    "sha256": "01aa7d74d16ae2ff436ae7ac84b87b2f15782bc0967b614a39a104966d703fc3"
+  },
+  {
+    "name": "clrgc.dll",
+    "bytes": 668464,
+    "sha256": "965f6c73773166a6f83cd90d8bae7d6f110b0c833763944486b60c37d1e98052"
+  },
+  {
+    "name": "clrjit.dll",
+    "bytes": 1778440,
+    "sha256": "35b450153b686e94821d3aa82ef6669f57f60088c1d0cc4af9d967107a7179f9"
+  },
+  {
+    "name": "config.example.json",
+    "bytes": 615,
+    "sha256": "f9aae5d3cc0198b248fb4e10d025e92ebdaaf615dab1d7f57a18628a27e5a8b3"
+  },
+  {
+    "name": "coreclr.dll",
+    "bytes": 4995376,
+    "sha256": "36e658ced657f4b29526d0abf8a2b8e208c20a2730512f25b80d3eec7955920f"
+  },
+  {
+    "name": "createdump.exe",
+    "bytes": 71992,
+    "sha256": "42fec70d833344ae2939dd357b57d756505b6054c23c788ec400ea0ee4a5c933"
+  },
+  {
+    "name": "D3DCompiler_47_cor3.dll",
+    "bytes": 4916840,
+    "sha256": "a05d04a270f68c8c6d6ea2d23bebf8cd1d5453b26b5442fa54965f90f1c62082"
+  },
+  {
+    "name": "DirectWriteForwarder.dll",
+    "bytes": 502064,
+    "sha256": "00103da5f977c634db3761a17f897ae4e5f76b1511db947d49626eef9a48b672"
+  },
+  {
+    "name": "FlexExtractor.Core.dll",
+    "bytes": 59904,
+    "sha256": "c40c4fcfbcdb9ba2a1dc5828f17064e0408ff132be1f7057d365ec846901567a"
+  },
+  {
+    "name": "FlexExtractor.Tests.deps.json",
+    "bytes": 65484,
+    "sha256": "9784b722e59aff02f07f2185357df116dfc086282b16d6aab0becee90ee03b60"
+  },
+  {
+    "name": "FlexExtractor.Tests.dll",
+    "bytes": 73216,
+    "sha256": "825ff606689562c5bc2d0c0069b11e4fe0ea6c70198730b888a3b59cfafcb4f7"
+  },
+  {
+    "name": "FlexExtractor.Tests.exe",
+    "bytes": 151552,
+    "sha256": "95ee2c936db466725504dd3b18ce3528fb847e5360053dab310f2597e2a4df91"
+  },
+  {
+    "name": "FlexExtractor.Tests.runtimeconfig.json",
+    "bytes": 525,
+    "sha256": "35be036df53a45ab23455e856266911356051bbd0614c45c9b179bdec3b39bb9"
+  },
+  {
+    "name": "FlexExtractor.Worker.deps.json",
+    "bytes": 27849,
+    "sha256": "cd8f800abe0fe86bce7ff87c27ce62be6635d4bfe252623f66856d8476ba3dc2"
+  },
+  {
+    "name": "FlexExtractor.Worker.dll",
+    "bytes": 4096,
+    "sha256": "466222ff7b94a55b7c40d7b19ed404010d44c8556103b835bfcc1c5724d30075"
+  },
+  {
+    "name": "FlexExtractor.Worker.exe",
+    "bytes": 151552,
+    "sha256": "a92a83446688b80df95250cc26e07e410e85ce0f0a7f4e1c9e7cbc91a0ccb2b3"
+  },
+  {
+    "name": "FlexExtractor.Worker.runtimeconfig.json",
+    "bytes": 429,
+    "sha256": "d45d663cdde9e3002805ee89b55f73d6502e9ca2cbbe9e89e2ef61c73ea9ae4f"
+  },
+  {
+    "name": "FlexRequestExtractor.deps.json",
+    "bytes": 36836,
+    "sha256": "4c8c4d3e907112d95d6d95ee42d4024b58f313df33a80382081dfb4f433e9ad9"
+  },
+  {
+    "name": "FlexRequestExtractor.dll",
+    "bytes": 154624,
+    "sha256": "ff9071ad664542a2cf7fcb2f0decbdb947174cea94b4b36255e079e9580da88e"
+  },
+  {
+    "name": "FlexRequestExtractor.exe",
+    "bytes": 177152,
+    "sha256": "aa293de68df859e8b82c6dd570951ca66403c90cd2a1de33714177c167b26d52"
+  },
+  {
+    "name": "FlexRequestExtractor.runtimeconfig.json",
+    "bytes": 525,
+    "sha256": "35be036df53a45ab23455e856266911356051bbd0614c45c9b179bdec3b39bb9"
+  },
+  {
+    "name": "FlexRequestExtractor.Service.deps.json",
+    "bytes": 55176,
+    "sha256": "e18a9dfe21f4659fd687b2a2d1f88ed7d8cda5ea738f7a6e5981d47fda16ed66"
+  },
+  {
+    "name": "FlexRequestExtractor.Service.dll",
+    "bytes": 9728,
+    "sha256": "a10e80b48bf2fd8d0781126305a33e71e12c4a765c4ec52eb7b0b2b9e5d6c9c4"
+  },
+  {
+    "name": "FlexRequestExtractor.Service.exe",
+    "bytes": 152064,
+    "sha256": "c77a58a6b1f34b697cd1357df740ed6beee7afad2370a112cafd5a11e4316e14"
+  },
+  {
+    "name": "FlexRequestExtractor.Service.runtimeconfig.json",
+    "bytes": 429,
+    "sha256": "d45d663cdde9e3002805ee89b55f73d6502e9ca2cbbe9e89e2ef61c73ea9ae4f"
+  },
+  {
+    "name": "hostfxr.dll",
+    "bytes": 366856,
+    "sha256": "aaa156793b9b22ece28553b21a414036da1aba7121ea9bc01ff481d1fb25911c"
+  },
+  {
+    "name": "hostpolicy.dll",
+    "bytes": 407312,
+    "sha256": "a0b14a705c5ae27d83de5736a2b45aa0d0ebc7f497340301749bf9e44a1c338f"
+  },
+  {
+    "name": "Microsoft.CSharp.dll",
+    "bytes": 1005880,
+    "sha256": "8e87bcd435b594e74fd3dd1c4529e98fef9f2ba23bcf83c00cad34c9c8466467"
+  },
+  {
+    "name": "Microsoft.DiaSymReader.Native.amd64.dll",
+    "bytes": 2195504,
+    "sha256": "315a61c47c41b8d4c815f4274bb6584c1d24b4640c7eedc354ed5b03a9a1361e"
+  },
+  {
+    "name": "Microsoft.Extensions.Configuration.Abstractions.dll",
+    "bytes": 27936,
+    "sha256": "fefcdb267a73099cb90e5af56b5ef2bca59bed974339b3a6810352bde23537a6"
+  },
+  {
+    "name": "Microsoft.Extensions.Configuration.Binder.dll",
+    "bytes": 42784,
+    "sha256": "beac12f7bba4e22cda2acd9ddfe944a4ed56abec414e084edd147bd5dad3c032"
+  },
+  {
+    "name": "Microsoft.Extensions.Configuration.CommandLine.dll",
+    "bytes": 24736,
+    "sha256": "688ef791d4bb2e84839cfb28ec83772d561d958f6d0b20ca28be1c6efc9ea5f7"
+  },
+  {
+    "name": "Microsoft.Extensions.Configuration.dll",
+    "bytes": 43800,
+    "sha256": "b5cd9da2c3364a5b201cecb0c80e25227d27ba44d96343d2894ff8ef3fd81550"
+  },
+  {
+    "name": "Microsoft.Extensions.Configuration.EnvironmentVariables.dll",
+    "bytes": 21280,
+    "sha256": "797b3034fd173caff0850cd580428a5f4aeb7da27bf03369ad7f2b0996019399"
+  },
+  {
+    "name": "Microsoft.Extensions.Configuration.FileExtensions.dll",
+    "bytes": 27936,
+    "sha256": "acf5896d0f34fa1a43295797584b3805c24743ce25ee87538eeec83b012bbf4f"
+  },
+  {
+    "name": "Microsoft.Extensions.Configuration.Json.dll",
+    "bytes": 26920,
+    "sha256": "15e1262880f263806a2808d750688739662323b20ccd9835222fff8c30899a4a"
+  },
+  {
+    "name": "Microsoft.Extensions.Configuration.UserSecrets.dll",
+    "bytes": 25384,
+    "sha256": "206cad6a76676e1fe74e12cea23d92aa7ae3eb06217315617f6f267af1383e58"
+  },
+  {
+    "name": "Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+    "bytes": 63768,
+    "sha256": "67fa4325000db017dc0c35829b416f024f042d24efb868bcf17a895ee6500a93"
+  },
+  {
+    "name": "Microsoft.Extensions.DependencyInjection.dll",
+    "bytes": 92952,
+    "sha256": "158761ce778e799949f3a3060c461b1055bb35f1f5a65eff0e42397849f09ecd"
+  },
+  {
+    "name": "Microsoft.Extensions.Diagnostics.Abstractions.dll",
+    "bytes": 30480,
+    "sha256": "9864dbcfdbfe395bbd64deec7568fdaf0cbc3850f0cd8f53e7359189bd158082"
+  },
+  {
+    "name": "Microsoft.Extensions.Diagnostics.dll",
+    "bytes": 35592,
+    "sha256": "31e08b4e0018ee136d65dfcca8f655a1a74cf8841e6029044c99b2e75d5f59f0"
+  },
+  {
+    "name": "Microsoft.Extensions.FileProviders.Abstractions.dll",
+    "bytes": 22176,
+    "sha256": "f08b1f597abb3647ab6e844282ded763e6078dbef6dd54b9d956ca419fac42fe"
+  },
+  {
+    "name": "Microsoft.Extensions.FileProviders.Physical.dll",
+    "bytes": 44808,
+    "sha256": "9f67076c79a953f5068c0792114f9722527cfa17ed7414c73fd14833bfe59918"
+  },
+  {
+    "name": "Microsoft.Extensions.FileSystemGlobbing.dll",
+    "bytes": 45848,
+    "sha256": "ed0855b522f09b5a9ddbb85de62042c25e07d10044086da8620c845de41e473c"
+  },
+  {
+    "name": "Microsoft.Extensions.Hosting.Abstractions.dll",
+    "bytes": 51472,
+    "sha256": "27f074952005f74ba37fc62756690255e5f743ff3f7426fcdeb65a0d6ec9ff77"
+  },
+  {
+    "name": "Microsoft.Extensions.Hosting.dll",
+    "bytes": 72488,
+    "sha256": "22ce5576adec386f12cc92de15b38c85405995b4b0e6f610a00c918a72433f62"
+  },
+  {
+    "name": "Microsoft.Extensions.Hosting.WindowsServices.dll",
+    "bytes": 29872,
+    "sha256": "ff86f44f29d91df5a23ced211f19d20833e689eae30b2cfe023dad191494fba2"
+  },
+  {
+    "name": "Microsoft.Extensions.Logging.Abstractions.dll",
+    "bytes": 65320,
+    "sha256": "45c22524218541717e4a0ade36847c1cda4921f5945b4975a1c78ddfe023d0b1"
+  },
+  {
+    "name": "Microsoft.Extensions.Logging.Configuration.dll",
+    "bytes": 27912,
+    "sha256": "372dcb44f6f9243346cb82db99bb01f27a0f3c8019902481bd45d65c311a732d"
+  },
+  {
+    "name": "Microsoft.Extensions.Logging.Console.dll",
+    "bytes": 71464,
+    "sha256": "d42da097bb5ef92a3eb9889726e5c231bb5d0d4ca7ca7132ed944514d52bec01"
+  },
+  {
+    "name": "Microsoft.Extensions.Logging.Debug.dll",
+    "bytes": 20248,
+    "sha256": "3b1dc1ada5bfeb19fe4ba5225db9c9950dca250fb2daaac259b537c5d0894a65"
+  },
+  {
+    "name": "Microsoft.Extensions.Logging.dll",
+    "bytes": 50976,
+    "sha256": "b2cfba2e05ee89a91e9bc9cf112468a5f4fa05d1a77ea81c131ea656f3d133c2"
+  },
+  {
+    "name": "Microsoft.Extensions.Logging.EventLog.dll",
+    "bytes": 25760,
+    "sha256": "4913c4d4d3837176bcb830a8a76402873ada8c35050a3a93b29be092efddb335"
+  },
+  {
+    "name": "Microsoft.Extensions.Logging.EventSource.dll",
+    "bytes": 34568,
+    "sha256": "2c043ea968ecaefd7b935255a8db84d5666fb28a791c67d3555a611bc0c8b83c"
+  },
+  {
+    "name": "Microsoft.Extensions.Options.ConfigurationExtensions.dll",
+    "bytes": 22688,
+    "sha256": "b9ea7bb70bfecf5c649f2559300fce232729257cfdb4221dc96f1ea778227353"
+  },
+  {
+    "name": "Microsoft.Extensions.Options.dll",
+    "bytes": 64776,
+    "sha256": "5e01894cbc0661bacb8ca8f485a40d5ee4e02f28fef58007668a0276431b4693"
+  },
+  {
+    "name": "Microsoft.Extensions.Primitives.dll",
+    "bytes": 43680,
+    "sha256": "446ff16e903e7479558816e213a3adee9a1c1adad65a56d853801b10933e29d7"
+  },
+  {
+    "name": "Microsoft.VisualBasic.Core.dll",
+    "bytes": 1247536,
+    "sha256": "528ed5611575df89016d4256931d376e4ad2674132e07675218b1e3031dbf2bc"
+  },
+  {
+    "name": "Microsoft.VisualBasic.dll",
+    "bytes": 19208,
+    "sha256": "e86cdde08b41c7bf5df8c721dc80dd7d55ea8945e5ad4df9058b0e387c10a618"
+  },
+  {
+    "name": "Microsoft.VisualBasic.Forms.dll",
+    "bytes": 248072,
+    "sha256": "8db19ac22cb4d35c3e48945a4515db0f539187d6e403d3bbe626be15528d7494"
+  },
+  {
+    "name": "Microsoft.Win32.Primitives.dll",
+    "bytes": 15672,
+    "sha256": "633d05a5b8362b4831321d575fdb21a5e4c06d10682b60fa9343950d54496d27"
+  },
+  {
+    "name": "Microsoft.Win32.Registry.AccessControl.dll",
+    "bytes": 35080,
+    "sha256": "9dd2f07626e383c47df278ef5fdcd0d6c07599ed36ba00361dd9f06a1ef65f78"
+  },
+  {
+    "name": "Microsoft.Win32.Registry.dll",
+    "bytes": 121096,
+    "sha256": "d154b6a674b3d56c6a7d12addf15c310d754eeac3126a40a35e501ca823d167f"
+  },
+  {
+    "name": "Microsoft.Win32.SystemEvents.dll",
+    "bytes": 96520,
+    "sha256": "7f1976886a9677e4f1b82768e418b09733d54458b6c680d5ce1681e0147cae6b"
+  },
+  {
+    "name": "mscordaccore.dll",
+    "bytes": 1346392,
+    "sha256": "c4c706a25775ac5d611be3936cef45539652a59fba8526a9f21b25aa13848018"
+  },
+  {
+    "name": "mscordaccore_amd64_amd64_8.0.2225.52707.dll",
+    "bytes": 1346392,
+    "sha256": "c4c706a25775ac5d611be3936cef45539652a59fba8526a9f21b25aa13848018"
+  },
+  {
+    "name": "mscordbi.dll",
+    "bytes": 1234264,
+    "sha256": "623eabed437e266785a6cee0be2bfb2d73f0800b04a96019936ecb2f1c6303f6"
+  },
+  {
+    "name": "mscorlib.dll",
+    "bytes": 59704,
+    "sha256": "9d967f5302bfda3259296d0041d6da729698083bf5ba33d01d48cad92d31aa82"
+  },
+  {
+    "name": "mscorrc.dll",
+    "bytes": 137016,
+    "sha256": "021fcbc1ed477e345cadf77611017ec423cf4dcd95fbdfa20eac9fcaa944f1ef"
+  },
+  {
+    "name": "msquic.dll",
+    "bytes": 529480,
+    "sha256": "b2b7fd2dc05b0009acd3f0de7ba443c660c87b1308774a5811fdb8873a76de78"
+  },
+  {
+    "name": "netstandard.dll",
+    "bytes": 101176,
+    "sha256": "42ac89969dfaa4899496dfe43a71f2c7fb9cd9afe7a63d925eb66ca2dd82e3ef"
+  },
+  {
+    "name": "PenImc_cor3.dll",
+    "bytes": 157960,
+    "sha256": "3caa5846b7bfc1dbdd38707bc7703232fdb7aea715a878bddc14e745095d4826"
+  },
+  {
+    "name": "PresentationCore.dll",
+    "bytes": 8542480,
+    "sha256": "2f8bffdb7b0019df711e4f13eee102075823c6c2c325841a9068ed15b18d9042"
+  },
+  {
+    "name": "PresentationFramework-SystemCore.dll",
+    "bytes": 39184,
+    "sha256": "6d9143df2a021c174aeb2026b0fba26f975be62cc450a08b5cab099b551a2a4c"
+  },
+  {
+    "name": "PresentationFramework-SystemData.dll",
+    "bytes": 35088,
+    "sha256": "b6a4180e6c540ac4af506f29ef3253ea48f83d13639fc2c93696a50c315bc68e"
+  },
+  {
+    "name": "PresentationFramework-SystemDrawing.dll",
+    "bytes": 35120,
+    "sha256": "560bcaf5bf12cd38d3e6818caa087034eb125cb404ad39f5e84d7ce21819986f"
+  },
+  {
+    "name": "PresentationFramework-SystemXml.dll",
+    "bytes": 35120,
+    "sha256": "36aed00a2c2c554f7fe89ac3a04feff76104035144e0f0c08d215805c3b3f62c"
+  },
+  {
+    "name": "PresentationFramework-SystemXmlLinq.dll",
+    "bytes": 31024,
+    "sha256": "ae3f010a9a625d3ea9f6b57264075406f1eb075098e3079ef36f3b1ad9618049"
+  },
+  {
+    "name": "PresentationFramework.Aero.dll",
+    "bytes": 444688,
+    "sha256": "e0b63678430ab785a17c4f4b71e3d58bec9c325a80c1cd51d3864385fe4185e2"
+  },
+  {
+    "name": "PresentationFramework.Aero2.dll",
+    "bytes": 448816,
+    "sha256": "6d99c250158027e6528346f6250520f2b10d4e331f39128802fff2a051e8675d"
+  },
+  {
+    "name": "PresentationFramework.AeroLite.dll",
+    "bytes": 239880,
+    "sha256": "e6164d7c1b6e8ec869e6b3ddba700cb4e22f6b77ae5839d571f6a857b2a678c7"
+  },
+  {
+    "name": "PresentationFramework.Classic.dll",
+    "bytes": 272656,
+    "sha256": "150a5d415dee192baeefcb41244e03e351201c158729a0011f2bc06e50eda1a2"
+  },
+  {
+    "name": "PresentationFramework.dll",
+    "bytes": 16128264,
+    "sha256": "da96c525aae7379b1c3ab567a12f556aecab756a5bd4b548cf90e3db3b985f19"
+  },
+  {
+    "name": "PresentationFramework.Luna.dll",
+    "bytes": 669968,
+    "sha256": "3f2aa5985f1abca5c3f1e53c7b15acb834c318daf7304a3e0a9892b080935d12"
+  },
+  {
+    "name": "PresentationFramework.Royale.dll",
+    "bytes": 334088,
+    "sha256": "481c15b0c8adaac7d38313001c166e546d87607bf7063d052f8a255b51ec942c"
+  },
+  {
+    "name": "PresentationNative_cor3.dll",
+    "bytes": 1235752,
+    "sha256": "75fc0d383ea009ea9453a4589fa8d88d149abcac371bb5eb983d6ece8f1243eb"
+  },
+  {
+    "name": "PresentationUI.dll",
+    "bytes": 1288464,
+    "sha256": "ec4008f919181f250cf014fd2129e3ba722cf07b66d823f9c7cd52bddf5df7c4"
+  },
+  {
+    "name": "ReachFramework.dll",
+    "bytes": 1603848,
+    "sha256": "dcc94bdce4d6321772d74576b86a62baf1ce514467133621ca11b852bd08a2f5"
+  },
+  {
+    "name": "README.md",
+    "bytes": 9514,
+    "sha256": "8979e465c0a65bd9faad1c017121c545d7fbf0bc372aae014b290a484b052699"
+  },
+  {
+    "name": "System.AppContext.dll",
+    "bytes": 15664,
+    "sha256": "ca7052f6ed6ee6fad1270f308af1f1ba4103020e77eca4873d501ee586b38e18"
+  },
+  {
+    "name": "System.Buffers.dll",
+    "bytes": 15664,
+    "sha256": "73729d26e25c3973a221b408d94f087c0643663ed3a0f31759ccd3e3cd794497"
+  },
+  {
+    "name": "System.CodeDom.dll",
+    "bytes": 489776,
+    "sha256": "74440443bd026e82ab0762b76852c247065f4f11f8a46b984e8e6b2064e4ad0e"
+  },
+  {
+    "name": "System.Collections.Concurrent.dll",
+    "bytes": 276744,
+    "sha256": "103a05c9c77b66368e5a3e5aedce5b1c7d973f73975d67c67b1b09a3b7255c8f"
+  },
+  {
+    "name": "System.Collections.dll",
+    "bytes": 260360,
+    "sha256": "ebbd44a284dc848732f126ecf235bfe0b11b708250140ed74645500f08db3756"
+  },
+  {
+    "name": "System.Collections.Immutable.dll",
+    "bytes": 837904,
+    "sha256": "b8fb86d6c7e020a3b74b96e91c8964e3e67d039612b48887b8a7192888458b04"
+  },
+  {
+    "name": "System.Collections.NonGeneric.dll",
+    "bytes": 104720,
+    "sha256": "d86d173a169633a52a3814ae99dc985ab41ec922c8e10d713e675c62a2888f2e"
+  },
+  {
+    "name": "System.Collections.Specialized.dll",
+    "bytes": 104752,
+    "sha256": "b8417b1e463e49ad0ab4024ee5b2b204a37f737aaacda4ab001701b08c2204c0"
+  },
+  {
+    "name": "System.ComponentModel.Annotations.dll",
+    "bytes": 203016,
+    "sha256": "48c78db05964d243d3aaf2b4a75ef841749abf17e47607013a1135c0e4b3c29c"
+  },
+  {
+    "name": "System.ComponentModel.DataAnnotations.dll",
+    "bytes": 17200,
+    "sha256": "384c2d62f61cb348a6c722dc34fdb5835a8744125ebd5f6f51f20bb44cfdeddc"
+  },
+  {
+    "name": "System.ComponentModel.dll",
+    "bytes": 30992,
+    "sha256": "ec200b8a9d52d88b37640e94bb1f2622e2f8d6f40de7e7d8a73bb4e95997a307"
+  },
+  {
+    "name": "System.ComponentModel.EventBasedAsync.dll",
+    "bytes": 47368,
+    "sha256": "ff50f5f17ccc09459d5c479ec0d18a965e7b87880779e8a49773fc693f36e773"
+  },
+  {
+    "name": "System.ComponentModel.Primitives.dll",
+    "bytes": 80136,
+    "sha256": "8975f93099ae6b4f67277d3da41b189d706fb151705ff55a12453b33e34b6760"
+  },
+  {
+    "name": "System.ComponentModel.TypeConverter.dll",
+    "bytes": 747784,
+    "sha256": "eebdbeb13e62c967d3860aac7b34d49ea835bede99a2392d70716b7ad453d3e8"
+  },
+  {
+    "name": "System.Configuration.ConfigurationManager.dll",
+    "bytes": 1075504,
+    "sha256": "3d61dc12421ba2338599e67668475caa5ef29e2bbd2575f4a5e44557a9f2d29c"
+  },
+  {
+    "name": "System.Configuration.dll",
+    "bytes": 19720,
+    "sha256": "c743dd84ad94c197f74e0f2dadaba47682e7cd116df311ff588d81567cca99eb"
+  },
+  {
+    "name": "System.Console.dll",
+    "bytes": 174352,
+    "sha256": "eb300cb3c1c06fdf983e44e2de1bc04e26e9a19d6cc834446d8ddc201dff829f"
+  },
+  {
+    "name": "System.Core.dll",
+    "bytes": 23816,
+    "sha256": "7219f4e21f5e761c9b3806c0baf83226b5873a8cc6fa7b1ca456ec6d5ff8591b"
+  },
+  {
+    "name": "System.Data.Common.dll",
+    "bytes": 2861360,
+    "sha256": "1fbbdd53757e62f4cf74b962cdb38957ea7af99f5844890ee280f8184f407ebe"
+  },
+  {
+    "name": "System.Data.DataSetExtensions.dll",
+    "bytes": 16136,
+    "sha256": "f33a9bd2738f6ccfe4993ed8604f3cd5be8b82ef779b5ce7a99a5d643115ba10"
+  },
+  {
+    "name": "System.Data.dll",
+    "bytes": 25352,
+    "sha256": "c25fc51718ebdfa355fee9d15216e488e692b97a882db44d5b2172ccb11a9f73"
+  },
+  {
+    "name": "System.Design.dll",
+    "bytes": 22288,
+    "sha256": "b54cca3451b95103213fd4e51cea4e04bc6eb1b25eb1e5e2e3470296265595c1"
+  },
+  {
+    "name": "System.Diagnostics.Contracts.dll",
+    "bytes": 16648,
+    "sha256": "9cd9143ba125f2ca685eeeb195507efecf457ad39bf3c94104af99d2fba2597f"
+  },
+  {
+    "name": "System.Diagnostics.Debug.dll",
+    "bytes": 16136,
+    "sha256": "da092f2a630befd96abc9037a49453b6a95776fd36dd117c0d08ac20c763c1cc"
+  },
+  {
+    "name": "System.Diagnostics.DiagnosticSource.dll",
+    "bytes": 416048,
+    "sha256": "bacb7dbe6927edf2978a8f29394109ade5c0eb369b10961eb50f8d0f4bfdbe96"
+  },
+  {
+    "name": "System.Diagnostics.EventLog.dll",
+    "bytes": 387336,
+    "sha256": "6c4cb2ced27aed1222ca0683eca6d9cfb118e5db2408c6b1e6146ef000fe2729"
+  },
+  {
+    "name": "System.Diagnostics.EventLog.Messages.dll",
+    "bytes": 801072,
+    "sha256": "4fbfb3e3eb88f7426e52fcce7540e47b1ec14fcdf2f269b8b76e4a9d2ce4980e"
+  },
+  {
+    "name": "System.Diagnostics.FileVersionInfo.dll",
+    "bytes": 47368,
+    "sha256": "1b52e97e528875462dcc687c817edb2cdee7e8a89942e12223167fb19b6a8710"
+  },
+  {
+    "name": "System.Diagnostics.PerformanceCounter.dll",
+    "bytes": 289032,
+    "sha256": "bebd214ab2eb24be5f63e58bff3fc9700b3e26ba8cedf4a94d1f36c4c282526b"
+  },
+  {
+    "name": "System.Diagnostics.Process.dll",
+    "bytes": 338184,
+    "sha256": "bb9bc38a6e5ad771b2647f077dc79169839cb16d18d759fb787f9c25db1e7b64"
+  },
+  {
+    "name": "System.Diagnostics.StackTrace.dll",
+    "bytes": 47376,
+    "sha256": "f76eec9be7b113374a437b33d69d6875ef461f2f67799f4db190b145367c0513"
+  },
+  {
+    "name": "System.Diagnostics.TextWriterTraceListener.dll",
+    "bytes": 67848,
+    "sha256": "dcf62921eb0625bcdf806f1f24c0a9e828493075d458b0b187720b89c4b63230"
+  },
+  {
+    "name": "System.Diagnostics.Tools.dll",
+    "bytes": 15624,
+    "sha256": "e9331144a653498298fb4a2e722171d7092084f40460e0c01786db73f0f49737"
+  },
+  {
+    "name": "System.Diagnostics.TraceSource.dll",
+    "bytes": 145712,
+    "sha256": "aff93bb59ba6112b02f46d30fb264523de4df3e4693918d6987065318fd0e3d9"
+  },
+  {
+    "name": "System.Diagnostics.Tracing.dll",
+    "bytes": 16648,
+    "sha256": "156b282d0557f223598e4f5966aec7f674dc3fec7110246198249c96f8db946f"
+  },
+  {
+    "name": "System.DirectoryServices.dll",
+    "bytes": 1046792,
+    "sha256": "ae15743c9054ce5e1330b38d4bfc6b2bf33681cc276ff8c8a2832b73b05d436c"
+  },
+  {
+    "name": "System.dll",
+    "bytes": 50440,
+    "sha256": "ad3c870f3e9b4b9a3ba993c0882ff43733beede3a1d8dcb29e3d984590a72fdd"
+  },
+  {
+    "name": "System.Drawing.Common.dll",
+    "bytes": 1530120,
+    "sha256": "08784b3e6ee7ebd6469caddf474738183172eae716b43d0e77c0840272bd4ef6"
+  },
+  {
+    "name": "System.Drawing.Design.dll",
+    "bytes": 15624,
+    "sha256": "20ca64f0280447da57ef85ed9a8c4337b4f10781dc21c6cf07df16413d7ca014"
+  },
+  {
+    "name": "System.Drawing.dll",
+    "bytes": 21808,
+    "sha256": "88318ef05436d589318de2a268e29d75e44e8e48a6862465df06afb6cc9925f8"
+  },
+  {
+    "name": "System.Drawing.Primitives.dll",
+    "bytes": 133384,
+    "sha256": "beac7156d11693d2cf53b685de105747201c6b8183a10c79de41e130d8bc878b"
+  },
+  {
+    "name": "System.Dynamic.Runtime.dll",
+    "bytes": 16696,
+    "sha256": "7adb7ddbc3ce33a08fb0293b6229f5c8880f25d1fa19b64d21d7174548ab1760"
+  },
+  {
+    "name": "System.Formats.Asn1.dll",
+    "bytes": 243976,
+    "sha256": "8c275b80fec0a8b1643ea91e30f701ba9069bb3a6a70f3c133b4a09f147913ba"
+  },
+  {
+    "name": "System.Formats.Tar.dll",
+    "bytes": 272648,
+    "sha256": "171ea04304897c12bd953525e3d0fc24c04aab28a71a96761dde848aafd5db8e"
+  },
+  {
+    "name": "System.Globalization.Calendars.dll",
+    "bytes": 16184,
+    "sha256": "b907964743090db489cbee7886bfe0acda903595b8b8cd607cdc131318953a94"
+  },
+  {
+    "name": "System.Globalization.dll",
+    "bytes": 16144,
+    "sha256": "af70174b2cf14362dd8f9d4fcfe1efd0c036acb22c415a6d30f44a0e40888b0a"
+  },
+  {
+    "name": "System.Globalization.Extensions.dll",
+    "bytes": 15624,
+    "sha256": "b97907ad401897fb3a16bed49c7e63c2d829f3df8820a8219e15edd3c8dbfac3"
+  },
+  {
+    "name": "System.IO.Compression.Brotli.dll",
+    "bytes": 84232,
+    "sha256": "cdebaa37498f4e8002e74d139c664e0e71442ec05d914542740d299b8e62d3e1"
+  },
+  {
+    "name": "System.IO.Compression.dll",
+    "bytes": 264456,
+    "sha256": "905cabebd5652d3f015c3ac40bd1c512d4fc663e9a35cb57b16df1d2606d42c8"
+  },
+  {
+    "name": "System.IO.Compression.FileSystem.dll",
+    "bytes": 15624,
+    "sha256": "b2d5fe28380eab43a21e6697206055e0b2c494173264d2eb92d8bfcdf8b87b8f"
+  },
+  {
+    "name": "System.IO.Compression.Native.dll",
+    "bytes": 829192,
+    "sha256": "93045a2d6b619b6e838e0f25889e4a39b771a2fe17e3749e189fb0b54a7b4172"
+  },
+  {
+    "name": "System.IO.Compression.ZipFile.dll",
+    "bytes": 55560,
+    "sha256": "171c7c767e9f951b0e41f9d954c0c14730795b9a1055462d58575579e294de12"
+  },
+  {
+    "name": "System.IO.dll",
+    "bytes": 16184,
+    "sha256": "cb4d0d15f7116ebb68e3a5281494922dc228512ba7418a6f273566ae053ca4b9"
+  },
+  {
+    "name": "System.IO.FileSystem.AccessControl.dll",
+    "bytes": 104752,
+    "sha256": "1a08099521c074e3f44cfa1693e32b4420ba3a6dae5a13705573d21b4a8088fe"
+  },
+  {
+    "name": "System.IO.FileSystem.dll",
+    "bytes": 16136,
+    "sha256": "2d362d56919f84f6f68473a1421e06ca15f18048bd3453a44785eddf4ad82ed0"
+  },
+  {
+    "name": "System.IO.FileSystem.DriveInfo.dll",
+    "bytes": 55560,
+    "sha256": "557e7ae08dba217bfa198b86f22193fcabe0b9bc282d7ce857511dd34b790478"
+  },
+  {
+    "name": "System.IO.FileSystem.Primitives.dll",
+    "bytes": 15624,
+    "sha256": "40398149313ee76d80eda2f06251642b3739809264dda5eedefb45f20d25124c"
+  },
+  {
+    "name": "System.IO.FileSystem.Watcher.dll",
+    "bytes": 88368,
+    "sha256": "f5c54f9f1e789b33ffd3f78c2c3fa9770f409238ddcaaf5a5fe586646a8a8d1b"
+  },
+  {
+    "name": "System.IO.IsolatedStorage.dll",
+    "bytes": 92424,
+    "sha256": "8bfc8f4ab04befd2a81e2e059026ee7d5171ee9078fe7b9c3cda0b2cccce49bc"
+  },
+  {
+    "name": "System.IO.MemoryMappedFiles.dll",
+    "bytes": 84280,
+    "sha256": "024bdd08da3477b766b7954244bb3b8d81eff7578036d06bb5b6f255d78ab99c"
+  },
+  {
+    "name": "System.IO.Packaging.dll",
+    "bytes": 293128,
+    "sha256": "9076516c483546c3fbee6e3f8819ec81c21a3aad3bd2d1d5d9722e912c62d9b5"
+  },
+  {
+    "name": "System.IO.Pipes.AccessControl.dll",
+    "bytes": 16648,
+    "sha256": "9a17c5a992a6b89fa4947138cf5e17d84620166fbbd61c29fc185adac75f5195"
+  },
+  {
+    "name": "System.IO.Pipes.dll",
+    "bytes": 166192,
+    "sha256": "57c34ecca5349e9d58b907be56e40e85d99ff219a8c28c43add06cc0cea80645"
+  },
+  {
+    "name": "System.IO.UnmanagedMemoryStream.dll",
+    "bytes": 15664,
+    "sha256": "90f2f71c55f00960ea0a89486863f1bd817c6ebbbe30dd6858c2cc30534d28c4"
+  },
+  {
+    "name": "System.Linq.dll",
+    "bytes": 542984,
+    "sha256": "dcb04b4a036e50e7ce055d8ce5eb9a0302d2e7c5698fc89190ca6e9f78f65a6e"
+  },
+  {
+    "name": "System.Linq.Expressions.dll",
+    "bytes": 3676464,
+    "sha256": "353c0828fca2c9defa39a48dd1a5bd05f0e6ac5720813db9a1795192bfbfc4f0"
+  },
+  {
+    "name": "System.Linq.Parallel.dll",
+    "bytes": 805128,
+    "sha256": "f9c6a3b4009d9e6b8e87ab1628a4a871d094a92033fdadfaf35cef6bc3b70fe3"
+  },
+  {
+    "name": "System.Linq.Queryable.dll",
+    "bytes": 174392,
+    "sha256": "ed18b4dedf29e43e524cc86be6ffec4f640234c12c16ad0eadf73514dc2e50d5"
+  },
+  {
+    "name": "System.Memory.dll",
+    "bytes": 157960,
+    "sha256": "aefbeed3c73bd2d2219bb43b17d6684c31e0a7a6cc977bc12bb58ecc10305089"
+  },
+  {
+    "name": "System.Net.dll",
+    "bytes": 17672,
+    "sha256": "e1062aee5c3a4657f297474d8fbf36dc18e5c605c6ac3fff351defbd7f96399e"
+  },
+  {
+    "name": "System.Net.Http.dll",
+    "bytes": 1730824,
+    "sha256": "d40f4a2d7da5f03bc22cfa6302cdcfb66694674867557e9a5a56cdb64dfd0071"
+  },
+  {
+    "name": "System.Net.Http.Json.dll",
+    "bytes": 129328,
+    "sha256": "34f4ac8c183635167d72b184d8587efa860a190898aba4f4ee70bc383fd5b856"
+  },
+  {
+    "name": "System.Net.HttpListener.dll",
+    "bytes": 551176,
+    "sha256": "43b24f780f0d129afef70b825c71ae54b33e2aa256f82250b9efcc096b9a03c2"
+  },
+  {
+    "name": "System.Net.Mail.dll",
+    "bytes": 432392,
+    "sha256": "f4782bec59f6a562e126e7d2938c236af66454ab31b392389cc4f5c4eec6c612"
+  },
+  {
+    "name": "System.Net.NameResolution.dll",
+    "bytes": 112904,
+    "sha256": "09824b9b9817b840d43e4eed8797b36c3c854bf2966641f4cb2cdaef6ae3e9bb"
+  },
+  {
+    "name": "System.Net.NetworkInformation.dll",
+    "bytes": 158000,
+    "sha256": "530e910c6aa5cd19aa3d64dd0728c82ec0f8b83053ba311f5066775e4596aade"
+  },
+  {
+    "name": "System.Net.Ping.dll",
+    "bytes": 96560,
+    "sha256": "41c3d713e62a5a7aa2478048b358cb3a5ed55021eefe9d3edff6c7beda2c8e37"
+  },
+  {
+    "name": "System.Net.Primitives.dll",
+    "bytes": 231736,
+    "sha256": "abeadeeea26e96543e2f0924ca3923b61d763ed1061700823fc6185af449ba78"
+  },
+  {
+    "name": "System.Net.Quic.dll",
+    "bytes": 284936,
+    "sha256": "b1929f52f13c2683c2bc7322a65f0d0f982899e956a0d4fbb64f822887cfe216"
+  },
+  {
+    "name": "System.Net.Requests.dll",
+    "bytes": 346384,
+    "sha256": "8ebcd91d1fd09332995df9c9e6e7954b71e938c8315520f9cd1bb1f179bd2ab0"
+  },
+  {
+    "name": "System.Net.Security.dll",
+    "bytes": 669960,
+    "sha256": "898beca59da3acbca8df3c5e27b24c74b0518a22fe58ef2dc507562f7751fead"
+  },
+  {
+    "name": "System.Net.ServicePoint.dll",
+    "bytes": 47408,
+    "sha256": "6a8e88ff4093b27249f260a280eef062e8bb4c9ee97eaa4dc33d92fac3e2595b"
+  },
+  {
+    "name": "System.Net.Sockets.dll",
+    "bytes": 547080,
+    "sha256": "9442ca5b9f0b518b6b745ceffa960e0ee326270ce8c7fe055779bec8e327660a"
+  },
+  {
+    "name": "System.Net.WebClient.dll",
+    "bytes": 170248,
+    "sha256": "1cc54f1d96b5d08a6f0d02c64da6d05522ac5ab1666f71a38ae23b3ffb9834a1"
+  },
+  {
+    "name": "System.Net.WebHeaderCollection.dll",
+    "bytes": 67848,
+    "sha256": "4239e648bca9315cd12d19902f8c199288c4d53baf107f0a537128efe444a205"
+  },
+  {
+    "name": "System.Net.WebProxy.dll",
+    "bytes": 43312,
+    "sha256": "8ced89438bb9a4aabb1e0f557c4c6aebc8ad863a48f3cefd7114c68e2b2097e7"
+  },
+  {
+    "name": "System.Net.WebSockets.Client.dll",
+    "bytes": 100624,
+    "sha256": "7262de3339e75783d16696da0b37f642d110543682a96c21de6140a7a62bf470"
+  },
+  {
+    "name": "System.Net.WebSockets.dll",
+    "bytes": 190728,
+    "sha256": "0912788b9835c26dfc6794e444a5c3a9ff69ba21c731d020380d001b6c299b07"
+  },
+  {
+    "name": "System.Numerics.dll",
+    "bytes": 15664,
+    "sha256": "d14f34081d7e25d86f7f6fcfc8ca22c870b1aba6fd56db814b18897cc3bf246d"
+  },
+  {
+    "name": "System.Numerics.Vectors.dll",
+    "bytes": 16144,
+    "sha256": "0244ec7c43edcd3aaa089fd78f2d8907103f2cf7ebe4d632daed9fbb0a5acdbd"
+  },
+  {
+    "name": "System.ObjectModel.dll",
+    "bytes": 80136,
+    "sha256": "ada7cc5633da6ac70f8257d7fcbe73a825c14a5f07de837fd59f9e08bca4718b"
+  },
+  {
+    "name": "System.Printing.dll",
+    "bytes": 977160,
+    "sha256": "edf1540d3fe634b7a3189fee6192989bc24a4bf1b18a3ec26a33a9aa86a4d847"
+  },
+  {
+    "name": "System.Private.CoreLib.dll",
+    "bytes": 13175048,
+    "sha256": "f0f155a48d45462ab814111b91159aa3ab3dba1312522d4ed344a63e48152100"
+  },
+  {
+    "name": "System.Private.DataContractSerialization.dll",
+    "bytes": 2083080,
+    "sha256": "1ed22a67a45bafb32001c5a37dd223131ca2cd5ee65592af7f269a281e6acfad"
+  },
+  {
+    "name": "System.Private.Uri.dll",
+    "bytes": 260360,
+    "sha256": "6aaecf177911dbe56d49bf8554feb76e5cb79c19e5dbe977e6b3c845473040c3"
+  },
+  {
+    "name": "System.Private.Xml.dll",
+    "bytes": 7997704,
+    "sha256": "40010f68fb45b319fd79bf1b745607dd4ed1e1cd7727c49b7608c5e11bcc1140"
+  },
+  {
+    "name": "System.Private.Xml.Linq.dll",
+    "bytes": 403720,
+    "sha256": "410a6194bb14cac4b1982656234466d963db8660be60e3e333430829c2bb4a63"
+  },
+  {
+    "name": "System.Reflection.DispatchProxy.dll",
+    "bytes": 76040,
+    "sha256": "a0c38e58756068204cd7e8edf5e64e8597de2185eaf2591b9a8fa7cdc2bb03ec"
+  },
+  {
+    "name": "System.Reflection.dll",
+    "bytes": 16648,
+    "sha256": "f0d998c9b00fbeaea810d2936a15fb18560711475349169d13d4c4a5f2dfb40c"
+  },
+  {
+    "name": "System.Reflection.Emit.dll",
+    "bytes": 129288,
+    "sha256": "a01cffec422959ba1b75c471c64e56212662f61a4c9c0265011b7f6c3f8b1293"
+  },
+  {
+    "name": "System.Reflection.Emit.ILGeneration.dll",
+    "bytes": 16136,
+    "sha256": "d9121ffbb57dba67e09ae2fc5b432dc8566d857ad24aa2134b529eae53a1c7f9"
+  },
+  {
+    "name": "System.Reflection.Emit.Lightweight.dll",
+    "bytes": 16136,
+    "sha256": "f8a50bc178dbfe9f2e960c2e5df748d47ecde8ae7eb7d87b65d4cdea9d76fb03"
+  },
+  {
+    "name": "System.Reflection.Extensions.dll",
+    "bytes": 15624,
+    "sha256": "478272825ecb72fd272a1e82580c496c0eff2ad52f6a3da2cf9c816ceb58eba6"
+  },
+  {
+    "name": "System.Reflection.Metadata.dll",
+    "bytes": 1116424,
+    "sha256": "d7c1bf2ae8cc1a78ffe4bcae888c348b80fcfcc728b833735716bc154a0d9f28"
+  },
+  {
+    "name": "System.Reflection.Primitives.dll",
+    "bytes": 16136,
+    "sha256": "5a1ab366fefe772871dc8f569c6eb0f6c09b54b0078b2078e742db879b5d0550"
+  },
+  {
+    "name": "System.Reflection.TypeExtensions.dll",
+    "bytes": 43272,
+    "sha256": "4e02827df1877935fbd220022f15fb7e3bf60f07db77fddd5dba3f73b519cea6"
+  },
+  {
+    "name": "System.Resources.Extensions.dll",
+    "bytes": 137480,
+    "sha256": "83264bfcfafd19e791cbe2e66d0b9083fe06ab8a3659116b2bdc36d06757c04a"
+  },
+  {
+    "name": "System.Resources.Reader.dll",
+    "bytes": 15672,
+    "sha256": "52f2846c444c057d0a1ded35f7aac66e7d4454fabfa23f2cc312ec90cd7be017"
+  },
+  {
+    "name": "System.Resources.ResourceManager.dll",
+    "bytes": 16136,
+    "sha256": "501957973f2cff08a729fff9bcd8e824bea5b1a8fbddee1960e9a55284fa07ce"
+  },
+  {
+    "name": "System.Resources.Writer.dll",
+    "bytes": 51512,
+    "sha256": "0034c29b1ebabb5e288dca92de32fc93e58365a245d3bfbe43c3298ff8b2ab8f"
+  },
+  {
+    "name": "System.Runtime.CompilerServices.Unsafe.dll",
+    "bytes": 15664,
+    "sha256": "5bb3c735581f1f6d7e699905f167a833f5ec164a372b47b2423dd66c2865baee"
+  },
+  {
+    "name": "System.Runtime.CompilerServices.VisualC.dll",
+    "bytes": 30984,
+    "sha256": "dfd36a29af778f8f5b20d5a90a59d3b5ed0708a680c6b24379b862037e3c733c"
+  },
+  {
+    "name": "System.Runtime.dll",
+    "bytes": 43792,
+    "sha256": "494c89acafa429f017422e62ecb1feaaa662224dde51373703534410075d2aeb"
+  },
+  {
+    "name": "System.Runtime.Extensions.dll",
+    "bytes": 18184,
+    "sha256": "f0e483e9c8f8fead535e09590b373c44f5bc863e5005161f194b489e675a4cac"
+  },
+  {
+    "name": "System.Runtime.Handles.dll",
+    "bytes": 15624,
+    "sha256": "322b0fd0dfd077c4c635c1e1924248a0a7d3c73a02ef24f87acccb00b12b1cef"
+  },
+  {
+    "name": "System.Runtime.InteropServices.dll",
+    "bytes": 96528,
+    "sha256": "7ca4f481f828ef16d58edd67c72a124e388cbf74a0d2bc9d6d6d4851b4c6a0a5"
+  },
+  {
+    "name": "System.Runtime.InteropServices.JavaScript.dll",
+    "bytes": 51512,
+    "sha256": "3f720d3f2611f5370c68291397bdc0c6e3d3ab01262db684ec867c0ff200d068"
+  },
+  {
+    "name": "System.Runtime.InteropServices.RuntimeInformation.dll",
+    "bytes": 15624,
+    "sha256": "b8dd80eb90eaaa2fa2cd8d83e462c4005c2075b79e11f871a035e3ed0ef08b27"
+  },
+  {
+    "name": "System.Runtime.Intrinsics.dll",
+    "bytes": 17200,
+    "sha256": "628755c89267e652fb4d4f49ce3557035596df454a3744e6de5ba1cf80c2c911"
+  },
+  {
+    "name": "System.Runtime.Loader.dll",
+    "bytes": 16136,
+    "sha256": "ba29f7be5f6f0dfa92ac6366fd2dbf844f0152675d58a0a77abbf1139ca97fa2"
+  },
+  {
+    "name": "System.Runtime.Numerics.dll",
+    "bytes": 330040,
+    "sha256": "f7ea858eefae352340d35af803378acdef520e1d73e317ec2a484a4fe750fd96"
+  },
+  {
+    "name": "System.Runtime.Serialization.dll",
+    "bytes": 17160,
+    "sha256": "93143d08f84764e13603913301ae73eb54c8d69cc3f3dffff21904bb214121aa"
+  },
+  {
+    "name": "System.Runtime.Serialization.Formatters.dll",
+    "bytes": 309512,
+    "sha256": "3591f43bade4e16b1abaffef71b1a83d7e45af9c7ce520ddb77c40a8513f9d98"
+  },
+  {
+    "name": "System.Runtime.Serialization.Json.dll",
+    "bytes": 16144,
+    "sha256": "54c234e7a63b0361a123ddca5b504bc58e0fc071c046a96f1052ef43c0d220ea"
+  },
+  {
+    "name": "System.Runtime.Serialization.Primitives.dll",
+    "bytes": 39176,
+    "sha256": "2d6e3c19776e690fb5a3dd2400347b9eff1a6f52c7d19e38bc1ba220aafee34b"
+  },
+  {
+    "name": "System.Runtime.Serialization.Xml.dll",
+    "bytes": 17200,
+    "sha256": "85e2b0fe2963f9eacf5d156ac2ad9eae2013b6b1bd1b33014cd59d109d7af8db"
+  },
+  {
+    "name": "System.Security.AccessControl.dll",
+    "bytes": 231728,
+    "sha256": "356fd9d026caa7b4dbba23127b56ec0214ced9288eabda83bdd3075bbc1c028c"
+  },
+  {
+    "name": "System.Security.Claims.dll",
+    "bytes": 100664,
+    "sha256": "1b907205b5b8d89147b0d91f454921757552cc8e8fc5afddbfc1b36fea25b74e"
+  },
+  {
+    "name": "System.Security.Cryptography.Algorithms.dll",
+    "bytes": 17712,
+    "sha256": "ea64dbb22973738f6329e6161f0d2ecf1ca561af68fb551cfc1084e462ef4c85"
+  },
+  {
+    "name": "System.Security.Cryptography.Cng.dll",
+    "bytes": 16648,
+    "sha256": "f56a6d27d14efde8f316668c3a4d57ca29597d1426c6e28a5bd42b90ecff6d96"
+  },
+  {
+    "name": "System.Security.Cryptography.Csp.dll",
+    "bytes": 16144,
+    "sha256": "708ebcdab083d868bba68b222245365e962e069924605c87aae2f64576e8cfca"
+  },
+  {
+    "name": "System.Security.Cryptography.dll",
+    "bytes": 2050312,
+    "sha256": "ee0b5e1b61f752f6e4762ad12226975609c698d0982568a9593dcbbcf1a975ac"
+  },
+  {
+    "name": "System.Security.Cryptography.Encoding.dll",
+    "bytes": 16136,
+    "sha256": "8c067ddd6d124a8d07bb28c94a6e2f77646c8c8da265d5613e2a8b2d50ff7d88"
+  },
+  {
+    "name": "System.Security.Cryptography.OpenSsl.dll",
+    "bytes": 15664,
+    "sha256": "63120ef4cdab3c1e2cd035247d202cc33670eafe40b8e99e3fe8250c0363d86e"
+  },
+  {
+    "name": "System.Security.Cryptography.Pkcs.dll",
+    "bytes": 760112,
+    "sha256": "ae3fdabd06581b8cc49bdccfedf6f70e576b88791a35bfeb0cc49385bb7c23e9"
+  },
+  {
+    "name": "System.Security.Cryptography.Primitives.dll",
+    "bytes": 16136,
+    "sha256": "7d082686cdfa56123c3e5ef49e533ac24f26ccdc0850bc3e1924504f3281527b"
+  },
+  {
+    "name": "System.Security.Cryptography.ProtectedData.dll",
+    "bytes": 55608,
+    "sha256": "6e3684d53272c837b7cb90383c281a441b0add46f2f52fc2b020f2751bf99eb0"
+  },
+  {
+    "name": "System.Security.Cryptography.X509Certificates.dll",
+    "bytes": 17208,
+    "sha256": "7d50ae1a6caa82b9f58feae3b52b3dec0d262b8815f153c34acd2eef3aeb34c3"
+  },
+  {
+    "name": "System.Security.Cryptography.Xml.dll",
+    "bytes": 456976,
+    "sha256": "c977bd2a44e32f06346459f11e266e3a2aa2a30dbb992dc89e3807122da26498"
+  },
+  {
+    "name": "System.Security.dll",
+    "bytes": 18696,
+    "sha256": "9a8faa3b4bde7a1cb5ea9632974d9e0d3401abda4c254b0cbc75fabf6e3f30b8"
+  },
+  {
+    "name": "System.Security.Permissions.dll",
+    "bytes": 186632,
+    "sha256": "e0a8e3b37a04f403c878423b4f87a3738b138ffed861611256624ae255daabdc"
+  },
+  {
+    "name": "System.Security.Principal.dll",
+    "bytes": 15632,
+    "sha256": "1428a471453a608782e87d60707575cbe6e6dedc5fd4383661e6a18ef079e442"
+  },
+  {
+    "name": "System.Security.Principal.Windows.dll",
+    "bytes": 186632,
+    "sha256": "e9309ba5ee4b589eb01136529aacf1547a0bc886298a0a76edd70759387f6a1e"
+  },
+  {
+    "name": "System.Security.SecureString.dll",
+    "bytes": 15624,
+    "sha256": "4512557fc1df782c67b7a3f4af9cbe05ba80757bbfb535bb51e00b3405d5ae41"
+  },
+  {
+    "name": "System.ServiceModel.Web.dll",
+    "bytes": 17160,
+    "sha256": "2feb6a39915462f33141832909ffd6ec0c649825fa8009ad1bda7efb2a9e57aa"
+  },
+  {
+    "name": "System.ServiceProcess.dll",
+    "bytes": 16136,
+    "sha256": "a8063d8926558169cb3d488f45fe5867506073edeed531a1839e75704faee791"
+  },
+  {
+    "name": "System.ServiceProcess.ServiceController.dll",
+    "bytes": 87728,
+    "sha256": "46328ad334942a6f2b0fd331ee632f06c51eefb2a7ba18ffe264513847e9c3bd"
+  },
+  {
+    "name": "System.Text.Encoding.CodePages.dll",
+    "bytes": 862472,
+    "sha256": "1f4bbd7a5ded11d740ba5dcdf37effdd3ce968b914203d943ff48bdb36339a4d"
+  },
+  {
+    "name": "System.Text.Encoding.dll",
+    "bytes": 16184,
+    "sha256": "5ebd36ffa042bdb59356682717eb93266d13585fe76c53f08334b0f1f5b905fc"
+  },
+  {
+    "name": "System.Text.Encoding.Extensions.dll",
+    "bytes": 16136,
+    "sha256": "2aa4ca320df65917c47404d63e48d745bc0b00298e8f59b8fa97e5202b0241e9"
+  },
+  {
+    "name": "System.Text.Encodings.Web.dll",
+    "bytes": 133384,
+    "sha256": "3b9469953577608efb04e9d09cad83f01c54d7e184e1a51ebc62ef0c583d6ecf"
+  },
+  {
+    "name": "System.Text.Json.dll",
+    "bytes": 1501448,
+    "sha256": "f4c2ffc806be38245ad31ceeccba90a70d28afe05447a6e9dfdf876d5467cb7c"
+  },
+  {
+    "name": "System.Text.RegularExpressions.dll",
+    "bytes": 1022216,
+    "sha256": "1449400fd356cef52462e96686a154ec461c368a4dd3acb10dd6a78d7696c5f7"
+  },
+  {
+    "name": "System.Threading.AccessControl.dll",
+    "bytes": 84272,
+    "sha256": "e4f5308d27cdceb4e1b6cca1c3d8721f9ef5a711919ae45c7cb3be7442f0e224"
+  },
+  {
+    "name": "System.Threading.Channels.dll",
+    "bytes": 133424,
+    "sha256": "77030d42a44882e44794e8d779dac02fb67d53dd05de7ca8b5ee59387ad92a56"
+  },
+  {
+    "name": "System.Threading.dll",
+    "bytes": 84272,
+    "sha256": "0fcba972adfecce7e5400d2b7bc69e781b0191015f033df168b11157b0172e67"
+  },
+  {
+    "name": "System.Threading.Overlapped.dll",
+    "bytes": 16136,
+    "sha256": "9b62e305d885392b7e3210c2ee4d68db89c48612f8bf827d91953f6f808b100b"
+  },
+  {
+    "name": "System.Threading.Tasks.Dataflow.dll",
+    "bytes": 489736,
+    "sha256": "e3215b38968659e55baaa10b07dd8da3ca02d216407d16897f2bbfb45984321b"
+  },
+  {
+    "name": "System.Threading.Tasks.dll",
+    "bytes": 17168,
+    "sha256": "22058540dcce0c2bddfa26a51d3add895448b968e923722c21b34618ddcd34db"
+  },
+  {
+    "name": "System.Threading.Tasks.Extensions.dll",
+    "bytes": 16136,
+    "sha256": "ec784334cc0f56b8a5e8ce700b58266d9dc69c54cf08c1b0483bd6e30c0995d3"
+  },
+  {
+    "name": "System.Threading.Tasks.Parallel.dll",
+    "bytes": 133384,
+    "sha256": "0ec05d26fff7ec38d30525a4af45be4c9790afb68bead9321ee737e56bcad257"
+  },
+  {
+    "name": "System.Threading.Thread.dll",
+    "bytes": 16184,
+    "sha256": "7ffe111feeca81c2eb99ae30e799cbe6eff1d63091171ade74f5c7d0d9a517b2"
+  },
+  {
+    "name": "System.Threading.ThreadPool.dll",
+    "bytes": 16184,
+    "sha256": "c170164d25b40a572f5bac0edcf08b337d592fff90e32b37989ffbbe4a029bd4"
+  },
+  {
+    "name": "System.Threading.Timer.dll",
+    "bytes": 15664,
+    "sha256": "0129cd3ee2f8b8aaa97d1f9246135c2f6d9971a1deb22464858973e4e4ab5928"
+  },
+  {
+    "name": "System.Transactions.dll",
+    "bytes": 16648,
+    "sha256": "058290d42ce2bcbcf88dbaa8144383488b715ce02a54fb9fc3061318d65ad4b9"
+  },
+  {
+    "name": "System.Transactions.Local.dll",
+    "bytes": 661808,
+    "sha256": "78eb78047c8d15f4fa36aa168785d4916f126f2e047e8e5c995b6b626451c1ac"
+  },
+  {
+    "name": "System.ValueTuple.dll",
+    "bytes": 15632,
+    "sha256": "03fd0091d7120fd318c6981702a43a6bf64d02ee604162261e115811fbdb6e8a"
+  },
+  {
+    "name": "System.Web.dll",
+    "bytes": 15664,
+    "sha256": "4b0716ea48accb31d1f914d6d46a61b76ba369aede9bc19a82799c5703f51096"
+  },
+  {
+    "name": "System.Web.HttpUtility.dll",
+    "bytes": 59704,
+    "sha256": "f060a522e3f1e5e18243208cd991289e0258eb94558abe7ae6f8a4f86c26392e"
+  },
+  {
+    "name": "System.Windows.Controls.Ribbon.dll",
+    "bytes": 1452336,
+    "sha256": "37a450298c115926dc97f67755d98f4867b33b80a67e7e935a9562a9c500cfdf"
+  },
+  {
+    "name": "System.Windows.dll",
+    "bytes": 16176,
+    "sha256": "3fb75ecc4113d671c964dd6d4bd42dade67e4951f8d1d94cdd54f51118aaab67"
+  },
+  {
+    "name": "System.Windows.Extensions.dll",
+    "bytes": 117048,
+    "sha256": "9fdcb2861c1d32f9440b6d068e8872aba8a2df13c02b45f585669839b63da658"
+  },
+  {
+    "name": "System.Windows.Forms.Design.dll",
+    "bytes": 5564688,
+    "sha256": "48d19bf35a4a8001e8e7ceff7c14239fea5c76eccb5b0bcff0296b0728036197"
+  },
+  {
+    "name": "System.Windows.Forms.Design.Editors.dll",
+    "bytes": 16648,
+    "sha256": "6e7ac038b864cd9363fa491e4e35b750159b15daf98933807b87a665d0aea193"
+  },
+  {
+    "name": "System.Windows.Forms.dll",
+    "bytes": 13564208,
+    "sha256": "87f1f5ab9574c8608c45ef2bdc38ce89640c4b2f579ddf7342cdcbb80693e465"
+  },
+  {
+    "name": "System.Windows.Forms.Primitives.dll",
+    "bytes": 3012912,
+    "sha256": "2e62ebf1634ca69724009926ee50f8def024e007573bc40b9aba4b6ecb8c6c28"
+  },
+  {
+    "name": "System.Windows.Input.Manipulations.dll",
+    "bytes": 137480,
+    "sha256": "1e98ab38a14c842b2cab0247cbd21c68aa9387877eb3bf2f316a306d9904665d"
+  },
+  {
+    "name": "System.Windows.Presentation.dll",
+    "bytes": 30984,
+    "sha256": "d76d04e29cfb2cc57c569367b857599935cf96686d4efc57a9e7bd0ca1d6988d"
+  },
+  {
+    "name": "System.Xaml.dll",
+    "bytes": 1423632,
+    "sha256": "6ae88f5acd615c8c66473f0274b67e9989a7650a36e959b1dff2e1a6d0afd07e"
+  },
+  {
+    "name": "System.Xml.dll",
+    "bytes": 23856,
+    "sha256": "ed300ceda165b65e07e724c2cb3d3cd6e13396b2ca2b54441ea829f0b8f2c0c5"
+  },
+  {
+    "name": "System.Xml.Linq.dll",
+    "bytes": 16136,
+    "sha256": "31219af411434c48828bece7231814cff9c3cdb046c461d8bbf665f0ff78843e"
+  },
+  {
+    "name": "System.Xml.ReaderWriter.dll",
+    "bytes": 22328,
+    "sha256": "cde5f47fc3d777aaf4da5bc8aa4df354854c4fa40859626f19edee774bf95244"
+  },
+  {
+    "name": "System.Xml.Serialization.dll",
+    "bytes": 16696,
+    "sha256": "e93c8dd1b3229917279c7c8059631283337fffdcd195dfc000768c3ade7c3c56"
+  },
+  {
+    "name": "System.Xml.XDocument.dll",
+    "bytes": 16136,
+    "sha256": "1f8d0d31c4ea660a31c1894ae660fd252de90744bc00231ae7ecfd4ddcd4fd28"
+  },
+  {
+    "name": "System.Xml.XmlDocument.dll",
+    "bytes": 16184,
+    "sha256": "36ac1587f10dc0833815a91fb8395ea0537e656f405db097c2e470c7f0718853"
+  },
+  {
+    "name": "System.Xml.XmlSerializer.dll",
+    "bytes": 18184,
+    "sha256": "54818979d6ab862b3ea80e4b2ff398e08c5d1ac5c8c7ab4fec3bbc0e74906b04"
+  },
+  {
+    "name": "System.Xml.XPath.dll",
+    "bytes": 16176,
+    "sha256": "cf79d7053f53420710223199d50cccd6228446e1d18b92ae4369af0c194c0f34"
+  },
+  {
+    "name": "System.Xml.XPath.XDocument.dll",
+    "bytes": 30984,
+    "sha256": "3e9495aabac3696a5707b0c56a8aeffad8f7b1a9c6e3b3c07e1d316dd23b2bf8"
+  },
+  {
+    "name": "UIAutomationClient.dll",
+    "bytes": 416056,
+    "sha256": "820c76467d8103e921bfd3a063864231df1cdb2a49dc39034364db13a7f2b584"
+  },
+  {
+    "name": "UIAutomationClientSideProviders.dll",
+    "bytes": 870712,
+    "sha256": "9710afb5cc2bac35efd2be0458583fcdb1a7d3d9be6d095dfd597fd37fd2a81f"
+  },
+  {
+    "name": "UIAutomationProvider.dll",
+    "bytes": 59656,
+    "sha256": "ef5d178d8184fb55cb7d69c0ce1d84434738a57cba43e644193f7715120c4fc7"
+  },
+  {
+    "name": "UIAutomationTypes.dll",
+    "bytes": 313608,
+    "sha256": "0b252ae68cd205653bf585cc9325540636cac91f43404749214542ca45984d89"
+  },
+  {
+    "name": "vcruntime140_cor3.dll",
+    "bytes": 124544,
+    "sha256": "d5e4d9a3e835fa679450145d6a7d94e36573a509317111904d9b3712c30d9066"
+  },
+  {
+    "name": "WindowsBase.dll",
+    "bytes": 2255160,
+    "sha256": "54819c13392f9cad6cbacd3c9690d37f05cb5223ba921a44e25cd83588875398"
+  },
+  {
+    "name": "WindowsFormsIntegration.dll",
+    "bytes": 211216,
+    "sha256": "64e1f0b503723ecc8b3159afa94bd1a831d4b314a12480c79af22c0b4865cdb0"
+  },
+  {
+    "name": "wpfgfx_cor3.dll",
+    "bytes": 1951544,
+    "sha256": "1ccb4943ef0d472d70e1cb4738f89fb457010e12fa82379daf2dc64cf59d6e9b"
+  },
+  {
+    "name": "cs\\Microsoft.VisualBasic.Forms.resources.dll",
+    "bytes": 25864,
+    "sha256": "fc979f717c12942695ff6f4a529d2154ad127f7e92009bfffc83c272720c0e45"
+  },
+  {
+    "name": "cs\\PresentationCore.resources.dll",
+    "bytes": 108808,
+    "sha256": "ac2f625fcc7391d4b75ea144aa62cf21f688911ffc36f784611a53fbeb28c00d"
+  },
+  {
+    "name": "cs\\PresentationFramework.resources.dll",
+    "bytes": 197392,
+    "sha256": "2baa8553e227e1b3148a997f808e25daa60d73169da1fcad134896febc046f20"
+  },
+  {
+    "name": "cs\\PresentationUI.resources.dll",
+    "bytes": 45832,
+    "sha256": "d4c5f4acc7f9bffc4e1c11dc8bfcf52bc2554bcd415d4d6cc3f9924ab1e6107a"
+  },
+  {
+    "name": "cs\\ReachFramework.resources.dll",
+    "bytes": 39224,
+    "sha256": "5fe1b21441748443b58be9f3aa3ecbbc04402dcb109e3ef3e4442800021d7451"
+  },
+  {
+    "name": "cs\\System.Windows.Controls.Ribbon.resources.dll",
+    "bytes": 18696,
+    "sha256": "e2ee7989428e48c3f2488e82ff60e638d5600de157808b108ae866381ba1beb6"
+  },
+  {
+    "name": "cs\\System.Windows.Forms.Design.resources.dll",
+    "bytes": 149256,
+    "sha256": "bd66f8d7a2a0f0d5889372584690df6196493f52420d5177e185e31c5dc158de"
+  },
+  {
+    "name": "cs\\System.Windows.Forms.Primitives.resources.dll",
+    "bytes": 16176,
+    "sha256": "855b2e2826ffe040b3f45d213a90d34968d864f0bf5c6c7dfbb9d7389a33212f"
+  },
+  {
+    "name": "cs\\System.Windows.Forms.resources.dll",
+    "bytes": 365832,
+    "sha256": "358eb5db10b79cd359c92a27e54a7fc0a27947d0892c997745b53c9688213104"
+  },
+  {
+    "name": "cs\\System.Windows.Input.Manipulations.resources.dll",
+    "bytes": 16696,
+    "sha256": "4fd18aca167c2985d7e203d0781de6ea21383bac03fd96f4d1c791638e97770f"
+  },
+  {
+    "name": "cs\\System.Xaml.resources.dll",
+    "bytes": 65296,
+    "sha256": "ec5ef6def43ac15549bbf6f3abe1d322396bb68a9a9015267d2aa4cfaa56f88b"
+  },
+  {
+    "name": "cs\\UIAutomationClient.resources.dll",
+    "bytes": 20232,
+    "sha256": "41da8ac42801c0e6b0cb5dbb25bc7a14e2630ce96330829c0a65229dbad17cfc"
+  },
+  {
+    "name": "cs\\UIAutomationClientSideProviders.resources.dll",
+    "bytes": 21256,
+    "sha256": "f4a569838bfeb824dc1cad2a874003809a4921a2382b071ac247c46ea9e696b8"
+  },
+  {
+    "name": "cs\\UIAutomationProvider.resources.dll",
+    "bytes": 15624,
+    "sha256": "0f523986e4f8d74032abb0484f63181c0e599584101d5bce28e46367fc8b6186"
+  },
+  {
+    "name": "cs\\UIAutomationTypes.resources.dll",
+    "bytes": 18704,
+    "sha256": "6e43cb068ab2bd93ddc06cbe34c06e145c6d96fd3088851d0fc602d933f7c00e"
+  },
+  {
+    "name": "cs\\WindowsBase.resources.dll",
+    "bytes": 86840,
+    "sha256": "99bda0e69148fedeca8077a3d92c73156d8a4877de76fc54e18af4022a40ac79"
+  },
+  {
+    "name": "cs\\WindowsFormsIntegration.resources.dll",
+    "bytes": 16144,
+    "sha256": "5bbdcd89ca84b1c63be90841a964209eee62810f5eae957c0d8e4af64c1f6fff"
+  },
+  {
+    "name": "de\\Microsoft.VisualBasic.Forms.resources.dll",
+    "bytes": 25864,
+    "sha256": "19bb67ef02b62542597ddd5dfee5e47d33ea735741c3179f1b6552c67a000d40"
+  },
+  {
+    "name": "de\\PresentationCore.resources.dll",
+    "bytes": 114440,
+    "sha256": "09a9b919514e63c1e57a06b7f3c8dacb4490258e7997f2459bcdcba31f5d5abe"
+  },
+  {
+    "name": "de\\PresentationFramework.resources.dll",
+    "bytes": 213808,
+    "sha256": "fec8d5c048b22f83c7b5da198a7df4ec9ed655498397c8d6e4ecf515ec307964"
+  },
+  {
+    "name": "de\\PresentationUI.resources.dll",
+    "bytes": 47368,
+    "sha256": "b46a8d412f22f4029a49cd7d87452385230fdd568fdbb316dcbb136cc081d628"
+  },
+  {
+    "name": "de\\ReachFramework.resources.dll",
+    "bytes": 39688,
+    "sha256": "4dbe6be6ac23f6098cd94436898e2c6525dee4ddf2ddb36417d8e4e5d67dcc8b"
+  },
+  {
+    "name": "de\\System.Windows.Controls.Ribbon.resources.dll",
+    "bytes": 18696,
+    "sha256": "2a0e7e02836d58197d7f58b7d8e3cd9a602d805dcc440df1d1eb1d9fc09c6f78"
+  },
+  {
+    "name": "de\\System.Windows.Forms.Design.resources.dll",
+    "bytes": 149816,
+    "sha256": "96b9270be8916772c01a8dc40d2586317f3053daf4bfe925633244c609097f0c"
+  },
+  {
+    "name": "de\\System.Windows.Forms.Primitives.resources.dll",
+    "bytes": 16144,
+    "sha256": "f18164eb77ad531022f39dbf9b39e90b856895ca32be4d38ef150378460d1c4b"
+  },
+  {
+    "name": "de\\System.Windows.Forms.resources.dll",
+    "bytes": 374024,
+    "sha256": "4f90de316391391c599b8dd876d330f581f41e6688b5bf282175b4bb154cb58e"
+  },
+  {
+    "name": "de\\System.Windows.Input.Manipulations.resources.dll",
+    "bytes": 16656,
+    "sha256": "55d1a8af21792b6c9a5c9eaed2e91bc42dccf9507999b37125214d3f9b95ab35"
+  },
+  {
+    "name": "de\\System.Xaml.resources.dll",
+    "bytes": 68872,
+    "sha256": "0d99873ec2bfc0dc5e0f662f7da35b1dbf7602451d072c612867dc76bf3a1233"
+  },
+  {
+    "name": "de\\UIAutomationClient.resources.dll",
+    "bytes": 20240,
+    "sha256": "f9e8519884958b9d8da5b0828d308da5bdaf1fbdb15fb7044fee9ac0bd5d376f"
+  },
+  {
+    "name": "de\\UIAutomationClientSideProviders.resources.dll",
+    "bytes": 21256,
+    "sha256": "7c9dbb43ed35ded244510261603a502061776c9023f8d0db47123162fdcdd11f"
+  },
+  {
+    "name": "de\\UIAutomationProvider.resources.dll",
+    "bytes": 15664,
+    "sha256": "107b8b6004f80eb9f7b4c0ef1633c0f1627d034cf96467b72e3a2b21dbeb3966"
+  },
+  {
+    "name": "de\\UIAutomationTypes.resources.dll",
+    "bytes": 18744,
+    "sha256": "fdf0b64cca94420689e916bf5a9155ff0689db599426badabdece3632c097e2e"
+  },
+  {
+    "name": "de\\WindowsBase.resources.dll",
+    "bytes": 91440,
+    "sha256": "a32a89afd44923f91c943544af2183be3ca030920bcb9fe71435fdcc42c17e50"
+  },
+  {
+    "name": "de\\WindowsFormsIntegration.resources.dll",
+    "bytes": 16136,
+    "sha256": "56942d26b0fe1c3e15ac9bbebae49f3e2a535769075418921fe4418fd533777d"
+  },
+  {
+    "name": "docs\\ARCHITECTURE.md",
+    "bytes": 6243,
+    "sha256": "78db111a857895412047194823ad696efdfc3e82311900079cf71a516582391c"
+  },
+  {
+    "name": "docs\\VALIDATION.md",
+    "bytes": 6033,
+    "sha256": "6186735651035d83feaf8694739bfbb1734c8c4179dce3ac34183f652149cad4"
+  },
+  {
+    "name": "es\\Microsoft.VisualBasic.Forms.resources.dll",
+    "bytes": 25912,
+    "sha256": "2a1920d4020031062444ef9bb60f4934f19a53fff628735874a0ccd9021b87e6"
+  },
+  {
+    "name": "es\\PresentationCore.resources.dll",
+    "bytes": 110392,
+    "sha256": "0e4507c809406c3d58e4bba6cab8c987829afc610dccd05832df9d14b7b1df53"
+  },
+  {
+    "name": "es\\PresentationFramework.resources.dll",
+    "bytes": 203576,
+    "sha256": "d206a6caccdc55b1ccaaa91cc0ab705da31aec53b6c562e310bbb2246477059f"
+  },
+  {
+    "name": "es\\PresentationUI.resources.dll",
+    "bytes": 45880,
+    "sha256": "72fe567919304685d7d748298f3158dcfc52e3a5848ccb382ba826ae162d2a47"
+  },
+  {
+    "name": "es\\ReachFramework.resources.dll",
+    "bytes": 39736,
+    "sha256": "3e06027dbab34a7fff705250095fc2bf63a1ee85e5db44ef31e2661d0e584fab"
+  },
+  {
+    "name": "es\\System.Windows.Controls.Ribbon.resources.dll",
+    "bytes": 18736,
+    "sha256": "abf331951c883d540059e9dd63801710662e93c04ea0a750c950f66aaf770340"
+  },
+  {
+    "name": "es\\System.Windows.Forms.Design.resources.dll",
+    "bytes": 149768,
+    "sha256": "10c7544352f9a0ebd659df7c2d5f515d16a42793748a41b159a3d68b244a6a9f"
+  },
+  {
+    "name": "es\\System.Windows.Forms.Primitives.resources.dll",
+    "bytes": 16144,
+    "sha256": "d56cb3c5406209ab9fee6f77cb0b7cacd1016ba363ff7dc2ec8a071b66616820"
+  },
+  {
+    "name": "es\\System.Windows.Forms.resources.dll",
+    "bytes": 366344,
+    "sha256": "52dfa45d844f7367b88365804072c47e6fab859dd2201afa9638a21b24587850"
+  },
+  {
+    "name": "es\\System.Windows.Input.Manipulations.resources.dll",
+    "bytes": 16696,
+    "sha256": "e6ade1f5cee7d10011533b833dce2ccbd7664acc083d9b7001ccd10baf7f3d3d"
+  },
+  {
+    "name": "es\\System.Xaml.resources.dll",
+    "bytes": 66352,
+    "sha256": "2d990344913d9fb22a7a9c037b63f18f6aeddf2132e7202afdb8f983dcf22b9a"
+  },
+  {
+    "name": "es\\UIAutomationClient.resources.dll",
+    "bytes": 20232,
+    "sha256": "f9e6051f25fa8508c6e08e92f7588d121bca97f60d51313d8e7102bd6a509520"
+  },
+  {
+    "name": "es\\UIAutomationClientSideProviders.resources.dll",
+    "bytes": 21304,
+    "sha256": "221e13e2c7ab3edaf7c630702cb9da40c28366d791ef7abd1d1b9cff65b6d5b7"
+  },
+  {
+    "name": "es\\UIAutomationProvider.resources.dll",
+    "bytes": 15624,
+    "sha256": "82e4771b43a8d25846be1641f568a3f6b2be01a5cae2dc158aa693731092b6aa"
+  },
+  {
+    "name": "es\\UIAutomationTypes.resources.dll",
+    "bytes": 18744,
+    "sha256": "ae1321063f69277d99ca1fdeb26a5a07aa2c725d4d54b9bd5b1e9bba117aa48c"
+  },
+  {
+    "name": "es\\WindowsBase.resources.dll",
+    "bytes": 89864,
+    "sha256": "047e5295d4dc051df26271cb3984f51ba5389c6d46c15cc9889923a89a85e6d6"
+  },
+  {
+    "name": "es\\WindowsFormsIntegration.resources.dll",
+    "bytes": 16144,
+    "sha256": "e004040873753c4d1087e7f7fac66038c9b70b2c2f2cbe4b3687fb456138bf8c"
+  },
+  {
+    "name": "fr\\Microsoft.VisualBasic.Forms.resources.dll",
+    "bytes": 25872,
+    "sha256": "dda554f482dcea4bee7c991875baae4d5554a957f20b10a4caf76a5d62c92dd0"
+  },
+  {
+    "name": "fr\\PresentationCore.resources.dll",
+    "bytes": 113416,
+    "sha256": "1b4fa19ba865f7fcbabc3f0a8aeba18dfc543b03a01b101241dadcf1b84b5f4d"
+  },
+  {
+    "name": "fr\\PresentationFramework.resources.dll",
+    "bytes": 207112,
+    "sha256": "e8ea7746a16427ec6614ac9786fe2710f3413eaa53dd9277715e8dbacb6f7c54"
+  },
+  {
+    "name": "fr\\PresentationUI.resources.dll",
+    "bytes": 46864,
+    "sha256": "8586c98422a23e6cb2025f546bfb3e8312a107baabf10acc8958b09462946c45"
+  },
+  {
+    "name": "fr\\ReachFramework.resources.dll",
+    "bytes": 40200,
+    "sha256": "d751c3b36e5e377d566e3350d2bc70fd2546240cf0404192bd22e423203c5b6a"
+  },
+  {
+    "name": "fr\\System.Windows.Controls.Ribbon.resources.dll",
+    "bytes": 18704,
+    "sha256": "3ea760097e07472a75155385a1fb91e09dced4ec919b02376c847f69a4dc14a1"
+  },
+  {
+    "name": "fr\\System.Windows.Forms.Design.resources.dll",
+    "bytes": 150288,
+    "sha256": "41ddcbbc66b2d7aac04447e77af59d74705b56511d7a7368abeb18248e53411a"
+  },
+  {
+    "name": "fr\\System.Windows.Forms.Primitives.resources.dll",
+    "bytes": 16176,
+    "sha256": "6ba25babc5810af0b92b72c38c276a5ccb0a2f47cab64746d2de098f38cba915"
+  },
+  {
+    "name": "fr\\System.Windows.Forms.resources.dll",
+    "bytes": 373040,
+    "sha256": "3329dcdbe48d107e57eea40cb1fdb970bc51aa5c968bc672109b996efc1e3dec"
+  },
+  {
+    "name": "fr\\System.Windows.Input.Manipulations.resources.dll",
+    "bytes": 16648,
+    "sha256": "4a9c5e2cb87a57bdf7f2829112927bc370fca05d7a4a160b570e073e4398c10d"
+  },
+  {
+    "name": "fr\\System.Xaml.resources.dll",
+    "bytes": 67336,
+    "sha256": "e6fb31ecb8ef1cdb33caed7c697e7c205f72b7689da78e9a145685c57647cc15"
+  },
+  {
+    "name": "fr\\UIAutomationClient.resources.dll",
+    "bytes": 20240,
+    "sha256": "0669c326805865164482e51167443a7f00e78178c21a6a6ca66c4f52ca43a11b"
+  },
+  {
+    "name": "fr\\UIAutomationClientSideProviders.resources.dll",
+    "bytes": 21256,
+    "sha256": "a44f43aad6845c6f7fdf322bffe67117099bf46bbcbb741fbdc335425a05adb1"
+  },
+  {
+    "name": "fr\\UIAutomationProvider.resources.dll",
+    "bytes": 15632,
+    "sha256": "967ba095353174aae480bcde6e2b3149985df63bc9dbb3716556218583505ae5"
+  },
+  {
+    "name": "fr\\UIAutomationTypes.resources.dll",
+    "bytes": 18696,
+    "sha256": "e0747fa89b1bf0af14dc9a9a5b7aca5569ca383851c5dd7ecdf3237114477a28"
+  },
+  {
+    "name": "fr\\WindowsBase.resources.dll",
+    "bytes": 90888,
+    "sha256": "4c3ed35f6249a02f302a9c842aa77b298b34b12e43f11e6988bae44cbbea9a04"
+  },
+  {
+    "name": "fr\\WindowsFormsIntegration.resources.dll",
+    "bytes": 16136,
+    "sha256": "0dff816b088ddbef76b92e0fea0a740ab6fe705b07f05d633e1667e5466d7aec"
+  },
+  {
+    "name": "it\\Microsoft.VisualBasic.Forms.resources.dll",
+    "bytes": 25904,
+    "sha256": "b4137f087f9298ef1bd1abd923835a0761ddeb8200ae506316c7c5d20418ae0b"
+  },
+  {
+    "name": "it\\PresentationCore.resources.dll",
+    "bytes": 111880,
+    "sha256": "83066af6eb6d2b3ccb13e461d7e6f8e1d95bd9fb84a587bbcc4036e723a9c21a"
+  },
+  {
+    "name": "it\\PresentationFramework.resources.dll",
+    "bytes": 206088,
+    "sha256": "348df4e5147a21fa0c54ef3fa7e3a0f9dd0e30bab70351a20bec836a45b48af9"
+  },
+  {
+    "name": "it\\PresentationUI.resources.dll",
+    "bytes": 45832,
+    "sha256": "b5d8d8938cf2e79c5041a77929270ddfb100c702a62c1b21bd8dd056ef7a6e71"
+  },
+  {
+    "name": "it\\ReachFramework.resources.dll",
+    "bytes": 39728,
+    "sha256": "c71c8414267e059e3b05da9dcf1590a856e4f585d7c906ff3d3a068a494f9e58"
+  },
+  {
+    "name": "it\\System.Windows.Controls.Ribbon.resources.dll",
+    "bytes": 18736,
+    "sha256": "7b3997d6e5d9f9f2ba41d0c823375ef313f4c9cb3ae2607de8fe0e67b9835884"
+  },
+  {
+    "name": "it\\System.Windows.Forms.Design.resources.dll",
+    "bytes": 150792,
+    "sha256": "56e868879b98aebcf95d316548ce9ec9bc15945c654b69a9d0aa2c30bbd0ed4d"
+  },
+  {
+    "name": "it\\System.Windows.Forms.Primitives.resources.dll",
+    "bytes": 16136,
+    "sha256": "4f43a89bcd8c8e7e21e3cd4e665e0c09b117e86159e7f5ec20804aa05686d1f5"
+  },
+  {
+    "name": "it\\System.Windows.Forms.resources.dll",
+    "bytes": 368904,
+    "sha256": "3cf31e33fe6f1bbd81765b82680d8ee7f8e06fcc5e8002806eacc8529ec15f20"
+  },
+  {
+    "name": "it\\System.Windows.Input.Manipulations.resources.dll",
+    "bytes": 16696,
+    "sha256": "459e7cef96c08223680a1ee31b9b74a1adbf3e95e76c45e04d77a641ff2a5afb"
+  },
+  {
+    "name": "it\\System.Xaml.resources.dll",
+    "bytes": 66360,
+    "sha256": "548d09f6e1904e5d97be5e88aecd57dd1b905c1143a2f38c91ec3a4746e7595c"
+  },
+  {
+    "name": "it\\UIAutomationClient.resources.dll",
+    "bytes": 20272,
+    "sha256": "59bb49b7d3bb9c96b043f7dae8c48cbc18d12eec69191400c4b79402f12ca12e"
+  },
+  {
+    "name": "it\\UIAutomationClientSideProviders.resources.dll",
+    "bytes": 21264,
+    "sha256": "8c9d13749f10c33bfae645b19cb12605ed12be119babe5a07708927d060c4d7c"
+  },
+  {
+    "name": "it\\UIAutomationProvider.resources.dll",
+    "bytes": 15672,
+    "sha256": "81a396b0c7adf469023507f564abf95d64379ffdfcaf07ef6b88b758c15c3800"
+  },
+  {
+    "name": "it\\UIAutomationTypes.resources.dll",
+    "bytes": 18696,
+    "sha256": "f7585a68f6a36247ac3a5da1327d9164da86828057cb1e94f9fbfe740df2b617"
+  },
+  {
+    "name": "it\\WindowsBase.resources.dll",
+    "bytes": 91400,
+    "sha256": "a0e2dbaab111e75c8a0e5a435efc617708a4e5514bffa16a1bec368c22f41c16"
+  },
+  {
+    "name": "it\\WindowsFormsIntegration.resources.dll",
+    "bytes": 16184,
+    "sha256": "613471fea5dae7dedebe024da89001968f947fef8971709dbc43c781c5cf114d"
+  },
+  {
+    "name": "ja\\Microsoft.VisualBasic.Forms.resources.dll",
+    "bytes": 26416,
+    "sha256": "b7d6933142e8c7981c0e0c1103a177295e26a9fca764aadfb654a088ede4b213"
+  },
+  {
+    "name": "ja\\PresentationCore.resources.dll",
+    "bytes": 122632,
+    "sha256": "75e71fc0625b85b792b44cd9093e60740aea05c03bd0222a4e76b4b0bc86ead8"
+  },
+  {
+    "name": "ja\\PresentationFramework.resources.dll",
+    "bytes": 226568,
+    "sha256": "5f778140efa044979249dd92b32f9deba3cd6f6f21d8cf325d45a6b9e753974a"
+  },
+  {
+    "name": "ja\\PresentationUI.resources.dll",
+    "bytes": 49464,
+    "sha256": "271387defed92e074aecd3d413bf5ad3c65ec59687a671657f2031bb5fe26e12"
+  },
+  {
+    "name": "ja\\ReachFramework.resources.dll",
+    "bytes": 42288,
+    "sha256": "122e6b804564060918e27d560e0db5fb250d5f630103384d2eb38531dabe8122"
+  },
+  {
+    "name": "ja\\System.Windows.Controls.Ribbon.resources.dll",
+    "bytes": 19216,
+    "sha256": "0b86e1790d2be07c5035a4cded1487299ee59c3c7003894ff246b3de541395c7"
+  },
+  {
+    "name": "ja\\System.Windows.Forms.Design.resources.dll",
+    "bytes": 155920,
+    "sha256": "764fcd11a57f92976e607c6ea4c6acf223842d2d21c5879c20ab2948d8dfb4d4"
+  },
+  {
+    "name": "ja\\System.Windows.Forms.Primitives.resources.dll",
+    "bytes": 16648,
+    "sha256": "47948ad88998622b6f4cc193e6f6e8763511901290b3500a7ac7b34f1e5f8dcb"
+  },
+  {
+    "name": "ja\\System.Windows.Forms.resources.dll",
+    "bytes": 409400,
+    "sha256": "aafbb2b24ffa7e2b7e814f82242d6f46d0e6c01c5fa39009861923446327eaa8"
+  },
+  {
+    "name": "ja\\System.Windows.Input.Manipulations.resources.dll",
+    "bytes": 16688,
+    "sha256": "f1548cff7ceaf50994912ba17ffe832c7501e2dc73af6a199345d021a1be9e75"
+  },
+  {
+    "name": "ja\\System.Xaml.resources.dll",
+    "bytes": 74512,
+    "sha256": "6283e664f6182cf5395e51be15a628d31b36d224f21ae3217afaad411f38289f"
+  },
+  {
+    "name": "ja\\UIAutomationClient.resources.dll",
+    "bytes": 20744,
+    "sha256": "f7fca2a6a94af8b9d94e526b27728daf3196b208645853111e524e6efeb0cfc0"
+  },
+  {
+    "name": "ja\\UIAutomationClientSideProviders.resources.dll",
+    "bytes": 21776,
+    "sha256": "3f80f22c0d71b536a1282a1e5f725654ea99dd5c7276cc3b17ba0b3cd790716b"
+  },
+  {
+    "name": "ja\\UIAutomationProvider.resources.dll",
+    "bytes": 15624,
+    "sha256": "6f2d9b54552a1c13a390f66dc355e5796b793e61c6ca5e576b9306faf4c2d952"
+  },
+  {
+    "name": "ja\\UIAutomationTypes.resources.dll",
+    "bytes": 18736,
+    "sha256": "331a9afe227d1d4f62d639c2cf4965d4625d72395d55afa40b20a6db9099611d"
+  },
+  {
+    "name": "ja\\WindowsBase.resources.dll",
+    "bytes": 99592,
+    "sha256": "cc092ceb0d44821b6f2906d807e482bc475a4ab7f2095e09801a2b5caac22cdb"
+  },
+  {
+    "name": "ja\\WindowsFormsIntegration.resources.dll",
+    "bytes": 16696,
+    "sha256": "da469133007a87e1831cd3b0f34413c1b5153ef83174df38e4721aaaf222a21b"
+  },
+  {
+    "name": "ko\\Microsoft.VisualBasic.Forms.resources.dll",
+    "bytes": 25864,
+    "sha256": "58b89ce70c6c36aa12f09217e085e2aa09badf2181466c94dd2e454dd0ecf7ee"
+  },
+  {
+    "name": "ko\\PresentationCore.resources.dll",
+    "bytes": 114488,
+    "sha256": "5d881fa1779e574b39deb073c894b1b5e0bd6aca463e5369e8ad292edde43c21"
+  },
+  {
+    "name": "ko\\PresentationFramework.resources.dll",
+    "bytes": 211728,
+    "sha256": "79e215c3d83f2594b2ae07afeed206e7fdbe613f591d776a55a854816ceca799"
+  },
+  {
+    "name": "ko\\PresentationUI.resources.dll",
+    "bytes": 46384,
+    "sha256": "186c9a2712d8948fae8ab722da6097d25b874217a68e3edd6e7084f099b89d3d"
+  },
+  {
+    "name": "ko\\ReachFramework.resources.dll",
+    "bytes": 40712,
+    "sha256": "5afb30f7c333c74e4d2362964e06dd97fda21e8fc94e9332f8936c02afcbc1e7"
+  },
+  {
+    "name": "ko\\System.Windows.Controls.Ribbon.resources.dll",
+    "bytes": 18744,
+    "sha256": "7a0377b44284dbed15f9fb5749e6e6851ead95c10c8dfbdc6d6fa7893ce0004f"
+  },
+  {
+    "name": "ko\\System.Windows.Forms.Design.resources.dll",
+    "bytes": 151304,
+    "sha256": "3c48e24d03d8e9baefa279a0c5fb15b30bb86d5fa566507c9529145b15e1e069"
+  },
+  {
+    "name": "ko\\System.Windows.Forms.Primitives.resources.dll",
+    "bytes": 16136,
+    "sha256": "2c0e5f190d822c34be5e37814afa717d43493077e283f4cc7ba661112d296478"
+  },
+  {
+    "name": "ko\\System.Windows.Forms.resources.dll",
+    "bytes": 370952,
+    "sha256": "6b7acd152baf46e5a6161950400c91a0e1eace101d2b55cd1bcd6446891a59bc"
+  },
+  {
+    "name": "ko\\System.Windows.Input.Manipulations.resources.dll",
+    "bytes": 16688,
+    "sha256": "396c933b3e47d55b033000fc2472a1320850932261781abfe3b903eeffeebaeb"
+  },
+  {
+    "name": "ko\\System.Xaml.resources.dll",
+    "bytes": 69904,
+    "sha256": "5dde696af2b94c706138a14d012a09f30dbeec0ca5155b7f57ee77d9e78fb575"
+  },
+  {
+    "name": "ko\\UIAutomationClient.resources.dll",
+    "bytes": 20240,
+    "sha256": "943e4fe3a923349b907e2d520fc1e6302324b6bd3259c34377bb250d56939720"
+  },
+  {
+    "name": "ko\\UIAutomationClientSideProviders.resources.dll",
+    "bytes": 21256,
+    "sha256": "eed96615128dd467d4b5ba8fb5c95048130a85e2bb484b1a0553d8648cb6000f"
+  },
+  {
+    "name": "ko\\UIAutomationProvider.resources.dll",
+    "bytes": 15632,
+    "sha256": "a26c12ac08d767e82593ce73e4597e85a250a6a54297b1fffa36d13484a9b863"
+  },
+  {
+    "name": "ko\\UIAutomationTypes.resources.dll",
+    "bytes": 18704,
+    "sha256": "f23979a50382abcbdffa5aa1c4436a3749f0519dff8d8860dc549e2120af55a3"
+  },
+  {
+    "name": "ko\\WindowsBase.resources.dll",
+    "bytes": 92424,
+    "sha256": "f2bdce512e4c1fd8959aca892bb906c0203b0cb7cb5877cb30795680ecb86b76"
+  },
+  {
+    "name": "ko\\WindowsFormsIntegration.resources.dll",
+    "bytes": 16144,
+    "sha256": "a4ee5ab92d653cf44188573039845519790324e673ab5373cda3d21b78ea4abb"
+  },
+  {
+    "name": "pl\\Microsoft.VisualBasic.Forms.resources.dll",
+    "bytes": 25864,
+    "sha256": "9b5ddafe3a4870cdef61157baf4db22dbe61b57b49ab90f595400463fe1a8163"
+  },
+  {
+    "name": "pl\\PresentationCore.resources.dll",
+    "bytes": 113416,
+    "sha256": "ba00bb08eecff785fae8c3e4824403773237ce6c6d255384643c121ca7ff1d7e"
+  },
+  {
+    "name": "pl\\PresentationFramework.resources.dll",
+    "bytes": 209672,
+    "sha256": "dc3c0a26bf81eef36855ef7e4173592d4bca408cd70f840f056d19334d496d76"
+  },
+  {
+    "name": "pl\\PresentationUI.resources.dll",
+    "bytes": 46344,
+    "sha256": "531033e5131d021076be125b8a8203995adc766cad07f95b88ca10c09d7f9430"
+  },
+  {
+    "name": "pl\\ReachFramework.resources.dll",
+    "bytes": 40200,
+    "sha256": "abdbb96bdbb1cf572104347f12038c9b6f0f0f21371ae26047912e591b4543c6"
+  },
+  {
+    "name": "pl\\System.Windows.Controls.Ribbon.resources.dll",
+    "bytes": 18744,
+    "sha256": "aba4d93712237fc9933b7953c540d1eb4f1e964d0d4c0da87125eb32eecdf99d"
+  },
+  {
+    "name": "pl\\System.Windows.Forms.Design.resources.dll",
+    "bytes": 149256,
+    "sha256": "7756e53d67d14b6cc8c5308cd5f896d65a9d1f6fba0fa91fd6f02f83e870dcdf"
+  },
+  {
+    "name": "pl\\System.Windows.Forms.Primitives.resources.dll",
+    "bytes": 16184,
+    "sha256": "41cf3c5fa867b22632a4adea6f73ffa9c3e6e594406a5884f2f567cf06ddd043"
+  },
+  {
+    "name": "pl\\System.Windows.Forms.resources.dll",
+    "bytes": 366344,
+    "sha256": "a581dc3cad7e6c5ee02b7ea8195e6c35582b5a0d771bcb201921d58dad942d94"
+  },
+  {
+    "name": "pl\\System.Windows.Input.Manipulations.resources.dll",
+    "bytes": 16648,
+    "sha256": "f1f956ee24bfe877ce927af57780c84a195ca6960b14d4a2bee0094c1d94a41b"
+  },
+  {
+    "name": "pl\\System.Xaml.resources.dll",
+    "bytes": 69896,
+    "sha256": "e67f905de1a895c9c9134181786fa26c7c7878f198ed4d7ca9ead081d6c1a43e"
+  },
+  {
+    "name": "pl\\UIAutomationClient.resources.dll",
+    "bytes": 20232,
+    "sha256": "9925375e7422ff86620932ed3085bf5fa2676c9e6d304a65cc273dd6b045d3cc"
+  },
+  {
+    "name": "pl\\UIAutomationClientSideProviders.resources.dll",
+    "bytes": 21256,
+    "sha256": "6ff2ce24b88a302979978c5760dbf1d56d3c1d0547daa6edbbea7872f554c87d"
+  },
+  {
+    "name": "pl\\UIAutomationProvider.resources.dll",
+    "bytes": 15672,
+    "sha256": "d0c3cde62c2f6aa7fe320478a6f34fba7a63cf7f7cc718ff25d482d4326afcf0"
+  },
+  {
+    "name": "pl\\UIAutomationTypes.resources.dll",
+    "bytes": 18704,
+    "sha256": "5055ed4696ab4a35288dc10c9dbab25226e83ff900148088d30e41993ebc8948"
+  },
+  {
+    "name": "pl\\WindowsBase.resources.dll",
+    "bytes": 90896,
+    "sha256": "9e7d9d2f5a4fc88d259cc238b04bf8fd9e93252085536ca253f3e0083e2b05d8"
+  },
+  {
+    "name": "pl\\WindowsFormsIntegration.resources.dll",
+    "bytes": 16136,
+    "sha256": "77ec69d4ad4f34aea53982603a890a8f249697a8bcd2c4c944f362e6cbbd63b2"
+  },
+  {
+    "name": "pt-BR\\Microsoft.VisualBasic.Forms.resources.dll",
+    "bytes": 25872,
+    "sha256": "f64b535b8d13a321b4608365aaf6b3fb826bd61ed3cf94790ab1f5b83e1fdb22"
+  },
+  {
+    "name": "pt-BR\\PresentationCore.resources.dll",
+    "bytes": 109832,
+    "sha256": "548504ba12127028b45593e40b920e9523393cb1dd652837ec44e87253a29293"
+  },
+  {
+    "name": "pt-BR\\PresentationFramework.resources.dll",
+    "bytes": 203016,
+    "sha256": "9539b31ebde169a9ee532702845cc681767116cb09e485fc533c705e40885a3a"
+  },
+  {
+    "name": "pt-BR\\PresentationUI.resources.dll",
+    "bytes": 45832,
+    "sha256": "0217cc40196ec1a9a398a6f40f0ba71b268fe6fc534a7bd1d83ef784aa027c70"
+  },
+  {
+    "name": "pt-BR\\ReachFramework.resources.dll",
+    "bytes": 39176,
+    "sha256": "49c112a7ae9d014f318db3fe20d4490654b2a8b8f455b143c81a91ecff0af9e8"
+  },
+  {
+    "name": "pt-BR\\System.Windows.Controls.Ribbon.resources.dll",
+    "bytes": 18696,
+    "sha256": "8f738a7608a6976f5455300ff03417f00bc9a9f0c841aab41447856775547933"
+  },
+  {
+    "name": "pt-BR\\System.Windows.Forms.Design.resources.dll",
+    "bytes": 149256,
+    "sha256": "d0c17b20fab6dba96377e32d74aeff79fba77e1384127779502f007649612b1e"
+  },
+  {
+    "name": "pt-BR\\System.Windows.Forms.Primitives.resources.dll",
+    "bytes": 16144,
+    "sha256": "2e2e15b913a486b9fe4e341b0ec74fffd6b57959d57ad8c6483cd6627fd3e6a0"
+  },
+  {
+    "name": "pt-BR\\System.Windows.Forms.resources.dll",
+    "bytes": 359176,
+    "sha256": "d68661bbf6b914d4aee2cd3f66b11211328825d95761f2dca61b31a73cbe5b3d"
+  },
+  {
+    "name": "pt-BR\\System.Windows.Input.Manipulations.resources.dll",
+    "bytes": 16696,
+    "sha256": "86ec42273a28503907b93ef31dce4e691bcef13ec96fbead011beeb7c0894604"
+  },
+  {
+    "name": "pt-BR\\System.Xaml.resources.dll",
+    "bytes": 65800,
+    "sha256": "79bde4220dd461b7ea51ea9636f9b33ab9f06bea1a9808429197b1cb0f04bff5"
+  },
+  {
+    "name": "pt-BR\\UIAutomationClient.resources.dll",
+    "bytes": 20232,
+    "sha256": "0f8815c28370ed693a332052a42708d36351f2822d8839de93af2230a7335acc"
+  },
+  {
+    "name": "pt-BR\\UIAutomationClientSideProviders.resources.dll",
+    "bytes": 21296,
+    "sha256": "1fd3ff341d317d3e05b7d39cdef7e6a367289b28354847e7e654e1b837cc040e"
+  },
+  {
+    "name": "pt-BR\\UIAutomationProvider.resources.dll",
+    "bytes": 15672,
+    "sha256": "ff759a4f33f26dc988bb9a230a8f55e4fba0e1c906b32b6b51316e5a9b6e2936"
+  },
+  {
+    "name": "pt-BR\\UIAutomationTypes.resources.dll",
+    "bytes": 18704,
+    "sha256": "044e618a9f705e3941e8535c7a29c9547571ea0bc9c23006138984bdb3ba1a7f"
+  },
+  {
+    "name": "pt-BR\\WindowsBase.resources.dll",
+    "bytes": 89360,
+    "sha256": "fed1e634ec43157e5ef98b0498d0268ca12eb3fa4687804db239ab5c74372bf4"
+  },
+  {
+    "name": "pt-BR\\WindowsFormsIntegration.resources.dll",
+    "bytes": 16136,
+    "sha256": "891b42680a5406b47d38274d509d772fbb98ef66178bdaf633fc00061ae381cb"
+  },
+  {
+    "name": "ru\\Microsoft.VisualBasic.Forms.resources.dll",
+    "bytes": 26936,
+    "sha256": "22a3b598e550e15aaa6719a11022a0b412880c88691d58ecb166bb9371f96cab"
+  },
+  {
+    "name": "ru\\PresentationCore.resources.dll",
+    "bytes": 138512,
+    "sha256": "2fe01861be614f839ef38c2b33b90de45187d2901abfd6b060b8213079124429"
+  },
+  {
+    "name": "ru\\PresentationFramework.resources.dll",
+    "bytes": 257848,
+    "sha256": "7aa4de565df1a2ce0bd3197df7c0f98d41d2b6b6523e61fe526f80036e75b1bb"
+  },
+  {
+    "name": "ru\\PresentationUI.resources.dll",
+    "bytes": 54536,
+    "sha256": "0f463e6397570219e6d8f9a1f076cfa13383bd262cc8cdb3776c4860da69cae3"
+  },
+  {
+    "name": "ru\\ReachFramework.resources.dll",
+    "bytes": 44296,
+    "sha256": "7822956a9b4df011b3f21e9bdc2ff3daac071e5547c9c56f10d3a1d4c6a9dead"
+  },
+  {
+    "name": "ru\\System.Windows.Controls.Ribbon.resources.dll",
+    "bytes": 19728,
+    "sha256": "4048e5f0b104e4f75188d952161bc7c4da4c4c6bbda60f7068e52831ff3cfe01"
+  },
+  {
+    "name": "ru\\System.Windows.Forms.Design.resources.dll",
+    "bytes": 163120,
+    "sha256": "077bf86a1a54602ff7c4083b6e3b0a2ede62a6734aaead89e0c8be987e2ac3c0"
+  },
+  {
+    "name": "ru\\System.Windows.Forms.Primitives.resources.dll",
+    "bytes": 16656,
+    "sha256": "6af4d7e8b9b97fdd6383ac5336947ef5985fa9decb73def7391a7762a52e3f01"
+  },
+  {
+    "name": "ru\\System.Windows.Forms.resources.dll",
+    "bytes": 476984,
+    "sha256": "495b66f23f7d6296ec3e21d1d2d67daf676b832b2957aaec2095736cbe7263a1"
+  },
+  {
+    "name": "ru\\System.Windows.Input.Manipulations.resources.dll",
+    "bytes": 17200,
+    "sha256": "881ae417cba85d700b276d5cae75ce44ac26a57275e08122fb3f68f93a22b7f1"
+  },
+  {
+    "name": "ru\\System.Xaml.resources.dll",
+    "bytes": 84792,
+    "sha256": "166cc3d32d716d95165b8cf9cba28a761a5095b25aa3e2c1f5f7d6039e856b4a"
+  },
+  {
+    "name": "ru\\UIAutomationClient.resources.dll",
+    "bytes": 21776,
+    "sha256": "5bd72c74bd600a93ac3f4dc37383558d5b2ac023b969eb8aa0ba448633714be7"
+  },
+  {
+    "name": "ru\\UIAutomationClientSideProviders.resources.dll",
+    "bytes": 22280,
+    "sha256": "4e2321b21bcdf5f486b66eeb29c10082589ec80f6c88a281b9be6f80d6b8c12a"
+  },
+  {
+    "name": "ru\\UIAutomationProvider.resources.dll",
+    "bytes": 15624,
+    "sha256": "2e748f37ebd4bdc082b83a69587ee9f8edc5517645713a483b2f19fb3fe5987d"
+  },
+  {
+    "name": "ru\\UIAutomationTypes.resources.dll",
+    "bytes": 19256,
+    "sha256": "12295d244b81b9a0e105f0bb1c849abd3a261f74701007804430c83e42679740"
+  },
+  {
+    "name": "ru\\WindowsBase.resources.dll",
+    "bytes": 111920,
+    "sha256": "bbaa9ca09979162f47db5e7d417826e8c8e0506474a3e2bf130ad18f00ba6388"
+  },
+  {
+    "name": "ru\\WindowsFormsIntegration.resources.dll",
+    "bytes": 16648,
+    "sha256": "d24dd529dd18ac4b202c29aaa8b9785017430425393866d8d7ac4ea4cb5970d1"
+  },
+  {
+    "name": "tr\\Microsoft.VisualBasic.Forms.resources.dll",
+    "bytes": 25352,
+    "sha256": "5eba1ceafde28cf1e2aced21cf0df5a4e40a73d3b091213ecbea828dd10e8b07"
+  },
+  {
+    "name": "tr\\PresentationCore.resources.dll",
+    "bytes": 107824,
+    "sha256": "491184a84b064f141fd9b4f462732f022879ea3311476dd9c78b438e3e3190f3"
+  },
+  {
+    "name": "tr\\PresentationFramework.resources.dll",
+    "bytes": 196360,
+    "sha256": "a80574dae24d495f6de668c00e88b2ffcb30ef9bc8b1ee1edd3ce40b0dbd5a21"
+  },
+  {
+    "name": "tr\\PresentationUI.resources.dll",
+    "bytes": 44856,
+    "sha256": "83df559259c77d9552ce714f789ab76202bc7e7ada7f4e46c4a7a4ec4a0fb775"
+  },
+  {
+    "name": "tr\\ReachFramework.resources.dll",
+    "bytes": 38712,
+    "sha256": "909069922d86c0391a75c060b30c8d0874285c46578c8aa65217a68b889df7ee"
+  },
+  {
+    "name": "tr\\System.Windows.Controls.Ribbon.resources.dll",
+    "bytes": 18696,
+    "sha256": "3feb68052ba3500838f6b92bbcb8db2672966728170a6cf328f0099dbe089bec"
+  },
+  {
+    "name": "tr\\System.Windows.Forms.Design.resources.dll",
+    "bytes": 148784,
+    "sha256": "b4f9e996fb4b49d623b15e08329182384f9a75748024f1bc790b88b377873c5a"
+  },
+  {
+    "name": "tr\\System.Windows.Forms.Primitives.resources.dll",
+    "bytes": 16176,
+    "sha256": "51485aa2f83e4de0ed8547ae0de4acc3328af5e8d44e4e1ff06d9e54e3d61690"
+  },
+  {
+    "name": "tr\\System.Windows.Forms.resources.dll",
+    "bytes": 361736,
+    "sha256": "da793bcaaa653251a141b5d8cab8e8b14e34efc8bc9728d3eb1e88ba76857877"
+  },
+  {
+    "name": "tr\\System.Windows.Input.Manipulations.resources.dll",
+    "bytes": 16648,
+    "sha256": "0ec3110a8e6e8cc6979cc78bd1592927bc817b7ef9c2137d56d3cbb5fe102661"
+  },
+  {
+    "name": "tr\\System.Xaml.resources.dll",
+    "bytes": 65288,
+    "sha256": "87f1c1aba6a725fb2065b1ffd773a3e6f2e62496859d6e6b7f3c8259240b450f"
+  },
+  {
+    "name": "tr\\UIAutomationClient.resources.dll",
+    "bytes": 20232,
+    "sha256": "4d8eeafb1dff4f4d93b7d5edd24a1702fe536c91a69a44bfa9b46d94e01b3bf8"
+  },
+  {
+    "name": "tr\\UIAutomationClientSideProviders.resources.dll",
+    "bytes": 21256,
+    "sha256": "284fff070a0d9a06d5afdc7ca3ca0ad9928f96600e40085137ccce84698fad92"
+  },
+  {
+    "name": "tr\\UIAutomationProvider.resources.dll",
+    "bytes": 15624,
+    "sha256": "71f0224af4103557cf458306bac37b6f4e1893881f18a13c01bc97b46514e495"
+  },
+  {
+    "name": "tr\\UIAutomationTypes.resources.dll",
+    "bytes": 18696,
+    "sha256": "b89e845c09c779d87cc2c7953d4c72953a4b5728eed7fd386d4847ca50824445"
+  },
+  {
+    "name": "tr\\WindowsBase.resources.dll",
+    "bytes": 85256,
+    "sha256": "15aed8c2d708ed847c92865625f35658d1cb76cb4bb444b15d71e7cf335c8b7e"
+  },
+  {
+    "name": "tr\\WindowsFormsIntegration.resources.dll",
+    "bytes": 16144,
+    "sha256": "60d5ff9166c61d26ae505fad9af08487b3127abc89a380001cf5fd92d0d87619"
+  },
+  {
+    "name": "zh-Hans\\Microsoft.VisualBasic.Forms.resources.dll",
+    "bytes": 25392,
+    "sha256": "f19a956ed1af901995e5d0dbfb47a2de61e7b4fce80741caa3af38b0a0098ca9"
+  },
+  {
+    "name": "zh-Hans\\PresentationCore.resources.dll",
+    "bytes": 100624,
+    "sha256": "f2a9ef5032eb5bcaea031b6fe09ba270bfa10b34196f86de0d2a664de1a5f3a8"
+  },
+  {
+    "name": "zh-Hans\\PresentationFramework.resources.dll",
+    "bytes": 183560,
+    "sha256": "3ea9fc4b00ae82400dd26bb79f3c04ee132e7de4b9323659ac4e2c1b49fcc525"
+  },
+  {
+    "name": "zh-Hans\\PresentationUI.resources.dll",
+    "bytes": 43272,
+    "sha256": "dd6e74ad502f20061b740bc64531a0bdadc20f482dee21eee5ba010bffad0870"
+  },
+  {
+    "name": "zh-Hans\\ReachFramework.resources.dll",
+    "bytes": 37128,
+    "sha256": "2ed008db248712c31acda5825d16e3105fd9f5e55a0580c8590f7cf99d9979fc"
+  },
+  {
+    "name": "zh-Hans\\System.Windows.Controls.Ribbon.resources.dll",
+    "bytes": 18744,
+    "sha256": "0b3c2e2135b249d3368f88980e289b3f64ba4550027574974fd8d8fa182a6e60"
+  },
+  {
+    "name": "zh-Hans\\System.Windows.Forms.Design.resources.dll",
+    "bytes": 145200,
+    "sha256": "3eddef20f2e0b31533e7e44895a785c1b451960138459b6715771ee22ae74a56"
+  },
+  {
+    "name": "zh-Hans\\System.Windows.Forms.Primitives.resources.dll",
+    "bytes": 16136,
+    "sha256": "f0b6d3627a7207ba2913cac4a9ba95601a9d8fc7a8bcee4c56261c1776e8a7d2"
+  },
+  {
+    "name": "zh-Hans\\System.Windows.Forms.resources.dll",
+    "bytes": 319760,
+    "sha256": "8891255ec7fde3b405fac83eb6f94463b72c045a9905294f41776624240f3596"
+  },
+  {
+    "name": "zh-Hans\\System.Windows.Input.Manipulations.resources.dll",
+    "bytes": 16648,
+    "sha256": "fac3158c7d25e22a4fe548ff9e85cd5f3d8c63bcca69890078212921858bb491"
+  },
+  {
+    "name": "zh-Hans\\System.Xaml.resources.dll",
+    "bytes": 61200,
+    "sha256": "f60dee14d0783b8adbe147cfa7d5ecb8c32fb0d7103ad143305da41a2ff091ca"
+  },
+  {
+    "name": "zh-Hans\\UIAutomationClient.resources.dll",
+    "bytes": 19728,
+    "sha256": "2a3c448fa3a9aeccd8bcfe87663947a51b390d35132b8b7df59a40d7a2444262"
+  },
+  {
+    "name": "zh-Hans\\UIAutomationClientSideProviders.resources.dll",
+    "bytes": 20744,
+    "sha256": "4d0061889a7c2f8b020480767004470ac9a72528aa529cb61c36d62ffce14895"
+  },
+  {
+    "name": "zh-Hans\\UIAutomationProvider.resources.dll",
+    "bytes": 15624,
+    "sha256": "25e2c94e541216ecf0cd25986f23638da4de25bd68ff4f03217a06017b381ffe"
+  },
+  {
+    "name": "zh-Hans\\UIAutomationTypes.resources.dll",
+    "bytes": 18696,
+    "sha256": "24811f400253fb1a56a7960b7ae3ad91877122ffd37f24d25c02244814f1c178"
+  },
+  {
+    "name": "zh-Hans\\WindowsBase.resources.dll",
+    "bytes": 79120,
+    "sha256": "8dd1865b3c70c71a1c183ac2b9f769a02ab0a9fa75cb80c45ff1fa6dd0479b8e"
+  },
+  {
+    "name": "zh-Hans\\WindowsFormsIntegration.resources.dll",
+    "bytes": 16136,
+    "sha256": "400db6cad198b06ff0ca2ad3f83f9dd3e34d6d80f51fa923a1b233a319329621"
+  },
+  {
+    "name": "zh-Hant\\Microsoft.VisualBasic.Forms.resources.dll",
+    "bytes": 25352,
+    "sha256": "5d9088830a7de820e7b135e136c82046d1bd48b48c645255738565d4db6e05c5"
+  },
+  {
+    "name": "zh-Hant\\PresentationCore.resources.dll",
+    "bytes": 101680,
+    "sha256": "ddaf31e3c0960cf12d0aa1420f675b27725531ee95dbacf4f748734df501670e"
+  },
+  {
+    "name": "zh-Hant\\PresentationFramework.resources.dll",
+    "bytes": 184120,
+    "sha256": "37e9f1dc96c65f0d68543d5383760671ce4cb77891a6a8f933529b413cc25eaf"
+  },
+  {
+    "name": "zh-Hant\\PresentationUI.resources.dll",
+    "bytes": 43280,
+    "sha256": "063018d117976f0c5c22323a79c5666fc488f343409f8cd05b6aa43320fbe856"
+  },
+  {
+    "name": "zh-Hant\\ReachFramework.resources.dll",
+    "bytes": 37648,
+    "sha256": "996c5de5011e36a2fbac84ab30105494182140870af1fb041151205809155e6f"
+  },
+  {
+    "name": "zh-Hant\\System.Windows.Controls.Ribbon.resources.dll",
+    "bytes": 18736,
+    "sha256": "a75f038d5b943c1437e2be6ea9849f1de20bc6086bf788d2a61bda92769d24ca"
+  },
+  {
+    "name": "zh-Hant\\System.Windows.Forms.Design.resources.dll",
+    "bytes": 145200,
+    "sha256": "645d671be95ec6a87c35e2ba3fd70c8ac4e1db0fe0a036b6a3c6fb172ed8c5e3"
+  },
+  {
+    "name": "zh-Hant\\System.Windows.Forms.Primitives.resources.dll",
+    "bytes": 16184,
+    "sha256": "bef30687c5d9972a4cc0a541adfc9cf004a68b988cd243db36538949822e19cc"
+  },
+  {
+    "name": "zh-Hant\\System.Windows.Forms.resources.dll",
+    "bytes": 325424,
+    "sha256": "e9964758faa9c0e6f0e250c4eb117e84b204099df3f2b26ec4a817aebf8ffca2"
+  },
+  {
+    "name": "zh-Hant\\System.Windows.Input.Manipulations.resources.dll",
+    "bytes": 16648,
+    "sha256": "c949ebbff5e420f38987f8c8faef663a374a61010e5e7444de52e8ac0c4dbaf5"
+  },
+  {
+    "name": "zh-Hant\\System.Xaml.resources.dll",
+    "bytes": 60688,
+    "sha256": "71d1546bf12804b2ce662d3c5970453312c9f5f785f766e0f1e472af1db3edd4"
+  },
+  {
+    "name": "zh-Hant\\UIAutomationClient.resources.dll",
+    "bytes": 19728,
+    "sha256": "7e8291589582f5cd2289b9b4f869d5bfe00b5a843406eff83fc0d31cfc8d812f"
+  },
+  {
+    "name": "zh-Hant\\UIAutomationClientSideProviders.resources.dll",
+    "bytes": 20744,
+    "sha256": "8bdbc72a55a10594d2d1284cf1c695afac7f3f3871e1ea59f32291038380e04b"
+  },
+  {
+    "name": "zh-Hant\\UIAutomationProvider.resources.dll",
+    "bytes": 15624,
+    "sha256": "c7cb7593e0832417e1487441ff724966685a69f6ff1ce962d0eb925b07646f16"
+  },
+  {
+    "name": "zh-Hant\\UIAutomationTypes.resources.dll",
+    "bytes": 18704,
+    "sha256": "1e5f3df0fd3ca6289a81243d0f625a2aa91b2a579c286068977164d68f616e52"
+  },
+  {
+    "name": "zh-Hant\\WindowsBase.resources.dll",
+    "bytes": 80696,
+    "sha256": "5efd801221c408aa7c55f4876c3320195621fcfdee62af92407e053652bc97e3"
+  },
+  {
+    "name": "zh-Hant\\WindowsFormsIntegration.resources.dll",
+    "bytes": 16136,
+    "sha256": "3d9803702da1bdaef97f4fa969ed430019ef56e5969094432a12fcdd1ee56d6c"
+  }
+]

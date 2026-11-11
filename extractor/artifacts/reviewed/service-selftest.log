@@ -1,0 +1,95 @@
+PASS TestOwnerDirectoryRejectsBroadWriteAcl
+PASS TestStationMatchLegacyRules
+PASS TestSharedSaveFolderAcrossRoles
+PASS TestSameLengthSameMtimeChangedSourceUsesContentHash
+PASS TestLockedSourceRetryRecovers
+PASS TestModifiedOwnedFileNeverDeleted
+PASS TestCorruptOwnershipFailsClosed
+PASS TestDtdRejected
+PASS TestConfigAtomicRejectInvalidPreservesPrevious
+PASS TestExpiredSourceNotCopied
+PASS TestOldCreationRecentWriteIsKept
+PASS TestOversizeFileRejected
+PASS TestMissingSchemaIsNotImplicitlyMigrated
+PASS TestLegacyPathsAreNormalizedOnlyOnImport
+PASS TestNullSubFolderIsRejectedCleanly
+PASS TestLegacyImportExplicit
+PASS TestIdempotentCopyDoesNotInflateCounters
+PASS TestDiscoverHierarchyWithoutCopy
+PASS TestEngineStopRestartPreservesBaseline
+PASS TestServiceStartupErrorSetsNonzeroExit
+PASS TestSelfTestEntryPointsExistBeforeUiOrService
+PASS TestServiceHostIsHeadlessAndSharedEngine
+PASS TestOwnerLeaseExclusiveAcrossThreads
+PASS TestLogsBoundedInMemoryAndOnDisk
+PASS TestPurgeDoesNotProbeSource
+PASS TestOwnershipPurgeOfflinePreservesForeign
+PASS TestParentDeathKillsWorkerAndReleasesLease
+PASS TestConfigRejectsUnknown
+PASS TestOrphanTempIsBoundedAndReused
+PASS TestPendingManifestCrashRecovery
+PASS TestDestinationLeafJunctionRejectedExplicitly
+PASS TestJunctionDestinationRejected
+PASS TestReviewLegacyNullItemsNormalizeAndFallback
+PASS TestReviewLegacyNullItemsKeepExplicitOtherRole
+PASS TestReviewManifestMissingFilesFailsClosed
+PASS TestReviewManifestExplicitEmptyIsValid
+PASS TestReviewManualTargetDeletionRepairedAfterPurge
+PASS TestReviewPurgeNullManifestFieldsDoNotEscapeIsolation
+PASS TestReviewPurgeCorruptFirstTargetDoesNotStarveHealthy
+PASS TestReviewPurgeReparseFirstTargetIsolated
+PASS TestReviewRecentCopyFlowsFromWorkerToUi
+SOAK START root=E:\Download\AI\projects\flex-time-checker-sol\extractor\release-reviewed\selftest-data\soak-fe09a2d6b2474522a988101b04245073
+{"sec":1.035,"privateBytes":11948032,"workingSet":39473152,"handles":281,"threads":15,"copied":30,"failed":0,"logLines":2,"offline":false,"cycles":0,"recovered":0}
+{"sec":2.058,"privateBytes":12009472,"workingSet":40411136,"handles":285,"threads":15,"copied":30,"failed":0,"logLines":2,"offline":false,"cycles":0,"recovered":0}
+{"sec":3.128,"privateBytes":12644352,"workingSet":41644032,"handles":284,"threads":15,"copied":31,"failed":0,"logLines":3,"offline":false,"cycles":0,"recovered":0}
+{"sec":4.142,"privateBytes":12992512,"workingSet":42090496,"handles":287,"threads":15,"copied":32,"failed":0,"logLines":4,"offline":false,"cycles":0,"recovered":0}
+{"sec":5.162,"privateBytes":13799424,"workingSet":43253760,"handles":291,"threads":15,"copied":32,"failed":0,"logLines":4,"offline":false,"cycles":0,"recovered":0}
+{"sec":6.168,"privateBytes":13864960,"workingSet":43393024,"handles":289,"threads":15,"copied":32,"failed":1,"logLines":5,"offline":false,"cycles":0,"recovered":0}
+{"sec":7.174,"privateBytes":14061568,"workingSet":43753472,"handles":291,"threads":15,"copied":33,"failed":1,"logLines":6,"offline":false,"cycles":0,"recovered":0}
+{"sec":8.195,"privateBytes":14192640,"workingSet":43925504,"handles":294,"threads":15,"copied":33,"failed":1,"logLines":6,"offline":false,"cycles":0,"recovered":0}
+{"sec":9.202,"privateBytes":14389248,"workingSet":44175360,"handles":293,"threads":15,"copied":34,"failed":1,"logLines":7,"offline":false,"cycles":0,"recovered":0}
+{"sec":10.221,"privateBytes":14585856,"workingSet":44728320,"handles":297,"threads":15,"copied":34,"failed":1,"logLines":7,"offline":false,"cycles":0,"recovered":0}
+{"sec":11.231,"privateBytes":14626816,"workingSet":44691456,"handles":295,"threads":15,"copied":35,"failed":1,"logLines":8,"offline":false,"cycles":0,"recovered":0}
+{"sec":12.249,"privateBytes":14843904,"workingSet":45027328,"handles":297,"threads":15,"copied":36,"failed":1,"logLines":9,"offline":false,"cycles":0,"recovered":0}
+{"sec":13.266,"privateBytes":15732736,"workingSet":45682688,"handles":301,"threads":15,"copied":36,"failed":1,"logLines":9,"offline":false,"cycles":0,"recovered":0}
+{"sec":14.273,"privateBytes":15728640,"workingSet":45703168,"handles":299,"threads":15,"copied":37,"failed":1,"logLines":10,"offline":false,"cycles":0,"recovered":0}
+{"sec":15.294,"privateBytes":15994880,"workingSet":46084096,"handles":301,"threads":15,"copied":38,"failed":1,"logLines":11,"offline":false,"cycles":0,"recovered":0}
+SOAK OFFLINE cycle=1 sec=17.495
+{"sec":18.505,"privateBytes":18366464,"workingSet":49094656,"handles":305,"threads":15,"copied":39,"failed":2,"logLines":13,"offline":true,"cycles":1,"recovered":0}
+{"sec":19.523,"privateBytes":18620416,"workingSet":49393664,"handles":307,"threads":15,"copied":39,"failed":3,"logLines":13,"offline":true,"cycles":1,"recovered":0}
+{"sec":20.537,"privateBytes":18808832,"workingSet":49590272,"handles":311,"threads":15,"copied":39,"failed":3,"logLines":13,"offline":true,"cycles":1,"recovered":0}
+{"sec":21.555,"privateBytes":18817024,"workingSet":49582080,"handles":309,"threads":15,"copied":39,"failed":4,"logLines":13,"offline":true,"cycles":1,"recovered":0}
+{"sec":22.564,"privateBytes":19075072,"workingSet":49856512,"handles":311,"threads":15,"copied":39,"failed":5,"logLines":13,"offline":true,"cycles":1,"recovered":0}
+SOAK RESTORED cycle=1 sec=22.567
+{"sec":23.587,"privateBytes":18432000,"workingSet":49360896,"handles":313,"threads":15,"copied":40,"failed":5,"logLines":14,"offline":false,"cycles":1,"recovered":0}
+SOAK RECOVERED cycle=1 sec=23.588 marker=Request_001__AE41570DFA7655DA_D24861BAAA65F6F9.xml copied=40 failed=5
+{"sec":24.607,"privateBytes":18210816,"workingSet":49651712,"handles":317,"threads":15,"copied":40,"failed":5,"logLines":14,"offline":false,"cycles":1,"recovered":1}
+{"sec":25.629,"privateBytes":18145280,"workingSet":49643520,"handles":315,"threads":15,"copied":41,"failed":5,"logLines":15,"offline":false,"cycles":1,"recovered":1}
+{"sec":26.644,"privateBytes":18472960,"workingSet":49983488,"handles":320,"threads":15,"copied":41,"failed":5,"logLines":15,"offline":false,"cycles":1,"recovered":1}
+SOAK RESULT requestedSec=26 actualSec=26.654 samples=24 baselinePrivate=13864960 peakPrivate=19075072 baselineHandles=289 peakHandles=320 copied=42 failed=5 outageCycles=1 verifiedRecoveries=1 sourcePreserved=true logFiles=1 logBytes=1413 root=E:\Download\AI\projects\flex-time-checker-sol\extractor\release-reviewed\selftest-data\soak-fe09a2d6b2474522a988101b04245073
+
+PASS TestReviewSoakSharingViolationInjectionRecovers
+PASS TestReviewSourceJunctionPurgePreservesSource
+PASS TestReviewSourceAncestorJunctionRejectedByValidation
+PASS TestReviewSourceOfflineUncPurgeDoesNotProbe
+PASS TestReviewTraversalSkipsUnselectedDeniedBranch
+PASS TestReviewTraversalAllSelectionIsolatesDeniedBranch
+PASS TestReviewTraversalSelectedDeniedBranchDoesNotBlockSibling
+PASS TestPathOverlapValidation
+PASS TestBatchBoundedAndResumes
+PASS TestOnlyNewAndRetentionUseNewestTimestamp
+PASS TestSelectedParentIncludesChildrenOnly
+PASS TestSameNameSameLengthDifferentSourceNoOverwrite
+PASS TestPartialXmlNeverVisible
+PASS TestCopyRecursiveRequestOnly
+PASS TestStableChecksActuallyWait
+PASS TestInterruptedBatchCursorAdvancesBeforeBlockedOpen
+PASS TestAdvancedLabelsFitTheirColumns
+PASS TestStationRefreshUsesIsolatedWorker
+PASS TestMainFormHasConfigThemeAndBoundedStatus
+PASS TestConfigurationEditorHasExplicitFields
+PASS TestMissingLoopbackUncIsBoundedAndRecovers
+PASS TestCancelStableCopyWaitsForWorkerBeforeReturn
+PASS TestHungWorkerKilledBeforeLeaseReleased
+RESULT total=64 passed=64 failed=0

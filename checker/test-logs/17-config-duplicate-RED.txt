@@ -1,0 +1,15 @@
+PASS XML namespaced custom item attributes remain material identifiers
+PASS XML safety size DTD malformed and identifier limits
+PASS XML exact material all non-schema attributes and housing
+PASS unreadable oversized report fails closed without destroying inventory
+PASS equal timestamp winner deterministic across config reorder
+PASS material latest binding uses bind thresholds separate dispense ownership
+PASS recursive Request XML latest station and exact Housing priority
+PASS persistent rework housing dedup dispense ownership and deletion
+PASS worker real query uses immutable request generation and rejects forged reply
+PASS worker cancellation kills child and rejects concurrent task queue
+PASS isolated worker timeout kills real hung child without leftovers
+FAIL config duplicate nested fields cannot silently override minutes: expected validation rejection
+PASS strict wait boundaries and future
+PASS config explicit legacy import and invalid preservation
+RESULT total=14 failed=1

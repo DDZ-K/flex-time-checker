@@ -1,0 +1,7 @@
+[DEBUG-ui] worker reply, context=
+[DEBUG-ui] rework reply, context=
+FAIL UI System.Exception: UI query completes without blocking
+   at FlexTimeChecker.UiSelfTests.Check(Boolean value, String message) in E:\Download\AI\projects\flex-time-checker-sol\checker\FlexTimeChecker\UiSelfTests.cs:line 5
+   at FlexTimeChecker.UiSelfTests.Pump(Task task) in E:\Download\AI\projects\flex-time-checker-sol\checker\FlexTimeChecker\UiSelfTests.cs:line 11
+   at FlexTimeChecker.UiSelfTests.RunQueryTest(String reportDirectory) in E:\Download\AI\projects\flex-time-checker-sol\checker\FlexTimeChecker\UiSelfTests.cs:line 23
+   at FlexTimeChecker.UiSelfTests.Run(String reportDirectory) in E:\Download\AI\projects\flex-time-checker-sol\checker\FlexTimeChecker\UiSelfTests.cs:line 55

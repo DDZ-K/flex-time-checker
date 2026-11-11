@@ -1,0 +1,2 @@
+Unhandled exception. System.Exception: FAIL strict wait boundaries: WaitRules behavior missing
+   at Program.<Main>$(String[] args) in E:\Download\AI\projects\flex-time-checker-sol\checker\FlexTimeChecker.Tests\Program.cs:line 4

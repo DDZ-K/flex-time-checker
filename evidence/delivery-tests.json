@@ -1,0 +1,42 @@
+[
+  {
+    "name": "source-built-Checker-FlexTimeChecker.exe-self-test",
+    "exit": 0,
+    "seconds": 4.247
+  },
+  {
+    "name": "source-built-Checker-FlexTimeChecker.exe-ui-test",
+    "exit": 0,
+    "seconds": 26.565
+  },
+  {
+    "name": "source-built-Extractor-FlexRequestExtractor.exe-self-test",
+    "exit": 0,
+    "seconds": 41.484
+  },
+  {
+    "name": "source-built-Extractor-FlexRequestExtractor.Service.exe-self-test",
+    "exit": 0,
+    "seconds": 40.122
+  },
+  {
+    "name": "runtime-staged-Checker-FlexTimeChecker.exe-self-test",
+    "exit": 0,
+    "seconds": 4.094
+  },
+  {
+    "name": "runtime-staged-Checker-FlexTimeChecker.exe-ui-test",
+    "exit": 0,
+    "seconds": 26.761
+  },
+  {
+    "name": "runtime-staged-Extractor-FlexRequestExtractor.exe-self-test",
+    "exit": 0,
+    "seconds": 39.534
+  },
+  {
+    "name": "runtime-staged-Extractor-FlexRequestExtractor.Service.exe-self-test",
+    "exit": 0,
+    "seconds": 38.865
+  }
+]

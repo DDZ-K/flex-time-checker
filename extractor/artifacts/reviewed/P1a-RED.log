@@ -1,0 +1,4 @@
+FAIL TestReviewSourceJunctionPurgePreservesSource: purge deleted current source via junction
+FAIL TestReviewSourceAncestorJunctionRejectedByValidation: unsafe input accepted
+PASS TestReviewSourceOfflineUncPurgeDoesNotProbe
+RESULT total=3 passed=1 failed=2

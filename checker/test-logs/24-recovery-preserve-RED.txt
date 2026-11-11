@@ -1,0 +1,5 @@
+PASS UI real isolated query, future fail-closed, bounded log, cancel and close during query
+FAIL UI System.Exception: invalid config recovery must not erase persisted rework
+   at FlexTimeChecker.UiSelfTests.Check(Boolean value, String message) in E:\Download\AI\projects\flex-time-checker-sol\checker\FlexTimeChecker\UiSelfTests.cs:line 5
+   at FlexTimeChecker.UiSelfTests.RunConfigTest(String reportDirectory) in E:\Download\AI\projects\flex-time-checker-sol\checker\FlexTimeChecker\UiSelfTests.cs:line 54
+   at FlexTimeChecker.UiSelfTests.Run(String reportDirectory) in E:\Download\AI\projects\flex-time-checker-sol\checker\FlexTimeChecker\UiSelfTests.cs:line 80

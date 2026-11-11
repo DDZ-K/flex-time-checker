@@ -1,0 +1,1 @@
+PASS actual normal startup missing config enters recovery; no worker, state byte-preserved, graceful close

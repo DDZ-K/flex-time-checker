@@ -1,0 +1,3 @@
+PASS TestReviewManifestMissingFilesFailsClosed
+PASS TestReviewManifestExplicitEmptyIsValid
+RESULT total=2 passed=2 failed=0

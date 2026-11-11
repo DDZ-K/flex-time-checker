@@ -1,0 +1,4 @@
+FAIL legacy malformed top-level string minutes produces handled validation rejection: The requested operation requires an element of type 'Number', but the target element has type 'String'.
+FAIL legacy malformed top-level overflow minutes produces handled validation rejection: One of the identified items was in an invalid format.
+FAIL legacy malformed top-level numeric path produces handled validation rejection: The requested operation requires an element of type 'String', but the target element has type 'Number'.
+RESULT total=3 failed=3

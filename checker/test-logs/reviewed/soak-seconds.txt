@@ -1,0 +1,1 @@
+PASS UI SOAK elapsedSeconds=120.843 cycles=218 writes=2582 changes=2582 deletes=1083 handlesMin=289 handlesMax=336 privateGrowthBytes=14974976 finalLogLines=200 finalLogChars=10960 remainingJobs=0

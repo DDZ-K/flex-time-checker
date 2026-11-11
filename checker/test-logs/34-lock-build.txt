@@ -1,0 +1,10 @@
+  正在确定要还原的项目…
+  所有项目均是最新的，无法还原。
+  FlexTimeChecker.Core -> E:\Download\AI\projects\flex-time-checker-sol\checker\FlexTimeChecker.Core\bin\Release\net8.0\FlexTimeChecker.Core.dll
+  FlexTimeChecker -> E:\Download\AI\projects\flex-time-checker-sol\checker\FlexTimeChecker\bin\Release\net8.0-windows\FlexTimeChecker.dll
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:01.40

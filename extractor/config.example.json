@@ -1,0 +1,18 @@
+{
+  "SchemaVersion": 2,
+  "WatchRoot": "C:\\FlexExample\\Source",
+  "DispenseItems": [{"StationName": "点胶31", "Station": "0031", "SaveFolder": "C:\\FlexExample\\点胶", "SubFolders": []}],
+  "BindItems": [{"StationName": "组装61", "Station": "0061", "SaveFolder": "C:\\FlexExample\\组装", "SubFolders": []}],
+  "PollIntervalSec": 1,
+  "LookbackDays": 2,
+  "KeepDays": 1,
+  "OnlyNewAfterStart": false,
+  "NewFileGraceSec": 2,
+  "MinFileBytes": 16,
+  "SizeStableChecks": 1,
+  "SizeStableIntervalMs": 120,
+  "MaxLogLines": 500,
+  "WorkerTimeoutSec": 60,
+  "MaxFileBytes": 16777216,
+  "MaxFilesPerPass": 200
+}

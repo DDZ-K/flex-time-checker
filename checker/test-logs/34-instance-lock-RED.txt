@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "E:\Download\AI\projects\flex-time-checker-sol\checker\scripts\verify_instance_lock.py", line 16, in <module>
+    assert result.returncode==10, f'shared data-dir kernel file lock must refuse independent holder, got {result.returncode}'
+           ^^^^^^^^^^^^^^^^^^^^^
+AssertionError: shared data-dir kernel file lock must refuse independent holder, got 0

@@ -1,0 +1,22 @@
+{"sec":1.044,"privateBytes":11354112,"workingSet":38744064,"handles":278,"threads":15,"copied":30,"failed":0,"logLines":2}
+{"sec":2.062,"privateBytes":11202560,"workingSet":39407616,"handles":283,"threads":15,"copied":30,"failed":0,"logLines":2}
+{"sec":3.082,"privateBytes":11821056,"workingSet":40321024,"handles":281,"threads":15,"copied":31,"failed":0,"logLines":3}
+{"sec":4.089,"privateBytes":11849728,"workingSet":41000960,"handles":286,"threads":15,"copied":31,"failed":0,"logLines":3}
+{"sec":5.097,"privateBytes":11849728,"workingSet":41103360,"handles":284,"threads":15,"copied":32,"failed":0,"logLines":4}
+{"sec":6.105,"privateBytes":11984896,"workingSet":41394176,"handles":286,"threads":15,"copied":32,"failed":1,"logLines":5}
+{"sec":7.115,"privateBytes":12701696,"workingSet":42332160,"handles":290,"threads":15,"copied":32,"failed":1,"logLines":5}
+{"sec":8.126,"privateBytes":12701696,"workingSet":42369024,"handles":288,"threads":15,"copied":32,"failed":1,"logLines":5}
+{"sec":9.134,"privateBytes":13414400,"workingSet":42704896,"handles":290,"threads":15,"copied":32,"failed":1,"logLines":5}
+{"sec":10.149,"privateBytes":12984320,"workingSet":42856448,"handles":294,"threads":15,"copied":32,"failed":1,"logLines":5}
+{"sec":11.157,"privateBytes":12984320,"workingSet":42917888,"handles":292,"threads":15,"copied":33,"failed":1,"logLines":6}
+{"sec":12.165,"privateBytes":13701120,"workingSet":42958848,"handles":296,"threads":15,"copied":33,"failed":1,"logLines":6}
+{"sec":13.173,"privateBytes":13144064,"workingSet":43163648,"handles":294,"threads":15,"copied":34,"failed":1,"logLines":7}
+{"sec":14.189,"privateBytes":13864960,"workingSet":43700224,"handles":296,"threads":15,"copied":35,"failed":1,"logLines":8}
+{"sec":15.197,"privateBytes":13922304,"workingSet":43765760,"handles":300,"threads":15,"copied":35,"failed":1,"logLines":8}
+SOAK FAIL System.IO.IOException: Access to the path 'E:\Download\AI\projects\flex-time-checker-sol\extractor\Tests\bin\Release\net8.0-windows\selftest-data\soak-e6c68a621b9f423e8c75f029f35bc894\watch' is denied.
+   at System.IO.FileSystem.MoveDirectory(String sourceFullPath, String destFullPath, Boolean _)
+   at System.IO.FileSystem.MoveDirectory(String sourceFullPath, String destFullPath)
+   at Harness.Soak(Int32 seconds) in E:\Download\AI\projects\flex-time-checker-sol\extractor\Tests\LongHarness.cs:line 12
+
+FAIL TestReviewSoakSharingViolationInjectionRecovers: soak failed under transient directory sharing violation
+RESULT total=1 passed=0 failed=1

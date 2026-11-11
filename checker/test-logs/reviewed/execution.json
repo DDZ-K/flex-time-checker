@@ -1,0 +1,32 @@
+[
+  {
+    "test": "self-test",
+    "exit": 0,
+    "wallSeconds": 7.883
+  },
+  {
+    "test": "ui-test",
+    "exit": 0,
+    "wallSeconds": 25.563
+  },
+  {
+    "test": "soak-seconds",
+    "exit": 0,
+    "wallSeconds": 121.142
+  },
+  {
+    "test": "verify_startup",
+    "exit": 0,
+    "wallSeconds": 3.407
+  },
+  {
+    "test": "verify_missing_config",
+    "exit": 0,
+    "wallSeconds": 3.399
+  },
+  {
+    "test": "verify_instance_lock",
+    "exit": 0,
+    "wallSeconds": 5.87
+  }
+]

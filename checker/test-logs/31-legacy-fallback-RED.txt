@@ -1,0 +1,2 @@
+FAIL legacy null or empty folders fall back to explicit top-level folder: Folders 为空
+RESULT total=1 failed=1

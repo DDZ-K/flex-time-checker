@@ -1,0 +1,2 @@
+PASS legacy null or empty folders fall back to explicit top-level folder
+RESULT total=1 failed=0

@@ -1,0 +1,1 @@
+PASS isolated fresh normal UI startup + actual duplicate process rejection + graceful timer close + newly written state read-back

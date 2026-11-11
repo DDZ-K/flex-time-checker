@@ -1,0 +1,2 @@
+FAIL XML duplicate business headers or housings fail closed: expected validation rejection
+RESULT total=1 failed=1

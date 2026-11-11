@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "E:\Download\AI\projects\flex-time-checker-sol\checker\scripts\verify_startup.py", line 9, in <module>
+    assert p.poll() is None, f'normal UI exited early: {p.returncode}'
+           ^^^^^^^^^^^^^^^^
+AssertionError: normal UI exited early: 7

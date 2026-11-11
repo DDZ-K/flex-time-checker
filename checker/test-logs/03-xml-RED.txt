@@ -1,0 +1,4 @@
+FAIL XML exact material all non-schema attributes and housing: RequestReader behavior missing
+PASS strict wait boundaries and future
+PASS config explicit legacy import and invalid preservation
+RESULT total=3 failed=1

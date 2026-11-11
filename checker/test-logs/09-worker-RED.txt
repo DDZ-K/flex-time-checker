@@ -1,0 +1,11 @@
+PASS XML safety size DTD malformed and identifier limits
+PASS XML exact material all non-schema attributes and housing
+PASS unreadable oversized report fails closed without destroying inventory
+PASS equal timestamp winner deterministic across config reorder
+PASS material latest binding uses bind thresholds separate dispense ownership
+PASS recursive Request XML latest station and exact Housing priority
+PASS persistent rework housing dedup dispense ownership and deletion
+FAIL isolated worker timeout kills real hung child without leftovers: WorkerRunner behavior missing
+PASS strict wait boundaries and future
+PASS config explicit legacy import and invalid preservation
+RESULT total=10 failed=1

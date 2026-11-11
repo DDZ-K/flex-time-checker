@@ -1,0 +1,1 @@
+PASS normal UI startup + actual duplicate process rejection + graceful timer close

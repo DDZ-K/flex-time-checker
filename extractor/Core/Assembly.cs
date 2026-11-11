@@ -1,0 +1,1 @@
+namespace FlexExtractor; public static class AssemblyMarker {}

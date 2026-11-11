@@ -1,0 +1,22 @@
+[
+  {
+    "test": "--self-test",
+    "exit": 0,
+    "wallSeconds": 7.453
+  },
+  {
+    "test": "--ui-test",
+    "exit": 0,
+    "wallSeconds": 26.36
+  },
+  {
+    "test": "--soak-seconds",
+    "exit": 0,
+    "wallSeconds": 120.859
+  },
+  {
+    "test": "startup",
+    "exit": 0,
+    "wallSeconds": 3.416
+  }
+]

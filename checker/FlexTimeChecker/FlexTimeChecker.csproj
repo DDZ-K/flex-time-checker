@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>WinExe</OutputType><TargetFramework>net8.0-windows</TargetFramework><UseWindowsForms>true</UseWindowsForms><Nullable>enable</Nullable><ImplicitUsings>enable</ImplicitUsings><TreatWarningsAsErrors>true</TreatWarningsAsErrors><AssemblyName>FlexTimeChecker</AssemblyName><Version>2.0.0</Version><ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode><ApplicationIcon>Assets/bosch.ico</ApplicationIcon><NuGetAudit>false</NuGetAudit></PropertyGroup>
+  <ItemGroup><ProjectReference Include="../FlexTimeChecker.Core/FlexTimeChecker.Core.csproj"/><PackageReference Include="AntdUI" Version="2.4.4"/><Compile Include="../FlexTimeChecker.Tests/*Tests.cs" Link="Tests/%(Filename)%(Extension)"/><EmbeddedResource Include="Assets/bosch-logo.png"/></ItemGroup>
+</Project>

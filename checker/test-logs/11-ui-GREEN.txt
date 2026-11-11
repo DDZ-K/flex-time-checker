@@ -1,0 +1,1 @@
+PASS UI scan geometry, 196 log, two cards, persistent station handles, screenshot
